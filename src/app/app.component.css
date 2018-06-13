@@ -1,0 +1,141 @@
+.centraApp {
+  position: absolute;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1340px 1fr;
+  z-index: 2;
+  margin-top: 20px;
+}
+
+.intestazione {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  grid-template-rows: 58px;
+}
+
+.home {
+  height: 10px;
+  width: 10px;
+  margin-top: 3px;
+  margin-left: 10px;
+  border-radius: 5px;
+  background-image: url("../../documentation/home-512.png");
+  background-size: cover;
+  background-position: center;
+  z-index: 4;
+}
+
+.home:hover {
+  cursor: pointer;
+}
+
+.centraApp .app {
+  margin-left: 1fr;
+  margin-right: 1fr;
+  width: 1340px;
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  box-shadow: 2px 1px 12px black;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 58px repeat(7, 76px) 30px 135px;
+  height: 850px;
+  grid-template-areas:
+    'grafici grafici intestazione intestazione intestazione intestazione tips tips'
+    'grafici grafici view view view view tips tips'
+    'grafici grafici view view view view tips tips'
+    'grafici grafici view view view view tips tips'
+    'grafici grafici view view view view tips tips'
+    'grafici grafici view view view view tips tips'
+    'grafici grafici view view view view tips tips'
+    'grafici grafici view view view view tips tips'
+    'grafici grafici topmenu topmenu topmenu topmenu tips tips'
+    'grafici grafici bottommenu bottommenu bottommenu bottommenu tips tips';
+  border-radius: 5px;
+  background-color: #293133;
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+.centraApp h1 {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 40px;
+  text-shadow: 1px 1px 1px black;
+}
+
+.background {
+  margin-left: -8px;
+  margin-top: -8px;
+  z-index: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #49b675;
+  background-image: url("../../documentation/apps.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+}
+
+#grafici {
+  grid-area: grafici;
+  padding: 10px;
+  box-shadow: 0 0 12px black;
+  z-index: 4;
+}
+
+#home {
+  grid-area: home;
+  padding: 10px;
+  grid-column: 1;
+}
+
+#topmenu {
+  grid-area: topmenu;
+  padding: 10px;
+}
+
+#text {
+  grid-area: text;
+  padding: 10px;
+  grid-column: 1;
+  background-color: #293133;
+  margin-top: 0px;
+}
+
+
+#intestazione {
+  display: grid;
+  height: 50px;
+  grid-template-columns: 1fr;
+  grid-area: intestazione;
+  padding: 10px;
+  background-color: #293133;
+}
+
+#view {
+  grid-area: view;
+  height: 850px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+#bottommenu {
+  grid-area: bottommenu;
+  padding: 10px;
+}
+
+#tips {
+  grid-area: tips;
+  padding: 10px;
+  box-shadow: 0 0 12px black;
+}
+
+#intro {
+  position: absolute;
+  margin-top: -850px;
+  height: 850px;
+  width: 100%;
+}

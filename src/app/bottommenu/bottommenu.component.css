@@ -1,0 +1,35 @@
+#lean {
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid #49b675;
+  border-radius: 10px;
+  padding: 7px;
+  grid-column-gap: 7px;
+  margin-top: 8px;
+}
+
+#digital {
+  background-color: black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border: 1px solid #ff605f;
+  border-radius: 10px;
+  padding: 7px;
+  grid-column-gap: 7px;
+  margin-top: 8px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 247px 247px;
+  padding-left: 10px;
+  grid-column-gap: 10px;
+}
+
+
+p {
+  margin-top: 50px;
+  font-size: 20px;
+  text-align: center;
+}

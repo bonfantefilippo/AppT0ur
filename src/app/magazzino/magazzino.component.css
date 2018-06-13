@@ -1,0 +1,49 @@
+.magazzino {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 522px;
+}
+
+.magazzino1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.magazzino2 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+#magG1 {
+}
+
+#magG2 {
+}
+
+#magG3 {
+}
+
+.tradizionale {
+  background-image: url("../../../documentation/MAGAZZINOT.png");
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.lean {
+  background-image: url("../../../documentation/MAGAZZINOL.png");
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.digital {
+  background-image: url("../../../documentation/MAGAZZINOT_digital.png");
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.all {
+  background-image: url("../../../documentation/MAGAZZINOL_DIGITAL.png");
+  background-size: 100% 100%;
+  background-position: center;
+}
+

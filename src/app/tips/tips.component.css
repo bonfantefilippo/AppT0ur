@@ -1,0 +1,23 @@
+.container {
+  height: 100%;
+}
+
+.container div {
+  height: 42.5%;
+}
+
+.container .contatti {
+  height: 15%;
+}
+
+.carattere {
+  color: #aedec2;
+}
+
+p {
+  font-size: 20px;
+}
+.sectiontitle{
+  font-size: 25px;
+  text-align: left;
+}
