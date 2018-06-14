@@ -1,11 +1,36 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {StorageService} from '../storage.service';
+import {ObjectID} from '../object-id.enum';
+
 
 @Component({
   selector: 'app-graph10',
-  templateUrl: './graph10.component.html'
+  templateUrl: './graph10.component.html',
 })
-export class Graph10Component {
+export class Graph10Component implements OnInit {
   // lineChart
+  @Output() grafico = new EventEmitter();
+
+  ObjectID = ObjectID;
+  leanStato = false;
+  digitalStato = false;
+  grafico1 = 'grafico';
+  grafico2 = 'grafico2';
+  grafico3 = 'grafico3';
+
+  constructor(public service: StorageService) {
+    this.service.leanClick.subscribe(res => {
+      this.leanStato = res.stato;
+    });
+    this.service.digitalClick.subscribe(res => {
+      this.digitalStato = res.stato;
+    });
+    this.service.grafici.subscribe(res => {
+      this.grafico1 = res.first;
+      this.grafico2 = res.second;
+      this.grafico3 = res.third;
+    });
+  }
   public lineChartData: Array<any> = [
     {data: [75, 89, 80, 81, 86, 85, 90, 50], label: 'Standard'},
     {data: [28, 48, 40, 19, 86, 27, 90], label: 'Lean'},
@@ -41,8 +66,8 @@ export class Graph10Component {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
-  public lineChartLegend: boolean = true;
-  public lineChartType: string = 'line';
+  public lineChartLegend = true;
+  public lineChartType = 'line';
 
   public randomize(): void {
     const _lineChartData: Array<any> = new Array(this.lineChartData.length);
@@ -62,5 +87,8 @@ export class Graph10Component {
 
   public chartHovered(e: any): void {
     console.log(e);
+  }
+  ngOnInit() {
+
   }
 }

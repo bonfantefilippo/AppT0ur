@@ -22,7 +22,7 @@
 
 .container .graphic:hover {
   cursor: pointer;
-  transform: scale3d(1.2,1.2,1.2);
+  transform: scale3d(1.15,1.15,1.15);
   opacity: 1;
   transition-duration: 0.7s;
 }

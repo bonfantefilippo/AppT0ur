@@ -67,7 +67,7 @@ const appRoutes: Routes = [
     GraficounoComponent,
     MagazzinogrezzodueComponent,
     MagazzinogrezzotreComponent,
-    Graph10Component
+    Graph10Component,
   ],
   imports: [
     BrowserModule,
