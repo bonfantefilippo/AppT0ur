@@ -1,5 +1,6 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {ObjectID} from './object-id.enum';
+import {ChartData, ChartDataRecord} from './models/ChartData';
 
 const objMapping: ObjectID[] = [
   ObjectID.viewPiantina,
@@ -51,8 +52,27 @@ const objMapping: ObjectID[] = [
 
 @Injectable()
 export class StorageService {
-  /* index è l'indice dell'oggetto corrente caricato nella View*/
+  /* index è l'indice DI CONTESTO  dell'oggetto corrente caricato nella View*/
   index: ObjectID = ObjectID.viewPiantina;
+
+  /*
+    Unique Identifier: utilizzato per identificare in maniera univoca
+    ogni oggetto dell'applicazione, nel momento della costruzione l'oggetto
+    riceve il service per iniezione e gli richiede il proprio UID
+    Il service memorizza l'associazione tra l'oggetto e l'UID, nelle chiamate
+    successive l'UID permette al service di identificare l'oggetto e scegliere
+    eventuali opzioni di comportamento e/o personalizzazione
+    UID viene incrementato ad ogni chiamata
+   */
+  private _UID = 0;
+
+  /*
+    Nell'oggetto ChartData sono definiti tutti i grafici disponibili.
+    Quando viene creato il componente graficoX, il service gli passa i dati contenuti
+    nello specifico record di _chartData
+   */
+  private _chartData = new ChartData();
+
   statoOttimizza1 = false;
   statoOttimizza2 = false;
 
@@ -68,8 +88,38 @@ export class StorageService {
   classGraph1 = 'grafico';
   classGraph2 = 'grafico2';
   classGraph3 = 'grafico3';
+  registeredObjects: Array<any> = [];
+
+  /*
+    quando si fa il click su uno dei grafici di sinistra memorizziamo le informazioni relative
+    in modo che quando viene eseguito il routing il componente caricato nella view
+    possa accedere alle informazioni relative
+    Quando nella view viene caricato qualcosaltro la _activeChart deve essere annullata
+   */
+  private _activeChart: { UID: number; data: ChartDataRecord; valid: boolean} = {UID: 0, data: null, valid: false};
 
   constructor() {
+  }
+
+  registerObject(caller: any, contextID: number) {
+    /*
+      quando contextID = -1 l'oggetto viene creato da un routing
+
+      Il click su un grafico a sinistra salva la _activeChart e spara un routing
+
+      Il grafico mostrato nella view chiede al service i suoi dati
+      il service vede contextID = -1 e gli da quelli nella _activeChart,
+      quindi annulla la _activeChart per evitare di sparare altri dati ad oggetti
+      che non sono titolati a riceverli
+     */
+    const UID = ++this._UID;
+    console.log('registering ' + UID  + ', context: ' + contextID);
+    this.registeredObjects.push({
+      'caller': caller,
+      'contextID': contextID,
+      'UID': UID
+    });
+    return UID;
   }
 
   onLean(event) {
@@ -94,6 +144,7 @@ export class StorageService {
   curOttimizza() {
     return {ottimizza1: this.statoOttimizza1, ottimizza2: this.statoOttimizza2};
   }
+
   onMouseOver(event) {
     this.objectMouseOver.emit(event);
   }
@@ -119,5 +170,27 @@ export class StorageService {
 
   curView() {
     return this.index;
+  }
+
+  getRandomChart() {
+    const chartIndex = Math.floor(Math.random() * this._chartData.getCount());
+    console.log('getRandonChart: ' + chartIndex + ' of ' + this._chartData.getCount());
+    return this._chartData.getChart(chartIndex);
+  }
+
+  getDefaultChart(UID: number) {
+    if (UID === this._activeChart.UID && this._activeChart.valid) {
+      console.log('Show chart in view with UID ' + UID);
+      this._activeChart.valid = false;
+      return this._activeChart.data;//.clone;
+    }
+    //return this._chartData.getChart(0);
+    return this.getRandomChart();
+  }
+
+  setActiveChart(UID: number, data: ChartDataRecord) {
+    console.log('setActiveChart ' + UID);
+    this._activeChart = {'UID': UID, 'data': data, 'valid': true};
+    this.graficiInView.emit(data);
   }
 }

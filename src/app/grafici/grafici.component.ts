@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StorageService} from '../storage.service';
 import {ObjectID} from '../object-id.enum';
-import {Graph10Component} from '../graph10/graph10.component';
 
 @Component({
   selector: 'app-grafici',

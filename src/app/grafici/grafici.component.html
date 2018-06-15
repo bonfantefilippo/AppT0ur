@@ -2,13 +2,30 @@
 <p>digital: {{digitalStato}}</p>-->
 <h1 class="dashboardtitle">DASHBOARD</h1>
 <div class="container">
-  <div routerLink="/graph10" routerLinkActive="active" class="graphic backWhite"
+  <app-graph10 routerLink="/graph10" routerLinkActive="active"
+               [contextID]="ObjectID.chart1"
+               class="graphic backWhite"
+               (click)="changeClass()"
+               (mouseover)="onDivMouseOver(ObjectID.chart1)">
+  </app-graph10>
+  <app-graph10 routerLink="/graph10" routerLinkActive="active"
+               [contextID]="ObjectID.chart2"
+               class="graphic backWhite"
+               (click)="changeClass()"
+               (mouseover)="onDivMouseOver(ObjectID.chart2)">
+  </app-graph10>
+  <app-graph10 routerLink="/graph10" routerLinkActive="active"
+               [contextID]="ObjectID.chart3"
+               class="graphic backWhite"
+               (click)="changeClass()"
+               (mouseover)="onDivMouseOver(ObjectID.chart3)">
+  </app-graph10>
+
+<!--  <div routerLink="/grafico1" routerLinkActive="active" class="graphic backWhite"
        (click)="changeClass()" [ngClass]="grafico1"
        (mouseover)="onDivMouseOver(ObjectID.chart2)"></div>
   <div routerLink="/grafico1" routerLinkActive="active" class="graphic backWhite"
        (click)="changeClass()" [ngClass]="grafico1"
        (mouseover)="onDivMouseOver(ObjectID.chart2)"></div>
-  <div routerLink="/grafico1" routerLinkActive="active" class="graphic backWhite"
-       (click)="changeClass()" [ngClass]="grafico1"
-       (mouseover)="onDivMouseOver(ObjectID.chart2)"></div>
-</div>
+</div>-->
+

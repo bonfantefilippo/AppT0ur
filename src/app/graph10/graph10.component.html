@@ -2,16 +2,16 @@
   <div class="col-md-6">
     <div style="display: block;">
       <canvas baseChart width="320" height="320"
-              [datasets]="lineChartData"
-              [labels]="lineChartLabels"
-              [options]="lineChartOptions"
-              [colors]="lineChartColors"
-              [legend]="lineChartLegend"
-              [chartType]="lineChartType"
+              [datasets]="data.lineChartData"
+              [labels]="data.lineChartLabels"
+              [options]="data.lineChartOptions"
+              [colors]="data.lineChartColors"
+              [legend]="data.lineChartLegend"
+              [chartType]="data.lineChartType"
               (chartHover)="chartHovered($event)"
               (chartClick)="chartClicked($event)">
       </canvas>
     </div>
   </div>
-    <button (click)="randomize()">CLICK</button>
+  <button (click)="randomize()">CLICK</button>
 </div>
