@@ -1,5 +1,6 @@
 export enum ObjectID {
-  btnlean = 0	,
+  notSet = -1,
+  btnlean	,
   btnDigital	,
   btnLeanChild1	,
   btnLeanChild2	,

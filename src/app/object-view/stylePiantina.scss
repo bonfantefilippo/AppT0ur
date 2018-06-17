@@ -1,3 +1,4 @@
+
 .container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -35,10 +36,11 @@
   grid-area: child5;
 }
 
-.sfondoTradizionale {
+.sfondoBasePiantina {
   background-image: url("../../../documentation/PIANTINA.png");
   background-size: 100% 100%;
   position: center;
 }
+
 
 

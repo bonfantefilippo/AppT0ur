@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {StorageService} from '../storage.service';
-import {ObjectID} from '../object-id.enum';
+import {ArchitectService} from '../architect.service';
+import {ObjectID} from '../models/object-id.enum';
 
 @Component({
   selector: 'app-topmenu',
@@ -12,7 +12,7 @@ export class TopmenuComponent implements OnInit {
   btnLeanState = false;
   btnDigitalState = false;
 
-  constructor(public service: StorageService) {
+  constructor(public service: ArchitectService) {
     // this.service.leanClick.subscribe(res => {});
   }
 

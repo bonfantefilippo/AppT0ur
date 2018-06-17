@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {StorageService} from '../storage.service';
-import {ObjectID} from '../object-id.enum';
+import {ArchitectService} from '../architect.service';
+import {ObjectID} from '../models/object-id.enum';
 
 @Component({
   selector: 'app-lean',
@@ -14,7 +14,7 @@ export class LeanComponent implements OnInit {
 
   btn1 = 'active';
 
-  constructor(public service: StorageService) {
+  constructor(public service: ArchitectService) {
 
   }
 

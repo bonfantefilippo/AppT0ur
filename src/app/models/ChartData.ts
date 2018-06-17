@@ -94,7 +94,7 @@ export class ChartData {
 
   getChart(index: number): ChartDataRecord {
     console.log('Query chart with index = ' + index);
-    return this.data[index];// .clone();
+    return this.data[index]; // .clone();
   }
 
 }
@@ -105,7 +105,8 @@ export class ChartDataRecord {
               public lineChartOptions: any,
               public lineChartColors: Array<any>,
               public lineChartLegend: boolean,
-              public lineChartType: string) {
+              public lineChartType: string,
+              public tag: any) {
   }
 
   public static createChartRecord(lineChartData: Array<any>,
@@ -113,16 +114,18 @@ export class ChartDataRecord {
                                   lineChartOptions: any,
                                   lineChartColors: Array<any>,
                                   lineChartLegend: boolean,
-                                  lineChartType: string) {
+                                  lineChartType: string,
+                                  tag?: any) {
     return new ChartDataRecord(lineChartData,
       lineChartLabels,
       lineChartOptions,
       lineChartColors,
       lineChartLegend,
-      lineChartType);
+      lineChartType,
+      tag);
   }
 
-  clone() {
+  clone(): ChartDataRecord {
     const chartData = [];
     for (const record in this.lineChartData) {
       chartData.push(record);
@@ -152,7 +155,8 @@ export class ChartDataRecord {
       this.lineChartOptions,
       chartColors,
       this.lineChartLegend,
-      this.lineChartType
+      this.lineChartType,
+      this.tag
     );
   }
 }

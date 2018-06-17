@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {StorageService} from '../storage.service';
-import {ObjectID} from '../object-id.enum';
+import {ArchitectService} from '../architect.service';
+import {ObjectID} from '../models/object-id.enum';
 
 @Component({
   selector: 'app-graficouno',
@@ -12,7 +12,7 @@ export class GraficounoComponent implements OnInit {
 
   classe;
 
-  constructor(public service: StorageService) {
+  constructor(public service: ArchitectService) {
     this.service.grafici.subscribe(res => {
       this.classe = this.service.changeClassGraphFirst().first;
     });

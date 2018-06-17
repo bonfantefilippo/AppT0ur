@@ -10,40 +10,36 @@ import { BottommenuComponent } from './bottommenu/bottommenu.component';
 import { TipsComponent } from './tips/tips.component';
 import { TopmenuComponent } from './topmenu/topmenu.component';
 import { ViewComponent } from './view/view.component';
-import { PiantinaComponent } from './piantina/piantina.component';
+import { ObjectViewComponent } from './object-view/object-view.component';
 import { MagazzinoComponent } from './magazzino/magazzino.component';
-import { PreparazioneComponent } from './preparazione/preparazione.component';
-import { LavorazioneComponent } from './lavorazione/lavorazione.component';
-import { FinituraComponent } from './finitura/finitura.component';
-import { StorageService } from './storage.service';
+import { ArchitectService } from './architect.service';
 import { LeanComponent } from './lean/lean.component';
 import { DigitalComponent } from './digital/digital.component';
-import { IntroComponent } from './intro/intro.component';
-import { MagazzinofinaleComponent } from './magazzinofinale/magazzinofinale.component';
-import { MagazzinogrezzounoComponent } from './magazzinogrezzouno/magazzinogrezzouno.component';
 import { GraficounoComponent } from './graficouno/graficouno.component';
-import { MagazzinogrezzodueComponent } from './magazzinogrezzodue/magazzinogrezzodue.component';
-import { MagazzinogrezzotreComponent } from './magazzinogrezzotre/magazzinogrezzotre.component';
 import { Graph10Component } from './graph10/graph10.component';
+import { WorkInProgressComponent } from './work-in-progress/work-in-progress.component';
+import { AppChartComponent } from './app-chart/app-chart.component';
 
 
 const appRoutes: Routes = [
-  { path: 'piantina', component: PiantinaComponent },
+  { path: 'piantina', component: ObjectViewComponent },
   { path: 'magazzino', component: MagazzinoComponent },
-  { path: 'preparazione', component: PreparazioneComponent },
-  { path: 'lavorazione', component: LavorazioneComponent },
-  { path: 'finitura', component: FinituraComponent },
-  { path: 'magazzinofinale', component: MagazzinofinaleComponent },
-  { path: 'magG1', component: MagazzinogrezzounoComponent },
-  { path: 'magG2', component: MagazzinogrezzodueComponent },
-  { path: 'magG3', component: MagazzinogrezzotreComponent },
+  { path: 'preparazione', component: WorkInProgressComponent },
+  { path: 'lavorazione', component: WorkInProgressComponent },
+  { path: 'finitura', component: WorkInProgressComponent },
+  { path: 'magazzinofinale', component: WorkInProgressComponent },
+  { path: 'magG1', component: WorkInProgressComponent },
+  { path: 'magG2', component: WorkInProgressComponent },
+  { path: 'magG3', component: WorkInProgressComponent },
   { path: 'grafico1', component: GraficounoComponent },
   { path: 'graph10', component: Graph10Component },
+  { path: 'chart', component: AppChartComponent },
   { path: '',
-    redirectTo: 'piantina',
+    redirectTo: 'object-view',
     pathMatch: 'full'
   },
-  { path: '**', component: AppComponent }
+  { path: '**',
+    redirectTo: 'object-view' }
 ];
 
 @NgModule({
@@ -54,20 +50,14 @@ const appRoutes: Routes = [
     TipsComponent,
     TopmenuComponent,
     ViewComponent,
-    PiantinaComponent,
+    ObjectViewComponent,
     MagazzinoComponent,
-    PreparazioneComponent,
-    LavorazioneComponent,
-    FinituraComponent,
     LeanComponent,
     DigitalComponent,
-    IntroComponent,
-    MagazzinofinaleComponent,
-    MagazzinogrezzounoComponent,
     GraficounoComponent,
-    MagazzinogrezzodueComponent,
-    MagazzinogrezzotreComponent,
-    Graph10Component
+    Graph10Component,
+    WorkInProgressComponent,
+    AppChartComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +67,7 @@ const appRoutes: Routes = [
     ),
     ChartsModule
   ],
-  providers: [StorageService],
+  providers: [ArchitectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

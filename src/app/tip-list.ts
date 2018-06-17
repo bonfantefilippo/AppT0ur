@@ -1,4 +1,4 @@
-import {ObjectID} from './object-id.enum';
+import {ObjectID} from './models/object-id.enum';
 const _tips = [
   'Questo pulsante permette di attivare o disattivare la possibilità di introdurre ottimizzazioni nel processo, implementazione Lean. Guarda nella parte inferiore della pagina: compariranno dei nuovi bottoni che ti permetteranno di scegliere l\'ottimizzazione.',
   'Questo pulsante permette di attivare o disattivare la possibilità di digitalizzare il processo, implementazione Digital. Guarda nella parte inferiore della pagina: compariranno dei nuovi bottoni che ti permetteranno di scegliere la tecnnologia.',
@@ -11,7 +11,7 @@ const _tips = [
   'Rappresentazione dell\'andamento nell\'ultimo mese per il parametro "Pezzi scartati", fai un click per ingrandire',
   'Rappresentazione dell\'andamento nell\'ultimo mese per il parametro "AAA", fai un click per ingrandire',
   'Rappresentazione dell\'andamento nell\'ultimo mese per il parametro "BBB", fai un click per ingrandire',
-  'Visulizzazione della piantina dello stabilimento',
+  'Visulizzazione della object-view dello stabilimento',
   'Area dello stabilimento adibita a "Magazzino". Tocca per entrare e visualizzarne le apparecchiature e le strutture, questo ti permetterà di provare ad applicare delle migliorie e valutarne l\'impatto',
   'piantinaChild2',
   'piantinaChild3',

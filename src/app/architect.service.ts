@@ -1,6 +1,8 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
-import {ObjectID} from './object-id.enum';
+import {ObjectID} from './models/object-id.enum';
 import {ChartData, ChartDataRecord} from './models/ChartData';
+import {ICallback} from './models/ICallback';
+import {TreeOfView} from './models/TreeBuilder';
 
 const objMapping: ObjectID[] = [
   ObjectID.viewPiantina,
@@ -49,10 +51,15 @@ const objMapping: ObjectID[] = [
   ObjectID.viewPiantina,
   ObjectID.viewPiantina,
 ];
-
+const _treeOfView = new TreeOfView();
 @Injectable()
-export class StorageService {
-  /* index è l'indice DI CONTESTO  dell'oggetto corrente caricato nella View*/
+export class ArchitectService {
+  /*
+    index è l'indice DI CONTESTO  dell'oggetto corrente caricato nella View
+    ogni oggetto rappresenta un contesto specifico e il suo indice di contesto
+    permette di recupersre il record con i parametri necessari ad una corretta
+    visualizzazione.
+   */
   index: ObjectID = ObjectID.viewPiantina;
 
   /*
@@ -101,7 +108,7 @@ export class StorageService {
   constructor() {
   }
 
-  registerObject(caller: any, contextID: number) {
+  registerObject(caller: ICallback, contextID: number) {
     /*
       quando contextID = -1 l'oggetto viene creato da un routing
 
@@ -119,6 +126,21 @@ export class StorageService {
       'contextID': contextID,
       'UID': UID
     });
+
+
+    /*const objs = [];
+    objs.push({'routerLink': '/magazzino', 'childId': 'child1', 'contextID': ObjectID.piantinaChild1});
+    objs.push({'routerLink': '/preparazione', 'childId': 'child2', 'contextID': ObjectID.piantinaChild2});
+    objs.push({'routerLink': '/lavorazione', 'childId': 'child3', 'contextID': ObjectID.piantinaChild3});
+    objs.push({'routerLink': '/finitura', 'childId': 'child4', 'contextID': ObjectID.piantinaChild4});
+    objs.push({'routerLink': '/magazzinofinale', 'childId': 'child5', 'contextID': ObjectID.piantinaChild5});
+
+    const data = {'class': 'sfondoBasePiantina', 'objects': objs};
+    caller.setData(data);*/
+
+  caller.setData(_treeOfView.data[0]);
+
+
     return UID;
   }
 
@@ -149,11 +171,19 @@ export class StorageService {
     this.objectMouseOver.emit(event);
   }
 
+  setContext(contextID: ObjectID) {
+    this.index = contextID;
+  }
+
   onView(event) {
     const curIndex: ObjectID = event.curIndex;
     this.index = objMapping[curIndex];
     console.log('query ' + curIndex + ' pointTo ' + this.index);
     this.viewChange.emit({curIndex: this.index});
+  }
+
+  curView() {
+    return this.index;
   }
 
   changeClass({grafico1: value1, grafico2: value2, grafico3: value3}) {
@@ -168,10 +198,6 @@ export class StorageService {
     return obj;
   }
 
-  curView() {
-    return this.index;
-  }
-
   getRandomChart() {
     const chartIndex = Math.floor(Math.random() * this._chartData.getCount());
     console.log('getRandonChart: ' + chartIndex + ' of ' + this._chartData.getCount());
@@ -182,9 +208,9 @@ export class StorageService {
     if (UID === this._activeChart.UID && this._activeChart.valid) {
       console.log('Show chart in view with UID ' + UID);
       this._activeChart.valid = false;
-      return this._activeChart.data;//.clone;
+      return this._activeChart.data.clone();
     }
-    //return this._chartData.getChart(0);
+    // return this._chartData.getChart(0);
     return this.getRandomChart();
   }
 

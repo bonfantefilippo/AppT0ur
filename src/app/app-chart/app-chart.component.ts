@@ -1,13 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ArchitectService} from '../architect.service';
 import {ChartData, ChartDataRecord} from '../models/ChartData';
+import {ArchitectService} from '../architect.service';
 import {ICallback} from '../models/ICallback';
 
 @Component({
-  selector: 'app-graph10',
-  templateUrl: './graph10.component.html'
+  selector: 'app-app-chart',
+  templateUrl: './app-chart.component.html',
+  styleUrls: ['./app-chart.component.css']
 })
-export class Graph10Component  implements OnInit, ICallback {
+export class AppChartComponent implements OnInit, ICallback {
 
 
   @Input()
@@ -17,28 +18,26 @@ export class Graph10Component  implements OnInit, ICallback {
   public data: ChartDataRecord;
 
   constructor(public service: ArchitectService) {
-    console.log('Chart constructor')
+    console.log('Chart constructor');
     this.data = ChartData.voidChart();
-   }
+  }
 
   ngOnInit() {
-    console.log('Chart init')
+    console.log('Chart init');
     this.UID = this.service.registerObject(this, this.contextID);
-    if (this.contextID === -1) {
+
+    if (this.contextID) {
+      console.log('grafico in panel grafici');
+      this.data = this.service.getDefaultChart(this.UID);
+      this.data.tag = this.contextID;
+    } else {
       this.service.graficiInView.subscribe( data => {
         console.log('grafico in view new event data');
         this.data = data;
       });
     }
-    this.data = this.service.getDefaultChart(this.UID);
   }
 
-  public randomize(): void {
-    console.log('Chart ' + this.contextID + ' query random chart');
-    // const newData = this.service.getRandomChart();
-    // this.data = newData;
-     this.data = this.service.getRandomChart();
-  }
 
   // events
   public chartClicked(e: any): void {

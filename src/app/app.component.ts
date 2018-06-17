@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {StorageService} from './storage.service';
+import {ArchitectService} from './architect.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import {StorageService} from './storage.service';
 export class AppComponent {
   title = 'app';
 
-  constructor(public service: StorageService) {
+  constructor(public service: ArchitectService) {
   }
 
 }

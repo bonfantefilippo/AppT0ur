@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PiantinaComponent } from './piantina.component';
+import { AppChartComponent } from './app-chart.component';
 
-describe('PiantinaComponent', () => {
-  let component: PiantinaComponent;
-  let fixture: ComponentFixture<PiantinaComponent>;
+describe('AppChartComponent', () => {
+  let component: AppChartComponent;
+  let fixture: ComponentFixture<AppChartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PiantinaComponent ]
+      declarations: [ AppChartComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PiantinaComponent);
+    fixture = TestBed.createComponent(AppChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

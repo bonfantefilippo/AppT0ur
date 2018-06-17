@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService} from '../storage.service';
+import { ArchitectService} from '../architect.service';
 
 @Component({
   selector: 'app-bottommenu',
@@ -10,7 +10,7 @@ export class BottommenuComponent implements OnInit {
 
   leanStato = false;
   digitalStato = false;
-  constructor(public service: StorageService) {
+  constructor(public service: ArchitectService) {
     this.service.leanClick.subscribe(res => {
       this.leanStato = res.stato;
     });

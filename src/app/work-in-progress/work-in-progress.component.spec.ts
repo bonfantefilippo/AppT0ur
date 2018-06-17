@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MagazzinofinaleComponent } from './magazzinofinale.component';
+import { WorkInProgressComponent } from './work-in-progress.component';
 
-describe('MagazzinofinaleComponent', () => {
-  let component: MagazzinofinaleComponent;
-  let fixture: ComponentFixture<MagazzinofinaleComponent>;
+describe('WorkInProgressComponent', () => {
+  let component: WorkInProgressComponent;
+  let fixture: ComponentFixture<WorkInProgressComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MagazzinofinaleComponent ]
+      declarations: [ WorkInProgressComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MagazzinofinaleComponent);
+    fixture = TestBed.createComponent(WorkInProgressComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
