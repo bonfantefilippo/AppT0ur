@@ -19,9 +19,6 @@ export class WorkInProgressComponent implements OnInit {
   ngOnInit() {
   }
 
-  onDivClick(index) {
-    this.service.onView({curIndex: index});
-  }
 
   onDivMouseOver(index) {
     this.service.onMouseOver({curIndex: index});

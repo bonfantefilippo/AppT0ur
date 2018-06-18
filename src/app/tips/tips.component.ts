@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ArchitectService} from '../architect.service';
 import {ObjectID} from '../models/object-id.enum';
-import {TipList} from '../tip-list';
+import {TipList} from '../models/tip-list';
 
 @Component({
   selector: 'app-tips',

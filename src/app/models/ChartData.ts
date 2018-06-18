@@ -94,7 +94,7 @@ export class ChartData {
 
   getChart(index: number): ChartDataRecord {
     console.log('Query chart with index = ' + index);
-    return this.data[index]; // .clone();
+    return this.data[index].clone();
   }
 
 }

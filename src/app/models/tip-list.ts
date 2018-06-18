@@ -1,4 +1,4 @@
-import {ObjectID} from './models/object-id.enum';
+import {ObjectID} from './object-id.enum';
 const _tips = [
   `Questo pulsante permette di attivare o disattivare la possibilità di introdurre ottimizzazioni nel
   processo, implementazione Lean. Guarda nella parte inferiore della pagina: compariranno dei nuovi bottoni

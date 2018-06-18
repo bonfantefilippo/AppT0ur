@@ -47,11 +47,8 @@ const appRoutes: Routes = [
     OptimizeComponent,
     ViewComponent,
     ObjectViewComponent,
-    MagazzinoComponent,
     LeanComponent,
     DigitalComponent,
-    GraficounoComponent,
-    Graph10Component,
     WorkInProgressComponent,
     AppChartComponent
   ],

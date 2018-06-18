@@ -96,14 +96,6 @@ export class ArchitectService {
   */
   @Output() leanClick = new EventEmitter();
   @Output() digitalClick = new EventEmitter();
-  /* Il primo elemento dell'array è l'abilitazione generale : Lean On/Off
-  *  gli elementi successivi sono tutte le ottimizzazioni inseribili,
-  *  per ogni componente ce ne sono alcune
-  *  */
-  leanOption: Array<OptionType> = [];
-  /* come Lean: il primo è l'abilitazione generale di Digital
-  *  NB: senza Lean abilitato non è possibile usare Digital*/
-  digitalOption: Array<OptionType> = [];
   @Output() leanChange = new EventEmitter();
   @Output() digitalChange = new EventEmitter();
   /*
@@ -113,21 +105,10 @@ export class ArchitectService {
   @Output() leanSetChange = new EventEmitter();
   @Output() digitalSetChange = new EventEmitter();
 
-
   @Output() objectMouseOver = new EventEmitter();
-  @Output() viewChange = new EventEmitter();
-  @Output() ottimizzazione1 = new EventEmitter();
-  @Output() ottimizzazione2 = new EventEmitter();
-  @Output() grafici = new EventEmitter();
-  @Output() graficiInView = new EventEmitter();
   @Output() route = new EventEmitter();
 
 
-  statoOttimizza1 = false;
-  statoOttimizza2 = false;
-  classGraph1 = 'grafico';
-  classGraph2 = 'grafico2';
-  classGraph3 = 'grafico3';
   registeredObjects: Array<any> = [];
 
   /*
@@ -162,10 +143,10 @@ export class ArchitectService {
     });
     // TODO sincronizzare la risposta sull'ID del richiedente
     if (caller) {
-      caller.setData(_treeOfView.data[0]);
+      caller.setData(_treeOfView.data[ObjectID.viewHome]);
     }
-    this.leanSetChange.emit(_treeOfView.data[0].leanOptions);
-    this.digitalSetChange.emit(_treeOfView.data[0].digitalOptions);
+    this.leanSetChange.emit(_treeOfView.data[ObjectID.viewHome].leanOptions);
+    this.digitalSetChange.emit(_treeOfView.data[ObjectID.viewHome].digitalOptions);
     return UID;
   }
 
@@ -184,27 +165,24 @@ export class ArchitectService {
     console.log('onLeanOption ' + btn.index);
     // console.log('onLeanOption(' + btn.index + ').checked = ' + this.leanOption[btn.index].checked);
     // this.leanOption[btn.index].checked = btn.checked;
-    this.leanChange.emit(_treeOfView.data[0].leanOptions);
+    this.leanChange.emit(_treeOfView.data[this.index].leanOptions);
   }
 
   onDigitalOption(btn) {
     // this.digitalOption[btn.index ].checked = btn.checked;
-    this.digitalChange.emit(_treeOfView.data[0].digitalOptions);
+    this.digitalChange.emit(_treeOfView.data[this.index].digitalOptions);
   }
 
   onMouseOver(event) {
     this.objectMouseOver.emit(event);
   }
   onRoute(contextID: ObjectID) {
-  console.log('Routing to ' + contextID);
-  this.route.emit(contextID);
+    console.log('Routing to ' + contextID);
+    this.route.emit(contextID);
   }
-
-  onView(event) {
-    const curIndex: ObjectID = event.curIndex;
-    this.index = objMapping[curIndex];
-    console.log('query ' + curIndex + ' pointTo ' + this.index);
-    this.viewChange.emit({curIndex: this.index});
+  onChartRoute(contextID: ObjectID) {
+    console.log('Routing to ' + contextID);
+    //this.route.emit(contextID);
   }
 
 
@@ -224,9 +202,11 @@ export class ArchitectService {
     return this.getRandomChart();
   }
 
+  getActiveChart() {
+    return this._activeChart;
+  }
   setActiveChart(UID: number, data: ChartDataRecord) {
     console.log('setActiveChart ' + UID);
     this._activeChart = {'UID': UID, 'data': data, 'valid': true};
-    this.graficiInView.emit(data);
   }
 }
