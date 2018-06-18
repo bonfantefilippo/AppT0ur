@@ -9,15 +9,6 @@
               [colors]="data.lineChartColors"
               [legend]="data.lineChartLegend"
               [chartType]="data.lineChartType"
-      
-      <canvas baseChart width="620" height="500"
-              [datasets]="lineChartData"
-              [labels]="lineChartLabels"
-              [options]="lineChartOptions"
-              [colors]="lineChartColors"
-              [legend]="lineChartLegend"
-              [chartType]="lineChartType"
-
               (chartHover)="chartHovered($event)"
               (chartClick)="chartClicked($event)">
       </canvas>

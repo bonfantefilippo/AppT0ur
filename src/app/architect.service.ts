@@ -142,11 +142,19 @@ export class ArchitectService {
       'UID': UID
     });
     // TODO sincronizzare la risposta sull'ID del richiedente
-    if (caller) {
+    if (caller && _treeOfView.data[contextID]) {
+      caller.setData(_treeOfView.data[contextID]);
+    }
+    if (_treeOfView.data[contextID]) {
+      this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
+      this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
+    }
+    /*if (caller) {
       caller.setData(_treeOfView.data[ObjectID.viewHome]);
     }
     this.leanSetChange.emit(_treeOfView.data[ObjectID.viewHome].leanOptions);
-    this.digitalSetChange.emit(_treeOfView.data[ObjectID.viewHome].digitalOptions);
+    this.digitalSetChange.emit(_treeOfView.data[ObjectID.viewHome].digitalOptions);*/
+
     return UID;
   }
 
@@ -176,13 +184,15 @@ export class ArchitectService {
   onMouseOver(event) {
     this.objectMouseOver.emit(event);
   }
+
   onRoute(contextID: ObjectID) {
     console.log('Routing to ' + contextID);
     this.route.emit(contextID);
   }
+
   onChartRoute(contextID: ObjectID) {
     console.log('Routing to ' + contextID);
-    //this.route.emit(contextID);
+    // this.route.emit(contextID);
   }
 
 
@@ -205,6 +215,7 @@ export class ArchitectService {
   getActiveChart() {
     return this._activeChart;
   }
+
   setActiveChart(UID: number, data: ChartDataRecord) {
     console.log('setActiveChart ' + UID);
     this._activeChart = {'UID': UID, 'data': data, 'valid': true};

@@ -29,7 +29,7 @@ export class AppChartComponent implements OnInit, ICallback {
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, public service: ArchitectService) {
     console.log('Chart constructor');
-    // this.data = ChartData.voidChart();
+    this.data = ChartData.voidChart();
   }
 
   // i dati vengono passati dal service se è un grafico nella barra laterale

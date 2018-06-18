@@ -7,11 +7,11 @@ export class ViewPiantina {
     const objs = [];
     data.objects = objs;
 
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewMagazzino, 'childId': 'child1', 'contextID': ObjectID.piantinaChild1});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewPreparazione, 'childId': 'child2', 'contextID': ObjectID.piantinaChild2});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewLavorazione, 'childId': 'child3', 'contextID': ObjectID.piantinaChild3});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewFinitura, 'childId': 'child4', 'contextID': ObjectID.piantinaChild4});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewMagazzinoF, 'childId': 'child5', 'contextID': ObjectID.piantinaChild5});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewMagazzino, 'childId': 'child1', 'contextID': ObjectID.viewMagazzino});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewPreparazione, 'childId': 'child2', 'contextID': ObjectID.viewPreparazione});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewLavorazione, 'childId': 'child3', 'contextID': ObjectID.viewLavorazione});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewFinitura, 'childId': 'child4', 'contextID': ObjectID.viewFinitura});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewMagazzinoF, 'childId': 'child5', 'contextID': ObjectID.viewMagazzinoF});
 
     data.leanOptions.cssDefault = 'container5v1';
     data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'container5v2');
