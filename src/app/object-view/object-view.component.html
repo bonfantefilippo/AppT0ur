@@ -1,9 +1,9 @@
-<div [ngClass]="[data.classContainer, classOptimized]">
+<div [ngClass]="css">
   <div *ngFor="let obj of data.objects"
        routerLink="{{obj.routerLink}}"
        id="{{obj.childId}}"
        routerLinkActive="active"
-       (mouseover)="onDivMouseOver(obj.contextID)">
-    div {{obj.contextID}}
+       (mouseover)="onDivMouseOver(obj.contextID)"
+       (click)="onClick(obj.contextID)"> div {{obj.contextID}}
   </div>
 </div>

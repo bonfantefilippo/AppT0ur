@@ -3,55 +3,58 @@ import {ObjectID} from './models/object-id.enum';
 import {ChartData, ChartDataRecord} from './models/ChartData';
 import {ICallback} from './models/ICallback';
 import {TreeOfView} from './models/TreeBuilder';
+import {OptionOfView, OptionType} from './models/OptionBuilder';
 
 const objMapping: ObjectID[] = [
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
   ObjectID.viewMagazzino,
   ObjectID.viewPreparazione,
   ObjectID.viewLavorazione,
   ObjectID.viewFinitura,
   ObjectID.viewMagazzinoF,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
-  ObjectID.viewPiantina,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
+  ObjectID.viewHome,
 ];
 const _treeOfView = new TreeOfView();
+const _optionOfView = new OptionOfView();
+
 @Injectable()
 export class ArchitectService {
   /*
@@ -60,7 +63,7 @@ export class ArchitectService {
     permette di recupersre il record con i parametri necessari ad una corretta
     visualizzazione.
    */
-  index: ObjectID = ObjectID.viewPiantina;
+  index: ObjectID = ObjectID.viewHome;
 
   /*
     Unique Identifier: utilizzato per identificare in maniera univoca
@@ -80,18 +83,48 @@ export class ArchitectService {
    */
   private _chartData = new ChartData();
 
-  statoOttimizza1 = false;
-  statoOttimizza2 = false;
 
+  /*
+  * Nel Top menu vengono abilitate le opzioni
+  * nel Bottom menu si scelgono le opzioni da usare
+  * Il Top menu genera _onClick, e chiama Architect.onLean(),
+  * Architect genera __leanClick() che arriva al Bottom menu
+  * Il Bottom menu usa i dati per disegnare i bottoni, con i relativi stati di attivazione
+  *
+  * Il click su un bottone del bottom menu genera _leanOption e l'Architect informa i consumer
+  * con _leanChange
+  */
   @Output() leanClick = new EventEmitter();
   @Output() digitalClick = new EventEmitter();
+  /* Il primo elemento dell'array è l'abilitazione generale : Lean On/Off
+  *  gli elementi successivi sono tutte le ottimizzazioni inseribili,
+  *  per ogni componente ce ne sono alcune
+  *  */
+  leanOption: Array<OptionType> = [];
+  /* come Lean: il primo è l'abilitazione generale di Digital
+  *  NB: senza Lean abilitato non è possibile usare Digital*/
+  digitalOption: Array<OptionType> = [];
+  @Output() leanChange = new EventEmitter();
+  @Output() digitalChange = new EventEmitter();
+  /*
+  * quando il focus passa su un componente diverso cambia anche il set delle
+  * ottimizzazioni possibili
+  * */
+  @Output() leanSetChange = new EventEmitter();
+  @Output() digitalSetChange = new EventEmitter();
+
+
   @Output() objectMouseOver = new EventEmitter();
   @Output() viewChange = new EventEmitter();
   @Output() ottimizzazione1 = new EventEmitter();
   @Output() ottimizzazione2 = new EventEmitter();
   @Output() grafici = new EventEmitter();
   @Output() graficiInView = new EventEmitter();
+  @Output() route = new EventEmitter();
 
+
+  statoOttimizza1 = false;
+  statoOttimizza2 = false;
   classGraph1 = 'grafico';
   classGraph2 = 'grafico2';
   classGraph3 = 'grafico3';
@@ -103,7 +136,8 @@ export class ArchitectService {
     possa accedere alle informazioni relative
     Quando nella view viene caricato qualcosaltro la _activeChart deve essere annullata
    */
-  private _activeChart: { UID: number; data: ChartDataRecord; valid: boolean} = {UID: 0, data: null, valid: false};
+  private _activeChart: { UID: number; data: ChartDataRecord; valid: boolean } = {UID: 0, data: null, valid: false};
+
 
   constructor() {
   }
@@ -120,27 +154,18 @@ export class ArchitectService {
       che non sono titolati a riceverli
      */
     const UID = ++this._UID;
-    console.log('registering ' + UID  + ', context: ' + contextID);
+    console.log('registering ' + UID + ', context: ' + contextID);
     this.registeredObjects.push({
       'caller': caller,
       'contextID': contextID,
       'UID': UID
     });
-
-
-    /*const objs = [];
-    objs.push({'routerLink': '/magazzino', 'childId': 'child1', 'contextID': ObjectID.piantinaChild1});
-    objs.push({'routerLink': '/preparazione', 'childId': 'child2', 'contextID': ObjectID.piantinaChild2});
-    objs.push({'routerLink': '/lavorazione', 'childId': 'child3', 'contextID': ObjectID.piantinaChild3});
-    objs.push({'routerLink': '/finitura', 'childId': 'child4', 'contextID': ObjectID.piantinaChild4});
-    objs.push({'routerLink': '/magazzinofinale', 'childId': 'child5', 'contextID': ObjectID.piantinaChild5});
-
-    const data = {'class': 'sfondoBasePiantina', 'objects': objs};
-    caller.setData(data);*/
-
-  caller.setData(_treeOfView.data[0]);
-
-
+    // TODO sincronizzare la risposta sull'ID del richiedente
+    if (caller) {
+      caller.setData(_treeOfView.data[0]);
+    }
+    this.leanSetChange.emit(_treeOfView.data[0].leanOptions);
+    this.digitalSetChange.emit(_treeOfView.data[0].digitalOptions);
     return UID;
   }
 
@@ -153,26 +178,26 @@ export class ArchitectService {
 
   }
 
-  onOttimizza1(event) {
-    this.statoOttimizza1 = event.stato;
-    this.ottimizzazione1.emit(event);
+  onLeanOption(btn) {
+    /* btn.index punta all'array degli oggetti
+    * todo: implementare l'arry*/
+    console.log('onLeanOption ' + btn.index);
+    // console.log('onLeanOption(' + btn.index + ').checked = ' + this.leanOption[btn.index].checked);
+    // this.leanOption[btn.index].checked = btn.checked;
+    this.leanChange.emit(_treeOfView.data[0].leanOptions);
   }
 
-  onOttimizza2(event) {
-    this.statoOttimizza2 = event.stato;
-    this.ottimizzazione2.emit(event);
-  }
-
-  curOttimizza() {
-    return {ottimizza1: this.statoOttimizza1, ottimizza2: this.statoOttimizza2};
+  onDigitalOption(btn) {
+    // this.digitalOption[btn.index ].checked = btn.checked;
+    this.digitalChange.emit(_treeOfView.data[0].digitalOptions);
   }
 
   onMouseOver(event) {
     this.objectMouseOver.emit(event);
   }
-
-  setContext(contextID: ObjectID) {
-    this.index = contextID;
+  onRoute(contextID: ObjectID) {
+  console.log('Routing to ' + contextID);
+  this.route.emit(contextID);
   }
 
   onView(event) {
@@ -182,21 +207,6 @@ export class ArchitectService {
     this.viewChange.emit({curIndex: this.index});
   }
 
-  curView() {
-    return this.index;
-  }
-
-  changeClass({grafico1: value1, grafico2: value2, grafico3: value3}) {
-    this.classGraph1 = value1;
-    this.classGraph2 = value2;
-    this.classGraph3 = value3;
-    this.grafici.emit({first: this.classGraph1, second: this.classGraph2, third: this.classGraph3});
-  }
-
-  changeClassGraphFirst() {
-    const obj = {first: this.classGraph1};
-    return obj;
-  }
 
   getRandomChart() {
     const chartIndex = Math.floor(Math.random() * this._chartData.getCount());

@@ -1,0 +1,17 @@
+<div class="container">
+  <p>LEAN</p>
+  <label class="switch">
+    <input (click)="onLean()"
+           (mouseover)="onLeanOver()" type="checkbox"
+           [checked]="btnLeanState">
+    <span class="slider round one"></span>
+  </label>
+  <p>DIGITAL</p>
+  <label class="switch">
+    <input (click)="onDigital()"
+           (mouseover)="onDigitalOver()" type="checkbox"
+           [checked]="btnDigitalState"
+           [disabled]="btnDigitalDisable">
+    <span class="slider round two"></span>
+  </label>
+</div>

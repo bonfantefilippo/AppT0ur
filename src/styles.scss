@@ -1,0 +1,146 @@
+/* You can add global styles to this file, and also import other style files */
+p {
+  font-family: 'Roboto', sans-serif;
+  color: #fcfcfc;
+  padding-left: 10px;
+  text-shadow: 1px 1px 1px black;
+}
+h1 {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #fcfcfc;
+  padding: 0;
+  margin: 11px;
+  text-shadow: 1px 1px 1px black;
+}
+h3 {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #fcfcfc;
+  padding: 0;
+  margin: 11px;
+  text-shadow: 1px 1px 1px black;
+}
+a {
+  text-decoration: none;
+  color: lightskyblue;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 10px;
+  text-shadow: 1px 1px 1px black;
+}
+.button {
+  height: 40px;
+  width: 110px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid black;
+  p {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: #fcfcfc;
+    font-size: 20px;
+    padding: 0;
+    margin-top: 9px;
+    text-shadow: none;
+  }
+}
+.deactive {
+  background-color: #d0d0d1;
+  opacity: 0.8;
+}
+.white {
+  color: #fcfcfc;
+}
+.textShadow {
+  text-shadow: 2px 2px red;
+}
+.backAntracite {
+  background-color: #293133;
+}
+.backScuro {
+  background-color: #1e2426;
+}
+.backWhite {
+  background-color: #f3f3f3;
+  box-shadow: 0 0 12px black;
+}
+.marginTop {
+  margin-top: 7px;
+}
+.backGreen {
+  background-color: #49b675;
+}
+.backRed {
+  background-color: #ff605f;
+}
+.close {
+  width: 25px;
+  height: 25px;
+  background-color: #1e2426;
+  border: 1px solid black;
+  position: absolute;
+  margin-left: calc(585px);
+  margin-top: -12px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #293133;
+  p {
+    margin: 0;
+    width: 50%;
+    margin-top: 5px;
+    margin-left: -4px;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+.grafico {
+  background-image: url("../documentation/grafico-min.png");
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.grafico1 {
+  background-image: url("../documentation/grafico1-min.png");
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.grafico2 {
+  background-image: url("../documentation/grafico2-min.png");
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.grafico3 {
+  background-image: url("../documentation/grafico3-min.png");
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.graficoAll {
+  background-image: url("../documentation/graficoAll.png");
+  background-size: auto 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+.scarti {
+  background-image: url("../documentation/scarti3.png");
+  background-size: cover;
+  background-position: center;
+}
+.containerWork {
+  width: 100%;
+  height: 532px;
+  display: grid;
+  grid-template-columns: 1fr 400px 1fr;
+  grid-template-rows: 246px 40px 246px;
+}
+.centrata {
+  grid-column: 2;
+  grid-row: 2;
+  p {
+    color: black;
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
+  }
+}

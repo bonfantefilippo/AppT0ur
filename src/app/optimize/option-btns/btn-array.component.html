@@ -1,0 +1,5 @@
+<div *ngFor="let btn of btns"
+     class="button"
+     [ngClass]="btnClass(btn)"
+     (click)="onBtnClick(btn)"
+     (mouseover)="onDivMouseOver(btn)"><p>{{btn.text}}</p></div>

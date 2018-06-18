@@ -3,6 +3,8 @@ import {ArchitectService} from '../architect.service';
 import {ObjectID} from '../models/object-id.enum';
 import {ICallback} from '../models/ICallback';
 import {ObjectOfView} from '../models/TreeBuilder';
+import {OptionOfView, OptionType} from '../models/OptionBuilder';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-piantina',
@@ -14,38 +16,62 @@ export class ObjectViewComponent implements OnInit, ICallback {
   ObjectID = ObjectID;
   contextID: ObjectID = ObjectID.notSet;
   data: ObjectOfView ;
+  public css = '';
   private UID = 0;
-  private classIndex = 1;
-  constructor(public service: ArchitectService) {
-    this.contextID = ObjectID.viewPiantina;
-    console.log('objectView ' + this.contextID + ' constructor');
+  private lean: boolean [];
+  private digital: boolean[];
 
-    this.UID = this.service.registerObject(this, this.contextID);
-    /*this.data = [];
-    this.data.push({'routerLink': '/magazzino', 'childId': 'child1', 'contextID': ObjectID.piantinaChild1});
-    this.data.push({'routerLink': '/preparazione', 'childId': 'child2', 'contextID': ObjectID.piantinaChild2});
-    this.data.push({'routerLink': '/lavorazione', 'childId': 'child3', 'contextID': ObjectID.piantinaChild3});
-    this.data.push({'routerLink': '/finitura', 'childId': 'child4', 'contextID': ObjectID.piantinaChild4});
-    this.data.push({'routerLink': '/magazzinofinale', 'childId': 'child5', 'contextID': ObjectID.piantinaChild5});*/
+
+  constructor(private route: ActivatedRoute, public service: ArchitectService) {
+    this.service.leanChange.subscribe( result => {
+      this.updateLeanOptions(result);
+    });
+    this.service.digitalChange.subscribe( result => {
+      this.updateDigitalOptions(result);
+    });
+    this.service.route.subscribe( result => {
+      console.log('View routed ' + result);
+    });
 
   }
+  ngOnInit() {
+    this.contextID = +this.route.snapshot.paramMap.get('contextID');
+    console.log('objectView ' + this.contextID);
+    this.UID = this.service.registerObject(this, this.contextID);
+  }
+  updateLeanOptions(result: OptionOfView) {
+    console.log('updateLeanOptions lean: ' + this.lean + '; digital: ' + this.digital);
+    let cssResult: string = result.cssDefault;
+
+    result.options.forEach(option => {
+      if (option.checked) {
+       cssResult = option.css;
+     }
+    });
+
+    console.log('updateLeanOptions css: ' + cssResult);
+    this.css = cssResult;
+  }
+
+  updateDigitalOptions(result: OptionOfView) {
+  }
+
+
+
   setData(data: ObjectOfView) {
     console.log('objectView ' + this.contextID + ' setdata');
     this.data = data;
+    this.css = this.data.leanOptions.cssDefault;
   }
-  ngOnInit() {
-    console.log('objectView ' + this.contextID + ' init');
-    // this.service.setContext(this.contextID);
-  }
- onDivClick(index) {
-   this.classIndex++;
-  }
-  get classOptimized () {
-    return this.data.classByIndex(this.classIndex);
-  }
+
+
   onDivMouseOver(index) {
     console.log('Piantina mouseover ' + index);
     this.service.onMouseOver({curIndex: index});
+  }
+  onClick(index) {
+    console.log('Piantina click ' + index);
+    this.service.onRoute(index);
   }
 
 }

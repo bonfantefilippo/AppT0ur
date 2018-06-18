@@ -1,6 +1,6 @@
 export enum ObjectID {
   notSet = -1,
-  btnlean	,
+  btnLean	,
   btnDigital	,
   btnLeanChild1	,
   btnLeanChild2	,
@@ -11,7 +11,7 @@ export enum ObjectID {
   chart3	,
   chart4	,
   chart5	,
-  viewPiantina	,
+  viewHome	,
   piantinaChild1	,
   piantinaChild2	,
   piantinaChild3	,

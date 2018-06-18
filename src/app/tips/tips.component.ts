@@ -10,7 +10,7 @@ import {TipList} from '../tip-list';
 })
 export class TipsComponent implements OnInit {
   tip = '';
-  index: ObjectID = ObjectID.viewPiantina;
+  index: ObjectID = ObjectID.viewHome;
   tipList: TipList = new TipList();
   constructor(public service: ArchitectService) {
     this.service.objectMouseOver.subscribe(result => {
