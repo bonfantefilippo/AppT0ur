@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {StorageService} from '../storage.service';
 import {ObjectID} from '../object-id.enum';
 
+
 @Component({
   selector: 'app-grafici',
   templateUrl: './grafici.component.html',
@@ -16,6 +17,7 @@ export class GraficiComponent implements OnInit {
   grafico2 = 'grafico2';
   grafico3 = 'grafico3';
 
+
   @Output() grafico = new EventEmitter();
 
   constructor(public service: StorageService) {
@@ -29,7 +31,6 @@ export class GraficiComponent implements OnInit {
       this.grafico1 = res.first;
       this.grafico2 = res.second;
       this.grafico3 = res.third;
-     /* return this.grafico1, this.grafico2;*/
     });
   }
 
@@ -37,7 +38,7 @@ export class GraficiComponent implements OnInit {
 
   }
 
-  changeClass() {
+  changeClass1() {
     this.service.changeClassGraphFirst();
   }
   onDivMouseOver(index) {
