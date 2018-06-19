@@ -133,28 +133,28 @@ export class ChartDataRecord {
   clone(): ChartDataRecord {
 
     const chartData = [];
-    for (const record in this.lineChartData) {
+    /*for (const record in this.lineChartData) {
       chartData.push(record);
-    }
-    /*this.lineChartData.forEach((record) => {
+    }*/
+    this.lineChartData.forEach((record) => {
       chartData.push(record);
-    });*/
+    });
 
     const chartLabels = [];
-    for (const record in this.lineChartLabels) {
+    /*for (const record in this.lineChartLabels) {
       chartLabels.push(record);
-    }
-    /*this.lineChartLabels.forEach((record) => {
+    }*/
+    this.lineChartLabels.forEach((record) => {
       chartLabels.push(record);
-    });*/
+    });
 
     const chartColors = [];
-    for (const record in this.lineChartColors) {
+    /*for (const record in this.lineChartColors) {
       chartColors.push(record);
-    }
-    /*this.lineChartColors.forEach((record) => {
+    }*/
+    this.lineChartColors.forEach((record) => {
       chartColors.push(record);
-    });*/
+    });
     return ChartDataRecord.createChartRecord(
       chartData,
       chartLabels,
