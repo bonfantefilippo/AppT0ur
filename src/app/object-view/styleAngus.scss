@@ -1,0 +1,89 @@
+.angus3Default {
+  grid-template-areas:
+    'child1 child1 child2 child2 child3 child3'
+    'child1 child1 child2 child2 child3 child3'
+    'child1 child1 child2 child2 child3 child3'
+    'child1 child1 child2 child2 child3 child3'
+    'child1 child1 child2 child2 child3 child3'
+    'child1 child1 child2 child2 child3 child3'
+    'child1 child1 child2 child2 child3 child3'
+    'child1 child1 child2 child2 child3 child3'
+    'child1 child1 child2 child2 child3 child3'
+    'child1 child1 child2 child2 child3 child3'
+    'child1 child1 child2 child2 child3 child3';
+}
+.sfondo {
+  background-image: url("../../../documentation/griglia1.svg");
+
+}
+.sfondoSezioneLavaggioDefault {
+  background-image: url("../../../documentation/scarti3.png");
+ }
+
+.sfondoSezioneLavaggio {
+  background-image: url("../../../documentation/MAGAZZINOT.svg");
+}
+
+.sfondoSezioneLavaggioDigital {
+  background-image: url("../../../documentation/scarti2l.png") !important;
+}
+
+.angus3Lean {
+  background-image: url("../../../documentation/griglia1.svg");
+  grid-template-areas:
+    'child1 child1 child2 child2 child2 child2'
+    'child1 child1 child2 child2 child2 child2'
+    'child1 child1 child2 child2 child2 child2'
+    'child1 child1 child2 child2 child2 child2'
+    'child1 child1 child2 child2 child2 child2'
+    'child1 child1 child3 child3 child3 child3'
+    'child1 child1 child3 child3 child3 child3'
+    'child1 child1 child3 child3 child3 child3'
+    'child1 child1 child3 child3 child3 child3'
+    'child1 child1 child3 child3 child3 child3'
+    'child1 child1 child3 child3 child3 child3';
+}
+
+.angus3Digital {
+  /*background-image: url("../../../documentation/griglia1.svg");*/
+  grid-template-areas:
+    'child1 child1 child2 child2 child2 child2'
+    'child1 child1 child2 child2 child2 child2'
+    'child1 child1 child2 child2 child2 child2'
+    'child1 child1 child2 child2 child2 child2'
+    'child1 child1 child2 child2 child2 child2'
+    'child1 child1 child3 child3 child3 child3'
+    'child1 child1 child3 child3 child3 child3'
+    'child1 child1 child3 child3 child3 child3'
+    'child1 child1 child3 child3 child3 child3'
+    'child1 child1 child3 child3 child3 child3'
+    'child1 child1 child3 child3 child3 child3';
+}
+
+[class *= angus] {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(9, 58px);
+  position: center;
+}
+
+
+#child1 {
+  grid-area: child1;
+}
+
+#child2 {
+  grid-area: child2;
+}
+
+#child3 {
+  grid-area: child3;
+}
+
+#child4 {
+  grid-area: child4;
+}
+
+#child5 {
+  grid-area: child5;
+}

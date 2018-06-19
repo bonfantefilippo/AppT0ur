@@ -45,36 +45,42 @@ export class AppChartComponent implements OnInit, ICallback {
   }
 
   ngOnInit() {
-    console.log('Chart init');
+    console.log('Chart ' + this.contextID + ' init: before registerObject');
     this.UID = this.service.registerObject(this, this.contextID);
 
-    console.log('chart init: register route: ' + this.contextID);
+    console.log('Chart ' + this.contextID + ' init: before register route');
     if (this.contextID == ObjectID.notSet) {
 
-      console.log('chart init: register route: done');
-      this._subscription = this.router.events
+      console.log('Chart ' + this.contextID + ' init: register route: subscribe ');
+      if (!this.isBusy()){
+        this._subscription = this.router.events
         .subscribe((event) => {
           if (event instanceof NavigationEnd) {
-            console.log('NavigationEnd:', event);
+            console.log('Chart ' + this.contextID + ' NavigationEnd: ' , event);
             const response = this.service.getActiveChart();
             if (response.valid) {
-              this.data = response.data;
+              this.data = response.data.clone();
             }
           }
         });
+      }
       // fino al momento del subscribe non riceviamo alcun evento
       // quindi andiamo a prenderci i dati subito e usciamo, per evitare
       // che i dati di default sovrascivano quelli appena ricevuti
+
+      console.log('chart ' + this.contextID + ' init: after register route');
       const result = this.service.getActiveChart();
       if (result.valid) {
         this.data = result.data;
       }
+      console.log('Chart ' + this.contextID + ' init: End 1');
       return;
     }
 
-    console.log('grafico in panel grafici');
+    console.log('Chart ' + this.contextID + ' init: get chart');
     this.data = this.service.getDefaultChart(this.UID);
     this.data.tag = this.contextID;
+    console.log('Chart ' + this.contextID + ' init: End 2');
 
   }
 
@@ -84,16 +90,22 @@ export class AppChartComponent implements OnInit, ICallback {
 
   // events
   public chartClicked(e: any): void {
-    console.log('Chart click on ' + this.UID);
+
+    console.log('Chart ' + this.contextID + ' chartClicked', e);
 
     // se è un grafico nella view
     if (this.contextID == ObjectID.notSet) {
+
+      console.log('Chart ' + this.contextID + ' chartClicked ObjectID.notSet isBusy: ', this.isBusy());
       // qui deve chiudersi ma prima deve eliminare
       // la sottoscrizione agli eventi del router
       if (this.isBusy()) {
+        console.log('Chart ' + this.contextID + ' chartClicked Router.unSubscribe');
         this._subscription.unsubscribe();
       }
+      console.log('Chart ' + this.contextID + ' chartClicked before navigate');
       this.router.navigate(['home']);
+      console.log('Chart ' + this.contextID + ' chartClicked end');
       return;
     }
 

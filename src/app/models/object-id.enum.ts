@@ -45,4 +45,11 @@ export enum ObjectID {
   magazzinoFChild3	,
   magazzinoFChild4	,
   magazzinoFChild5	,
+
+  viewSezioneLavaggio,
+  viewSezionePretrattamento,
+  viewSezioneStoccaggio,
+  viewPrelavaggio,
+  viewLavaggio,
+  viewAsciugatura
 }

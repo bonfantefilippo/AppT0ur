@@ -11,7 +11,8 @@ import {Subscription} from 'rxjs';
   selector: 'app-piantina',
   templateUrl: './object-view.component.html',
   styleUrls: ['./stylePiantina.scss',
-              './styleMagazzino.scss']
+    './styleMagazzino.scss',
+    './styleAngus.scss']
 })
 export class ObjectViewComponent implements OnInit, ICallback {
   ObjectID = ObjectID;
@@ -39,23 +40,23 @@ export class ObjectViewComponent implements OnInit, ICallback {
 
 
   ngOnInit() {
-    console.log('ObjView init');
+    console.log('ObjView  ' + this.contextID + ' init: before registerObject');
     this.UID = this.service.registerObject(this, this.contextID);
 
-    console.log('ObjView init: register route: ' + this.contextID);
+    console.log('ObjView ' + this.contextID + ' init: before register route');
     if (this.contextID == ObjectID.notSet) {
 
-      console.log('ObjView init: register route: done');
-      this._subscription = this.router.events
+      console.log('ObjView ' + this.contextID + ' init: register route: subscribe ');
+     /* this._subscription = this.router.events
         .subscribe((event) => {
           if (event instanceof NavigationEnd) {
-            console.log('NavigationEnd:', event);
-            /*const response = this.service.getActiveChart();
+            console.log('ObjView ' + this.contextID + ' NavigationEnd:', event);
+            /!*const response = this.service.getActiveChart();
             if (response.valid) {
               this.data = response.data;
-            }*/
+            }*!/
           }
-        });
+        });*/
       // fino al momento del subscribe non riceviamo alcun evento
       // quindi andiamo a prenderci i dati subito e usciamo, per evitare
       // che i dati di default sovrascivano quelli appena ricevuti
@@ -63,6 +64,8 @@ export class ObjectViewComponent implements OnInit, ICallback {
       if (result.valid) {
         this.data = result.data;
       }*/
+      console.log('ObjView ' + this.contextID + ' init: End 1');
+
     }
   }
 
@@ -118,6 +121,7 @@ export class ObjectViewComponent implements OnInit, ICallback {
         console.log('objectView ' + this.contextID);
         this.UID = this.service.registerObject(this, this.contextID);
       }*/
+    // todo: compilare la stringa dei css per tutte le opzioni attive
   updateLeanOptions(result: OptionOfView) {
     console.log('updateLeanOptions lean: ' + this.lean + '; digital: ' + this.digital);
     let cssResult: string = result.cssDefault;
@@ -133,6 +137,7 @@ export class ObjectViewComponent implements OnInit, ICallback {
   }
 
   updateDigitalOptions(result: OptionOfView) {
+    this.updateLeanOptions(result);
   }
 
 

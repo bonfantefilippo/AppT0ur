@@ -22,12 +22,12 @@ export class ChartData {
         {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      {responsive: true},
+      {responsive: true, barThickness: 1},
       [
         LineChartColors.getGreyTheme()
       ],
       true,
-      'line'
+      'bar'
       )
     );
     // fine grafico 1
@@ -170,6 +170,7 @@ export class ChartDataRecord {
 export class LineChartColors {
   constructor(public backgroundColor,
               public borderColor,
+              public borderWidth,
               public pointBackgroundColor,
               public pointBorderColor,
               public pointHoverBackgroundColor,
@@ -180,6 +181,7 @@ export class LineChartColors {
     const t = new LineChartColors(
       'rgba(148,159,177,0.2)',
       'rgba(148,159,177,1)',
+      8,
       'rgba(148,159,177,1)',
       '#fff',
       '#fff',
@@ -191,6 +193,7 @@ export class LineChartColors {
     const t = new LineChartColors(
       'rgba(77,83,96,0.2)',
       'rgba(77,83,96,1)',
+      8,
       'rgba(77,83,96,1)',
       '#fff',
       '#fff',
@@ -202,6 +205,7 @@ export class LineChartColors {
     const t = new LineChartColors(
       'rgba(64,64,96,0.2)',
       'rgba(0,0,96,1)',
+      8,
       'rgba(0,0,64,1)',
       '#fff',
       '#fff',
