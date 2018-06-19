@@ -181,7 +181,7 @@ export class LineChartColors {
     const t = new LineChartColors(
       'rgba(148,159,177,0.2)',
       'rgba(148,159,177,1)',
-      8,
+      2,
       'rgba(148,159,177,1)',
       '#fff',
       '#fff',
@@ -193,7 +193,7 @@ export class LineChartColors {
     const t = new LineChartColors(
       'rgba(77,83,96,0.2)',
       'rgba(77,83,96,1)',
-      8,
+      2,
       'rgba(77,83,96,1)',
       '#fff',
       '#fff',
@@ -205,7 +205,7 @@ export class LineChartColors {
     const t = new LineChartColors(
       'rgba(64,64,96,0.2)',
       'rgba(0,0,96,1)',
-      8,
+      2,
       'rgba(0,0,64,1)',
       '#fff',
       '#fff',

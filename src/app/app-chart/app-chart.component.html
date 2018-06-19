@@ -1,17 +1,12 @@
-<div class="row">
-  <div class="col-md-6">
-    <div style="display: block;">
-
-      <canvas id="ciccia" baseChart width="320" height="320"
-              [datasets]="data.lineChartData"
-              [labels]="data.lineChartLabels"
-              [options]="data.lineChartOptions"
-              [colors]="data.lineChartColors"
-              [legend]="data.lineChartLegend"
-              [chartType]="data.lineChartType"
-              (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)">
-      </canvas>
-    </div>
-  </div>
+<div class="gridInNine">
+  <canvas class="center" baseChart width="320" height="265"
+          [datasets]="data.lineChartData"
+          [labels]="data.lineChartLabels"
+          [options]="data.lineChartOptions"
+          [colors]="data.lineChartColors"
+          [legend]="data.lineChartLegend"
+          [chartType]="data.lineChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
+  </canvas>
 </div>
