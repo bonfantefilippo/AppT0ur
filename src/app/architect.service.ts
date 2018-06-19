@@ -142,18 +142,18 @@ export class ArchitectService {
       'UID': UID
     });
     // TODO sincronizzare la risposta sull'ID del richiedente
-    if (caller && _treeOfView.data[contextID]) {
+   /* if (caller && _treeOfView.data[contextID]) {
       caller.setData(_treeOfView.data[contextID]);
     }
     if (_treeOfView.data[contextID]) {
       this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
       this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
-    }
-    /*if (caller) {
+    }*/
+    if (caller) {
       caller.setData(_treeOfView.data[ObjectID.viewHome]);
     }
     this.leanSetChange.emit(_treeOfView.data[ObjectID.viewHome].leanOptions);
-    this.digitalSetChange.emit(_treeOfView.data[ObjectID.viewHome].digitalOptions);*/
+    this.digitalSetChange.emit(_treeOfView.data[ObjectID.viewHome].digitalOptions);
 
     return UID;
   }
