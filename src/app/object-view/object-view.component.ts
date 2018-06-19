@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ArchitectService} from '../architect.service';
 import {ObjectID} from '../models/object-id.enum';
 import {ICallback} from '../models/ICallback';
-import {ObjectOfView} from '../models/TreeBuilder';
+import {ObjectOfView} from '../models/ObjectOfView';
 import {OptionOfView, OptionType} from '../models/OptionBuilder';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Subscription} from 'rxjs';

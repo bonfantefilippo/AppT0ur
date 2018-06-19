@@ -198,7 +198,7 @@ export class ArchitectService {
 
   getRandomChart() {
     const chartIndex = Math.floor(Math.random() * this._chartData.getCount());
-    console.log('getRandonChart: ' + chartIndex + ' of ' + this._chartData.getCount());
+    console.log('getRandomChart: ' + chartIndex + ' of ' + this._chartData.getCount());
     return this._chartData.getChart(chartIndex);
   }
 
@@ -208,6 +208,7 @@ export class ArchitectService {
       this._activeChart.valid = false;
       return this._activeChart.data.clone();
     }
+    console.log('Show random chart for UID ' + UID);
     // return this._chartData.getChart(0);
     return this.getRandomChart();
   }

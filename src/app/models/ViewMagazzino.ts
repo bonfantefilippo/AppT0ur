@@ -1,5 +1,5 @@
 import {ObjectID} from './object-id.enum';
-import {ObjectOfView} from './TreeBuilder';
+import {ObjectOfView} from './ObjectOfView';
 
 export class ViewMagazzino {
   public static JSON () {
