@@ -22,14 +22,13 @@
 
 .container {
   display: grid;
-  grid-template-columns: 247px 247px;
+  grid-template-columns: 1fr;
   padding-left: 10px;
   grid-column-gap: 10px;
 }
 
 
 p {
-  margin-top: 50px;
   font-size: 20px;
   text-align: center;
 }

@@ -1,5 +1,6 @@
-import {ObjectID} from './object-id.enum';
-import {ObjectOfView} from './ObjectOfView';
+/*
+import {ObjectID} from '../object-id.enum';
+import {ObjectOfView} from '../ObjectOfView';
 
 export class ViewMagazzino {
   public static JSON () {
@@ -20,3 +21,4 @@ export class ViewMagazzino {
 
   }
 }
+*/

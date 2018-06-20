@@ -10,8 +10,8 @@ import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-chart-mirror',
-  templateUrl: '../app-chart.component.html',
-  styleUrls: ['../app-chart.component.css']
+  templateUrl: '../charts.html',
+  styleUrls: ['../charts.css']
 })
 export class ChartMirrorComponent implements OnInit, ICallback {
 
@@ -20,7 +20,7 @@ export class ChartMirrorComponent implements OnInit, ICallback {
   private _subscription: Subscription;
   private UID;
   public data: ChartDataRecord;
-  myChart; // This will hold our chart info
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute, public service: ArchitectService) {
     console.log('Chart constructor');
     this.data = ChartData.voidChart();

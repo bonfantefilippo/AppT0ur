@@ -6,17 +6,10 @@ import {ArchitectService} from '../../architect.service';
 
 import * as Chart from 'chart.js';
 
-
-// import {filter} from 'rxjs/internal/operators';
-
-// per intercettare gli eventi di routing
-// https://toddmotto.com/dynamic-page-titles-angular-2-router-events
-// compatibilità rxjs
-// https://github.com/shlomiassaf/ngx-modialog/issues/426
 @Component({
   selector: 'app-app-chart',
-  templateUrl: '../app-chart.component.html',
-  styleUrls: ['../app-chart.component.css']
+  templateUrl: '../charts.html',
+  styleUrls: ['../charts.css']
 })
 export class AppChartComponent implements OnInit, ICallback {
 

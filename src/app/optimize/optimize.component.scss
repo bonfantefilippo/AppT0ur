@@ -5,10 +5,11 @@
 .container {
   display: grid;
   grid-template-columns: 65px 70px 85px 70px;
-  padding-left: 8px;
   margin-top: 10px;
   justify-content: center;
   padding: 15px;
+  padding-left: 8px;
+  padding-bottom: 0;
   p {
     margin: 0;
     margin-top: 7px;

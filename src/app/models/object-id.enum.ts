@@ -10,8 +10,7 @@ export enum ObjectID {
   chart2	,
   chart3	,
   chart4	,
-  chart5	,
-  viewHome	,
+  chart5		,
   piantinaChild1	,
   piantinaChild2	,
   piantinaChild3	,
@@ -46,6 +45,7 @@ export enum ObjectID {
   magazzinoFChild4	,
   magazzinoFChild5	,
 
+  viewPiantinaAngus,
   viewSezioneLavaggio,
   viewPrelavaggio,
   viewLavaggio,
@@ -66,5 +66,6 @@ export enum ObjectID {
   viewSezioneStoccaggio,
   viewImpilatore,
   viewMotore1,
-  viewMotore2
+  viewMotore2,
+  viewHome = viewPiantinaAngus
 }

@@ -17,7 +17,7 @@ export class ArchitectService {
     permette di recupersre il record con i parametri necessari ad una corretta
     visualizzazione.
    */
-  index: ObjectID = ObjectID.viewHome;
+  index: ObjectID = ObjectID.viewPiantinaAngus;
 
   /*
     Unique Identifier: utilizzato per identificare in maniera univoca
@@ -88,26 +88,29 @@ export class ArchitectService {
       quindi annulla la _activeChart per evitare di sparare altri dati ad oggetti
       che non sono titolati a riceverli
      */
+    console.log('registering object of context: ' + contextID);
+    if (!(caller && _treeOfView.data[contextID])) {
+      return -1;
+    }
+
     const UID = ++this._UID;
-    console.log('registering ' + UID + ', context: ' + contextID);
     this.registeredObjects.push({
       'caller': caller,
       'contextID': contextID,
       'UID': UID
     });
-    // TODO sincronizzare la risposta sull'ID del richiedente
-    /*if (caller && _treeOfView.data[contextID]) {
-       caller.setData(_treeOfView.data[contextID]);
-     }
-     if (_treeOfView.data[contextID]) {
-       this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
-       this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
-     }*/
-     if (caller) {
+    caller.setData(_treeOfView.data[contextID]);
+
+
+    this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
+    this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
+
+
+    /*if (caller) {
       caller.setData(_treeOfView.data[ObjectID.viewHome]);
     }
     this.leanSetChange.emit(_treeOfView.data[ObjectID.viewHome].leanOptions);
-    this.digitalSetChange.emit(_treeOfView.data[ObjectID.viewHome].digitalOptions);
+    this.digitalSetChange.emit(_treeOfView.data[ObjectID.viewHome].digitalOptions);*/
     return UID;
   }
 
@@ -163,7 +166,7 @@ export class ArchitectService {
     if (UID === this._activeChart.UID && this._activeChart && this._activeChart.valid) {
       console.log('Show chart in view with UID ' + UID);
       this._activeChart.valid = false;
-      const data = this._activeChart.data.clone()
+      const data = this._activeChart.data.clone();
       this._activeChart = null;
       return data; // .clone();
     }

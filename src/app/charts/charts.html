@@ -1,5 +1,5 @@
 <div class="gridInNine">
-  <canvas class="center" baseChart width="320" height="265"
+  <canvas class="center" baseChart width="320" height="255"
           [datasets]="datasets"
           [labels]="labels"
           [options]="options"
@@ -9,8 +9,4 @@
           (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)">
   </canvas>
-  <!--<canvas id="densityChart" class="center" width="320" height="265"></canvas>-->
-  <!--<div *ngIf="myChart">
-    <canvas id="canvas">{{ myChart }}</canvas>
-  </div>-->
 </div>

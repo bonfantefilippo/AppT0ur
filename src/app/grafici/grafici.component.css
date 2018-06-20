@@ -6,7 +6,6 @@
   grid-template-columns: 1fr;
   padding: 20px;
   grid-row-gap: 30px;
-  overflow: auto;
 }
 
 .container5v1 .graphic {
