@@ -107,10 +107,29 @@ export class ChartMirrorComponent implements OnInit, ICallback {
     console.log(e);
   }
 
-  get datasets() {return this.data.lineChartData; }
-  get labels() {return this.data.lineChartLabels; }
-  get options() {return this.data.lineChartOptions; }
-  get colors() {return this.data.lineChartColors; }
-  get legend() {return this.data.lineChartLegend; }
-  get chartType() {return this.data.lineChartType; }
+  get datasets() {
+    return this.data.lineChartData;
+  }
+
+  get labels() {
+    return this.data.lineChartLabels;
+  }
+
+  get options() {
+    return this.data.lineChartOptions;
+  }
+
+  get colors() {
+    return this.data.lineChartColors;
+  }
+
+  get legend() {
+    return false;
+    // return this.data.lineChartLegend;
+  }
+
+  get chartType() {
+    return this.data.lineChartType;
+  }
+
 }

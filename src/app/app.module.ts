@@ -17,7 +17,9 @@ import {LeanComponent} from './optimize/option-btns/lean/lean.component';
 import {DigitalComponent} from './optimize/option-btns/digital/digital.component';
 import {WorkInProgressComponent} from './work-in-progress/work-in-progress.component';
 import {AppChartComponent} from './charts/app-chart/app-chart.component';
-import { ChartMirrorComponent } from './charts/chart-mirror/chart-mirror.component';
+import {MatIconModule, MatTabsModule} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ChartMirrorComponent} from './charts/chart-mirror/chart-mirror.component';
 
 const appRoutes: Routes = [
   {path: 'apptour/:contextID', component: ObjectViewComponent},
@@ -56,11 +58,14 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: false} // <-- debugging purposes only
     ),
-    ChartsModule
+    ChartsModule,
+    MatTabsModule,
+    MatIconModule
   ],
   providers: [ArchitectService],
   bootstrap: [AppComponent]

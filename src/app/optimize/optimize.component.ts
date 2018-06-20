@@ -16,7 +16,7 @@ export class OptimizeComponent implements OnInit {
   constructor(public service: ArchitectService) {
     this.service.leanSetChange.subscribe(result => {
       //   {'index': 3, 'text': 'layout', 'checked': false},
-      console.log('lean set change');
+      console.log('Optimize lean set change', result );
       this.btns = result;
     });
     this.setLean(false);

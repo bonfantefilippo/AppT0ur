@@ -67,6 +67,7 @@ export class AppChartComponent implements OnInit, ICallback {
   }
 
   get options() {
+    /*return ChartData.notResponsiveOptions(this.data.lineChartOptions);*/
     return this.data.lineChartOptions;
   }
 

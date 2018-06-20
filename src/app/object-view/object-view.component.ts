@@ -3,7 +3,6 @@ import {ArchitectService} from '../architect.service';
 import {ObjectID} from '../models/object-id.enum';
 import {ICallback} from '../models/ICallback';
 import {ObjectOfView} from '../models/ObjectOfView';
-import {OptionOfView, OptionType} from '../models/OptionBuilder';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 
@@ -37,22 +36,23 @@ export class ObjectViewComponent implements OnInit, ICallback {
   data: ObjectOfView;
   public css = '';
   private UID = 0;
-  private lean: boolean [];
-  private digital: boolean[];
+  // private lean: boolean [];
+  // private digital: boolean[];
 
 
   constructor(private router: Router, private route: ActivatedRoute, public service: ArchitectService) {
-    this.service.leanChange.subscribe(result => {
-      this.updateLeanOptions(result);
+    this.service.leanChange.subscribe(() => {
+      this.updateOptions();
     });
-    this.service.digitalChange.subscribe(result => {
-      this.updateDigitalOptions(result);
+    this.service.digitalChange.subscribe(() => {
+      this.updateOptions();
     });
     this.service.route.subscribe(result => {
       console.log('View routed ' + result);
     });
 
   }
+
   register(contextID: number) {
     this.UID = this.service.registerObject(this, contextID);
     if (this.UID == -1) {
@@ -67,8 +67,8 @@ export class ObjectViewComponent implements OnInit, ICallback {
     /*this.register( this.route.snapshot.params['contextID']);
     console.log('ObjView ' + this.contextID + ' init: registered');*/
     this.route.params.subscribe(params => {
-      console.log('ObjView ' + this.contextID + ' init: route.subscribe');
-      this.register( params['contextID']);
+        console.log('ObjView ' + this.contextID + ' init: route.subscribe');
+        this.register(params['contextID']);
         console.log('ObjView ' + this.contextID + ' init: route registered');
       }
     );
@@ -98,60 +98,39 @@ export class ObjectViewComponent implements OnInit, ICallback {
        }*!/
       console.log('ObjView ' + this.contextID + ' init: End 1');*/
 
-    }
+  }
 
 
   isBusy() {
     return (this._subscription && !this._subscription.closed);
   }
 
-  /*  // events
-    public chartClicked(e: any): void {
-      console.log('Chart click on ' + this.UID);
-
-      // se è un grafico nella view
-      if (this.contextID == ObjectID.notSet) {
-        // qui deve chiudersi ma prima deve eliminare
-        // la sottoscrizione agli eventi del router
-        if (this.isBusy()) {
-          this._subscription.unsubscribe();
-        }
-        this.router.navigate(['home']);
-        return;
-      }
-    }*/
-
-
-  /*  ngOnInit() {
-      this.contextID = +this.route.snapshot.paramMap.get('contextID');
-      console.log('objectView ' + this.contextID);
-      this.UID = this.service.registerObject(this, this.contextID);
-    }*/
-
   // todo: compilare la stringa dei css per tutte le opzioni attive
-  updateLeanOptions(result: OptionOfView) {
-    console.log('updateLeanOptions lean: ' + this.lean + '; digital: ' + this.digital);
-    let cssResult: string = result.cssDefault;
+  updateOptions() {
+    console.log('updateLeanOptions lean: ', this.data.leanOptions.options, this.data.digitalOptions.options);
+    let cssResult: string = this.data.leanOptions.cssDefault;
 
-    result.options.forEach(option => {
+    this.data.leanOptions.options.forEach(option => {
       if (option.checked) {
         cssResult = option.css;
       }
     });
 
-    console.log('updateLeanOptions css: ' + cssResult);
+    this.data.digitalOptions.options.forEach(option => {
+      if (option.checked) {
+        cssResult = option.css;
+      }
+    });
+
+    console.log('updateOptions css: ' + cssResult);
     this.css = cssResult;
   }
-
-  updateDigitalOptions(result: OptionOfView) {
-    this.updateLeanOptions(result);
-  }
-
 
   setData(data: ObjectOfView) {
     console.log('objectView ' + this.contextID + ' setdata');
     this.data = data;
     this.css = this.data.leanOptions.cssDefault;
+    this.updateOptions();
   }
 
 

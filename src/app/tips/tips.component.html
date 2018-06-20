@@ -1,16 +1,16 @@
-<div class="container5v1">
-  <div>
-    <h1 class="sectiontitle">TIPS</h1>
+<mat-tab-group class="mat-tab-group" style="height: 100%" [dynamicHeight]="true">
+  <mat-tab>
+    <ng-template class="title" mat-tab-label>
+      TIPS
+    </ng-template>
     <p class="carattere">
       {{tipString()}}
     </p>
-  </div>
-  <div>
-    <h1 class="sectiontitle">QUESTIONS</h1>
+  </mat-tab>
+  <mat-tab>
+    <ng-template class="title" mat-tab-label>
+      QUESTIONS
+    </ng-template>
     <p>Qui andranno inserite le domande con relative risposte</p>
-  </div>
-  <!--<div class="contatti">
-    <h3 style="text-align: left">CONTACTS</h3>
-    <a href="#">www.sitetest.com</a>
-  </div>-->
-</div>
+  </mat-tab>
+</mat-tab-group>

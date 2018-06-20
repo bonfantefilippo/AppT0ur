@@ -6,22 +6,20 @@ import {OptionType} from '../../../models/OptionBuilder';
 @Component({
   selector: 'app-lean',
   templateUrl: '../btn-array.component.html'
-  /*templateUrl: './lean.component.html'*/
 })
 export class LeanComponent implements OnInit {
   ObjectID = ObjectID;
   contextID = ObjectID.btnLean;
   btns: Array<OptionType> = [];
-  UID: number;
 
   constructor(public service: ArchitectService) {
     console.log('lean constructor');
     this.service.leanSetChange.subscribe(result => {
       //   {'index': 3, 'text': 'layout', 'checked': false},
-      console.log('lean set change');
+      console.log('lean set change', result.options);
       this.btns = result.options;
     });
-    this.UID = this.service.registerObject(null, this.contextID);
+    this.service.registerOptimizer( this.contextID);
   }
 
   ngOnInit() {

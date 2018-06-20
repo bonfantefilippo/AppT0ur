@@ -77,6 +77,23 @@ export class ArchitectService {
   constructor() {
   }
 
+  registerOptimizer(contextID: ObjectID) {
+    if (!_treeOfView.data[this.index]) {
+      console.log('registe FAIL btn of context: ' + contextID + ' set change', _treeOfView.data[this.index]);
+      return -1;
+    }
+    console.log('registering btn of context: ' + contextID + ' set change', _treeOfView.data[this.index]);
+    switch (contextID) {
+      case ObjectID.btnDigital:
+        this.digitalSetChange.emit(_treeOfView.data[this.index].digitalOptions);
+        break;
+      case ObjectID.btnLean:
+        this.leanSetChange.emit(_treeOfView.data[this.index].leanOptions);
+        break;
+    }
+
+  }
+
   registerObject(caller: ICallback, contextID: number) {
     /*
       quando contextID = -1 l'oggetto viene creato da un routing
@@ -88,29 +105,29 @@ export class ArchitectService {
       quindi annulla la _activeChart per evitare di sparare altri dati ad oggetti
       che non sono titolati a riceverli
      */
-    console.log('registering object of context: ' + contextID);
-    if (!(caller && _treeOfView.data[contextID])) {
+    console.log('registering object of context: ' + contextID + ' enter', _treeOfView.data[contextID], caller);
+    if (!_treeOfView.data[contextID]) {
       return -1;
     }
+    console.log('registering object of context: ' + contextID + ' set change', _treeOfView.data[contextID]);
+    this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
+    this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
 
+    if (!caller) {
+      return -1;
+    }
+    this.index = contextID;
     const UID = ++this._UID;
     this.registeredObjects.push({
       'caller': caller,
       'contextID': contextID,
       'UID': UID
     });
+    console.log('registering object of context: ' + contextID + ' set data', _treeOfView.data[contextID]);
     caller.setData(_treeOfView.data[contextID]);
 
+    console.log('registering object of context: ' + contextID + ' return', _treeOfView.data[contextID]);
 
-    this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
-    this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
-
-
-    /*if (caller) {
-      caller.setData(_treeOfView.data[ObjectID.viewHome]);
-    }
-    this.leanSetChange.emit(_treeOfView.data[ObjectID.viewHome].leanOptions);
-    this.digitalSetChange.emit(_treeOfView.data[ObjectID.viewHome].digitalOptions);*/
     return UID;
   }
 

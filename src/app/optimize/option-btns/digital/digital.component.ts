@@ -6,14 +6,12 @@ import {OptionOfView, OptionType} from '../../../models/OptionBuilder';
 @Component({
   selector: 'app-digital',
   templateUrl: '../btn-array.component.html'
-  /*templateUrl: './digital.component.html'*/
 })
 export class DigitalComponent implements OnInit {
   ObjectID = ObjectID;
   contextID = ObjectID.btnDigital;
   btns: Array<OptionType> = [];
   leanBtns: OptionOfView = null;
-  UID: number;
 
   constructor(public service: ArchitectService) {
     console.log('digital constructor');
@@ -23,10 +21,10 @@ export class DigitalComponent implements OnInit {
 
     this.service.digitalSetChange.subscribe(result => {
       //   {'index': 3, 'text': 'layout', 'checked': false},
-      console.log('digital set change');
+      console.log('digital set change', result.options);
       this.btns = result.options;
     });
-    this.UID = this.service.registerObject(null, this.contextID);
+    this.service.registerOptimizer( this.contextID);
   }
 
   ngOnInit() {
