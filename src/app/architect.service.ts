@@ -105,10 +105,12 @@ export class ArchitectService {
       quindi annulla la _activeChart per evitare di sparare altri dati ad oggetti
       che non sono titolati a riceverli
      */
-    console.log('registering object of context: ' + contextID + ' enter', _treeOfView.data[contextID], caller);
     if (!_treeOfView.data[contextID]) {
+      console.log('registering object of context: ' + contextID + ' enter', contextID, caller);
       return -1;
     }
+    console.log('registering object of context: ' + contextID + ' enter', _treeOfView.data[contextID], caller);
+
     console.log('registering object of context: ' + contextID + ' set change', _treeOfView.data[contextID]);
     this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
     this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);

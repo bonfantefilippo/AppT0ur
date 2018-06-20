@@ -14,7 +14,7 @@ import * as Chart from 'chart.js';
 export class AppChartComponent implements OnInit, ICallback {
 
   @Input()
-  contextID: ObjectID = ObjectID.notSet;
+  contextID: ObjectID; // = ObjectID.notSet;
   private UID;
   public data: ChartDataRecord;
 

@@ -18,7 +18,6 @@ export class ChartMirrorComponent implements OnInit, ICallback {
   @Input()
   contextID: ObjectID = ObjectID.notSet;
   private _subscription: Subscription;
-  private UID;
   public data: ChartDataRecord;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, public service: ArchitectService) {
@@ -26,24 +25,8 @@ export class ChartMirrorComponent implements OnInit, ICallback {
     this.data = ChartData.voidChart();
   }
 
-  // i dati vengono passati dal service se è un grafico nella barra laterale
-  // se invece è nella view, il grafico se li deve prendere quando la route è
-  // completa.
-  // Quando il componente viene creato nella barra laterale riceve immediatamente
-  // un contextID, se invece nasce nella View il contextID è notSet.
-  // con contestID = notSet, dobbiamo sottoscrivere il router.events che notifica
-  // l'evento NavigationEnd, momento in cui andiamo a prendere i dati
-  // dall'Architect.
   setData(data: any) {
     // this.data = data.console.log('Got new data');
-  }
-
-  getData() {
-    const response = this.service.getActiveChart();
-    if (response.valid) {
-      console.log('Chart ' + this.contextID + ' data applied');
-      response.data.copyTo(this.data);
-    }
   }
 
   ngOnInit() {
@@ -76,8 +59,6 @@ export class ChartMirrorComponent implements OnInit, ICallback {
       result.data.copyTo(this.data);
     }
     console.log('Chart ' + this.contextID + ' init: End 1');
-    /**/
-
 
   }
 

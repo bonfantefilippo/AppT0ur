@@ -2,12 +2,12 @@
 
 <div class="container5v1">
 
-  <app-app-chart routerLink="/chart/{{ObjectID.chart1}}" routerLinkActive="active"
-                 [contextID]="ObjectID.chart1"
+  <app-app-chart *ngFor="let id of charts" routerLink="/chart/{{id}}" routerLinkActive="active"
+                 [contextID]="id"
                  class="graphic backWhite"
                  (mouseover)="onDivMouseOver(ObjectID.chart1)">
   </app-app-chart>
-  <app-app-chart routerLink="/chart/{{ObjectID.chart2}}" routerLinkActive="active"
+ <!-- <app-app-chart routerLink="/chart/{{ObjectID.chart2}}" routerLinkActive="active"
                  [contextID]="ObjectID.chart2"
                  class="graphic backWhite"
                  (mouseover)="onDivMouseOver(ObjectID.chart2)">
@@ -16,6 +16,6 @@
                  [contextID]="ObjectID.chart3"
                  class="graphic backWhite"
                  (mouseover)="onDivMouseOver(ObjectID.chart3)">
-  </app-app-chart>
+  </app-app-chart>-->
 
 </div>

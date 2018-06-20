@@ -10,7 +10,7 @@ import {ObjectID} from '../models/object-id.enum';
 export class GraficiComponent implements OnInit {
 
   ObjectID = ObjectID;
-
+  charts: Array<ObjectID> = [ObjectID.chart1, ObjectID.chart2, ObjectID.chart3, ObjectID.chart4, ObjectID.chart5]
   constructor(public service: ArchitectService) {
   }
 
