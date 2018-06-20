@@ -78,7 +78,8 @@ export class ChartMirrorComponent implements OnInit, ICallback {
       this._subscription.unsubscribe();
     }
     console.log('Chart ' + this.contextID + ' chartClicked before navigate');
-    this.router.navigate(['home']);
+    /*this.router.navigate(['home']);*/
+    window.history.back();
     console.log('Chart ' + this.contextID + ' chartClicked end');
 
 
