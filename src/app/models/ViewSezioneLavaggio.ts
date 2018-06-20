@@ -11,12 +11,13 @@ export class ViewSezioneLavaggio {
     objs.push({'routerLink': '/apptour/' + ObjectID.viewLavaggio, 'childId': 'child2', 'contextID': ObjectID.viewLavaggio});
     objs.push({'routerLink': '/apptour/' + ObjectID.viewAsciugatura, 'childId': 'child3', 'contextID': ObjectID.viewAsciugatura});
 
-    data.leanOptions.cssDefault = 'angus3Default sfondoSezioneLavaggioDefault';
+    // Per descrizione stili guardare in styleAngus.scss e styleAngusBackgroundd.scss
 
-    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'angus3Default sfondoSezioneLavaggioDefault angus3Lean sfondoSezioneLavaggio');
+    data.leanOptions.cssDefault = 'an3 bsl';
 
-    data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'angus3Default sfondoSezioneLavaggioDefault angus3Lean sfondoSezioneLavaggio angus3Digital sfondoSezioneLavaggioDigital');
+    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L bslL');
+
+    data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an3D bslD');
     return data;
-
   }
 }

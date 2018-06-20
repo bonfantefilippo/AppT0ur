@@ -11,12 +11,13 @@ export class ViewPiantinaAngus {
     objs.push({'routerLink': '/apptour/' + ObjectID.viewSezionePretrattamento, 'childId': 'child2', 'contextID': ObjectID.viewSezionePretrattamento});
     objs.push({'routerLink': '/apptour/' + ObjectID.viewSezioneStoccaggio, 'childId': 'child3', 'contextID': ObjectID.viewSezioneStoccaggio});
 
-    data.leanOptions.cssDefault = 'angus3Default';
+    // Per descrizione stili guardare in styleAngus.scss e styleAngusBackgroundd.scss
 
-    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'angus3Lean');
-    data.leanOptions.addOption(3, 'sfondo', false, ObjectID.btnLeanChild2, false, 'angus3Lean sfondo');
+    data.leanOptions.cssDefault = 'an3 baH';
 
-    data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'angus3Digital');
+    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L baHL');
+
+    data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an3L baHD');
     return data;
 
   }

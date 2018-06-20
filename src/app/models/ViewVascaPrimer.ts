@@ -7,15 +7,14 @@ export class ViewVascaPrimer {
     const objs = [];
     data.objects = objs;
 
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSezioneLavaggio, 'childId': 'child1', 'contextID': ObjectID.viewSezioneLavaggio});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSezionePretrattamento, 'childId': 'child2', 'contextID': ObjectID.viewSezionePretrattamento});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSezioneStoccaggio, 'childId': 'child3', 'contextID': ObjectID.viewSezioneStoccaggio});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreLivello, 'childId': 'child1', 'contextID': ObjectID.viewSensoreLivello});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensorePH, 'childId': 'child2', 'contextID': ObjectID.viewSensorePH});
 
-    data.leanOptions.cssDefault = 'angus3Default';
+    data.leanOptions.cssDefault = 'an2 bvp';
 
-    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'angus3Lean');
+    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an2L bvpL');
 
-    data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'angus3Digital');
+    data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an2L bvpD');
     return data;
 
   }

@@ -1,4 +1,72 @@
-.angus3Default {
+// Tutte le classi che iniziamo per 'an' in questo componente saranno soggette allo stile presente dopo gli stili di suddivisione ...
+// (Prestare attenzione all'assegnazione dei nomi alle classi)
+// Le classi di layout per il digital non sono state implementate perche per ora il layout cambia in relazione alla Lean e con digitl
+// viene semplicemente aggiunta della sensoristica che può essere messa a display con i css dei background
+
+// SUDDIVISIONE IN SINGOLO DELLO SPAZIO IMPIANTO
+
+.an1 { // Suddivisione in 1 per Default
+  grid-template-areas:
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1';
+}
+
+.an1L { // Suddivisione in 1 per Lean (uguale alla .an1 quindi per ora inutilizzata)
+
+}
+
+.an1D { // Suddivisione in 1 per Digital (uguale alla .an1 quindi per ora inutilizzata)
+
+}
+
+// SUDDIVISIONE IN DUE DELLO SPAZIO IMPIANTO
+
+.an2 { // Suddivisione in 2 per Default
+  grid-template-areas:
+    'child1 child1 child1 child2 child2 child2'
+    'child1 child1 child1 child2 child2 child2'
+    'child1 child1 child1 child2 child2 child2'
+    'child1 child1 child1 child2 child2 child2'
+    'child1 child1 child1 child2 child2 child2'
+    'child1 child1 child1 child2 child2 child2'
+    'child1 child1 child1 child2 child2 child2'
+    'child1 child1 child1 child2 child2 child2'
+    'child1 child1 child1 child2 child2 child2'
+    'child1 child1 child1 child2 child2 child2'
+    'child1 child1 child1 child2 child2 child2';
+}
+
+.an2L { // Suddivisione in 2 per Lean
+  grid-template-areas:
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child1 child1 child1 child1 child1 child1'
+    'child2 child2 child2 child2 child2 child2'
+    'child2 child2 child2 child2 child2 child2'
+    'child2 child2 child2 child2 child2 child2'
+    'child2 child2 child2 child2 child2 child2'
+    'child2 child2 child2 child2 child2 child2'
+    'child2 child2 child2 child2 child2 child2';
+}
+
+.an2D { // Suddivisione in 2 per Digital (uguale alla .an2L quindi per ora inutilizzata)
+
+}
+
+// SUDDIVISIONE IN TRE DELLO SPAZIO IMPIANTO
+
+.an3 { // Suddivisione in 3 per Default
   grid-template-areas:
     'child1 child1 child2 child2 child3 child3'
     'child1 child1 child2 child2 child3 child3'
@@ -12,24 +80,8 @@
     'child1 child1 child2 child2 child3 child3'
     'child1 child1 child2 child2 child3 child3';
 }
-.sfondo {
-  background-image: url("../../../documentation/griglia1.svg");
 
-}
-.sfondoSezioneLavaggioDefault {
-  background-image: url("../../../documentation/scarti3.png");
- }
-
-.sfondoSezioneLavaggio {
-  background-image: url("../../../documentation/MAGAZZINOT.svg");
-}
-
-.sfondoSezioneLavaggioDigital {
-  background-image: url("../../../documentation/scarti2l.png") !important;
-}
-
-.angus3Lean {
-  background-image: url("../../../documentation/griglia1.svg");
+.an3L { // Suddivisione in 3 per Lean
   grid-template-areas:
     'child1 child1 child2 child2 child2 child2'
     'child1 child1 child2 child2 child2 child2'
@@ -44,46 +96,69 @@
     'child1 child1 child3 child3 child3 child3';
 }
 
-.angus3Digital {
-  /*background-image: url("../../../documentation/griglia1.svg");*/
-  grid-template-areas:
-    'child1 child1 child2 child2 child2 child2'
-    'child1 child1 child2 child2 child2 child2'
-    'child1 child1 child2 child2 child2 child2'
-    'child1 child1 child2 child2 child2 child2'
-    'child1 child1 child2 child2 child2 child2'
-    'child1 child1 child3 child3 child3 child3'
-    'child1 child1 child3 child3 child3 child3'
-    'child1 child1 child3 child3 child3 child3'
-    'child1 child1 child3 child3 child3 child3'
-    'child1 child1 child3 child3 child3 child3'
-    'child1 child1 child3 child3 child3 child3';
+.an3D { // Suddivisione in 3 per Digital (uguale alla .an3L quindi per ora inutilizzata)
+
 }
 
-[class *= angus] {
+// SUDDIVISIONE IN QUATTRO DELLO SPAZIO IMPIANTO
+
+.an4 { // Suddivisione in 4 per Default
+  grid-template-areas:
+    'child1 child2 child2 child3 child3 child4'
+    'child1 child2 child2 child3 child3 child4'
+    'child1 child2 child2 child3 child3 child4'
+    'child1 child2 child2 child3 child3 child4'
+    'child1 child2 child2 child3 child3 child4'
+    'child1 child2 child2 child3 child3 child4'
+    'child1 child2 child2 child3 child3 child4'
+    'child1 child2 child2 child3 child3 child4'
+    'child1 child2 child2 child3 child3 child4'
+    'child1 child2 child2 child3 child3 child4'
+    'child1 child2 child2 child3 child3 child4';
+}
+
+.an4L { // Suddivisione in 4 per Lean
+  grid-template-areas:
+    'child1 child1 child1 child4 child4 child4'
+    'child1 child1 child1 child4 child4 child4'
+    'child1 child1 child1 child4 child4 child4'
+    'child1 child1 child1 child4 child4 child4'
+    'child1 child1 child1 child4 child4 child4'
+    'child2 child2 child2 child3 child3 child3'
+    'child2 child2 child2 child3 child3 child3'
+    'child2 child2 child2 child3 child3 child3'
+    'child2 child2 child2 child3 child3 child3'
+    'child2 child2 child2 child3 child3 child3'
+    'child2 child2 child2 child3 child3 child3';
+}
+
+.an4D { // Suddivisione in 4 per Digital
+
+}
+
+// STILE CHE APPLICA LE CARATTERISTICHE SOTTOSTANTI A TUTTE LE CLASSI CHE INIZIANO PER 'an'
+
+[class *= an] {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(9, 58px);
   position: center;
 }
 
+// DEFINIZIONE DEI NOMI DEI FIGLI DEI COMPONENTI PER POTERLI RICHIAMARE NELLA GRID AREA
 
-#child1 {
+#child1 { // Setta il nome del primo possibile figlio
   grid-area: child1;
 }
 
-#child2 {
+#child2 { // Setta il nome del secondo possibile figlio
   grid-area: child2;
 }
 
-#child3 {
+#child3 { // Setta il nome del terzo possibile figlio
   grid-area: child3;
 }
 
-#child4 {
+#child4 { // Setta il nome del quarto possibile figlio
   grid-area: child4;
-}
-
-#child5 {
-  grid-area: child5;
 }

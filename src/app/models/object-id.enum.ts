@@ -47,9 +47,24 @@ export enum ObjectID {
   magazzinoFChild5	,
 
   viewSezioneLavaggio,
-  viewSezionePretrattamento,
-  viewSezioneStoccaggio,
   viewPrelavaggio,
   viewLavaggio,
-  viewAsciugatura
+  viewAsciugatura,
+  viewPompaAcqua,
+  viewContatoreAcqua,
+  viewSensoreTemperatura,
+  viewSensoreLivelloAcqua,
+  viewPompa,
+  viewVentilatore,
+  viewSensoreUmidita,
+  viewSezionePretrattamento,
+  viewVascaPretrattamento,
+  viewVascaPrimer,
+  viewVascaFinisher,
+  viewSensoreLivello,
+  viewSensorePH,
+  viewSezioneStoccaggio,
+  viewImpilatore,
+  viewMotore1,
+  viewMotore2
 }

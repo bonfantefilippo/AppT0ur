@@ -7,15 +7,15 @@ export class ViewSezionePretrattamento {
     const objs = [];
     data.objects = objs;
 
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSezioneLavaggio, 'childId': 'child1', 'contextID': ObjectID.viewSezioneLavaggio});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSezionePretrattamento, 'childId': 'child2', 'contextID': ObjectID.viewSezionePretrattamento});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSezioneStoccaggio, 'childId': 'child3', 'contextID': ObjectID.viewSezioneStoccaggio});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewVascaPretrattamento, 'childId': 'child1', 'contextID': ObjectID.viewVascaPretrattamento});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewVascaPrimer, 'childId': 'child2', 'contextID': ObjectID.viewVascaPrimer});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewVascaFinisher, 'childId': 'child3', 'contextID': ObjectID.viewVascaFinisher});
 
-    data.leanOptions.cssDefault = 'angus3Default';
+    data.leanOptions.cssDefault = 'an3 bsp';
 
-    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'angus3Lean');
+    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L bspL');
 
-    data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'angus3Digital');
+    data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an3L bspD');
     return data;
 
   }

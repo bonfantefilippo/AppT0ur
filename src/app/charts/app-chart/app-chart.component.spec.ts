@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {AppChartComponent} from './app-chart.component';
 
-import { AppChartComponent } from './app-chart.component';
 
 describe('AppChartComponent', () => {
   let component: AppChartComponent;

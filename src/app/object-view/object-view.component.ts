@@ -12,7 +12,8 @@ import {Subscription} from 'rxjs';
   templateUrl: './object-view.component.html',
   styleUrls: ['./stylePiantina.scss',
     './styleMagazzino.scss',
-    './styleAngus.scss']
+    './styleAngus.scss',
+    './styleAngusBackground.scss']
 })
 export class ObjectViewComponent implements OnInit, ICallback {
   ObjectID = ObjectID;

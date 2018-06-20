@@ -5,58 +5,12 @@ import {ICallback} from './models/ICallback';
 import {TreeOfView} from './models/TreeBuilder';
 import {OptionOfView, OptionType} from './models/OptionBuilder';
 
-const objMapping: ObjectID[] = [
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewMagazzino,
-  ObjectID.viewPreparazione,
-  ObjectID.viewLavorazione,
-  ObjectID.viewFinitura,
-  ObjectID.viewMagazzinoF,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-  ObjectID.viewHome,
-];
+
 const _treeOfView = new TreeOfView();
-const _optionOfView = new OptionOfView();
 
 @Injectable()
 export class ArchitectService {
+  private rndChartIndex = 0;
   /*
     index è l'indice DI CONTESTO  dell'oggetto corrente caricato nella View
     ogni oggetto rappresenta un contesto specifico e il suo indice di contesto
@@ -196,16 +150,22 @@ export class ArchitectService {
 
 
   getRandomChart() {
-    const chartIndex = Math.floor(Math.random() * this._chartData.getCount());
-    console.log('getRandomChart: ' + chartIndex + ' of ' + this._chartData.getCount());
-    return this._chartData.getChart(chartIndex);
+    /*const chartIndex = Math.floor(Math.random() * this._chartData.getCount());
+    console.log('getRandomChart: ' + chartIndex + ' of ' + this._chartData.getCount());*/
+
+    if (this.rndChartIndex >= this._chartData.getCount()) {
+      this.rndChartIndex = 0;
+    }
+    return this._chartData.getChart(this.rndChartIndex++);
   }
 
   getDefaultChart(UID: number) {
-    if (UID === this._activeChart.UID && this._activeChart.valid) {
+    if (UID === this._activeChart.UID && this._activeChart && this._activeChart.valid) {
       console.log('Show chart in view with UID ' + UID);
       this._activeChart.valid = false;
-      return this._activeChart.data.clone();
+      const data = this._activeChart.data.clone()
+      this._activeChart = null;
+      return data; // .clone();
     }
     console.log('Show random chart for UID ' + UID);
     // return this._chartData.getChart(0);
@@ -213,11 +173,12 @@ export class ArchitectService {
   }
 
   getActiveChart() {
+    console.log('getActiveChart', this._activeChart.UID, this._activeChart.data, this._activeChart.valid);
     return this._activeChart;
   }
 
   setActiveChart(UID: number, data: ChartDataRecord) {
-    console.log('setActiveChart ' + UID);
     this._activeChart = {'UID': UID, 'data': data, 'valid': true};
+    console.log('setActiveChart', this._activeChart.UID, this._activeChart.data, this._activeChart.valid);
   }
 }

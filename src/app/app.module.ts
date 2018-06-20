@@ -16,11 +16,12 @@ import {ArchitectService} from './architect.service';
 import {LeanComponent} from './optimize/option-btns/lean/lean.component';
 import {DigitalComponent} from './optimize/option-btns/digital/digital.component';
 import {WorkInProgressComponent} from './work-in-progress/work-in-progress.component';
-import {AppChartComponent} from './app-chart/app-chart.component';
+import {AppChartComponent} from './charts/app-chart/app-chart.component';
+import { ChartMirrorComponent } from './charts/chart-mirror/chart-mirror.component';
 
 const appRoutes: Routes = [
   {path: 'apptour/:contextID', component: ObjectViewComponent},
-  {path: 'chart/:contextID', component: AppChartComponent},
+  {path: 'chart/:contextID', component: ChartMirrorComponent},
   {path: 'not_yet_but_soon', component: WorkInProgressComponent},
   {
     path: 'home',
@@ -50,7 +51,8 @@ const appRoutes: Routes = [
     LeanComponent,
     DigitalComponent,
     WorkInProgressComponent,
-    AppChartComponent
+    AppChartComponent,
+    ChartMirrorComponent
   ],
   imports: [
     BrowserModule,

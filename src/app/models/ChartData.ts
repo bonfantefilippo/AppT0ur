@@ -18,6 +18,7 @@ export class ChartData {
 
     // grafico 1
     this.data.push(ChartDataRecord.createChartRecord(
+      'garfico 1',
       [
         {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
       ],
@@ -31,9 +32,10 @@ export class ChartData {
       )
     );
     // fine grafico 1
-
-    // grafico 2
+/*
+   // grafico 2
     this.data.push(ChartDataRecord.createChartRecord(
+      'grafico 2',
       [
         {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
         {data: [28, 48, 40, 19, 86, 27, 90], label: 'Lean'}
@@ -53,6 +55,7 @@ export class ChartData {
 
     // grafico 3
     this.data.push(ChartDataRecord.createChartRecord(
+      'grafico 3',
       [
         {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
         {data: [28, 48, 40, 19, 86, 27, 90], label: 'Lean'},
@@ -69,13 +72,81 @@ export class ChartData {
       'line'
       )
     );
-    // fine grafico 3
+    // fine grafico 3*/
 
+    // grafico 4
+    this.data.push(ChartDataRecord.createChartRecord(
+      'garfico 4',
+      [
+        {data: [75, 89, 40, 40, 86, 85, 90], label: 'Standard'},
+      ],
+      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+      {responsive: true, barThickness: 1},
+      [
+        LineChartColors.getGreyTheme()
+      ],
+      true,
+      'bar'
+      )
+    );
+    // fine grafico 4
+
+    // grafico 5
+    this.data.push(ChartDataRecord.createChartRecord(
+      'garfico 5',
+      [
+        {data: [75, 89, 80, 81, 12, 12, 90], label: 'Standard'},
+      ],
+      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+      {responsive: true, barThickness: 1},
+      [
+        LineChartColors.getGreyTheme()
+      ],
+      true,
+      'bar'
+      )
+    );
+    // fine grafico 5
+
+    // grafico 6
+    this.data.push(ChartDataRecord.createChartRecord(
+      'garfico 6',
+      [
+        {data: [4, 4, 80, 81, 12, 4, 4], label: 'Standard'},
+      ],
+      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+      {responsive: true, barThickness: 1},
+      [
+        LineChartColors.getGreyTheme()
+      ],
+      true,
+      'bar'
+      )
+    );
+    // fine grafico 6
+
+    // grafico 7
+    this.data.push(ChartDataRecord.createChartRecord(
+      'garfico 7',
+      [
+        {data: [2, 2, 80, 81, 12, 12, 90], label: 'Standard'},
+      ],
+      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+      {responsive: true, barThickness: 1},
+      [
+        LineChartColors.getGreyTheme()
+      ],
+      true,
+      'bar'
+      )
+    );
+    // fine grafico 7
 
   }
 
   public static voidChart(): ChartDataRecord {
     return ChartDataRecord.createChartRecord(
+      'grafico vuoto',
       [
         {data: [], label: ''}
       ],
@@ -96,66 +167,88 @@ export class ChartData {
   getChart(index: number): ChartDataRecord {
     console.log('Query chart with index = ' + index);
 
-    return this.data[index].clone();
+    return this.data[index]; // .clone();
 
   }
 
 }
 
+export class ChartSerie {
+  constructor(public data: Array<number>, public label: string) {
+  }
+}
+
 export class ChartDataRecord {
-  constructor(public lineChartData: Array<any>,
-              public lineChartLabels: Array<any>,
-              public lineChartOptions: any,
-              public lineChartColors: Array<any>,
-              public lineChartLegend: boolean,
-              public lineChartType: string,
-              public tag: any) {
+  public name: string;
+  public lineChartData: Array<ChartSerie>;
+  public lineChartLabels: Array<string>;
+  public lineChartOptions: any;
+  public lineChartColors: Array<LineChartColors>;
+  public lineChartLegend: boolean;
+  public lineChartType: string;
+  public tag: any;
+
+  constructor() {
 
   }
 
-  public static createChartRecord(lineChartData: Array<any>,
-                                  lineChartLabels: Array<any>,
+  public static createChartRecord(name: string,
+                                  lineChartData: Array<ChartSerie>,
+                                  lineChartLabels: Array<string>,
                                   lineChartOptions: any,
-                                  lineChartColors: Array<any>,
+                                  lineChartColors: Array<LineChartColors>,
                                   lineChartLegend: boolean,
                                   lineChartType: string,
                                   tag?: any) {
-
-    return new ChartDataRecord(lineChartData,
-      lineChartLabels,
-      lineChartOptions,
-      lineChartColors,
-      lineChartLegend,
-      lineChartType,
-      tag);
+    const cdr = new ChartDataRecord;
+    cdr.name = name;
+    cdr.lineChartData = lineChartData;
+    cdr.lineChartLabels = lineChartLabels;
+    cdr.lineChartOptions = lineChartOptions;
+    cdr.lineChartColors = lineChartColors;
+    cdr.lineChartLegend = lineChartLegend;
+    cdr.lineChartType = lineChartType;
+    cdr.tag = tag;
+    return cdr;
   }
+  public static cloneSerie(src: ChartSerie): ChartSerie {
 
+    const data: Array<number> = new Array(src.data.length);
+    for (let i = 0; i < src.data.length; i++) {
+      data[i] = +src.data[i].toString();
+    }
+
+    return new ChartSerie(data, src.label.toString());
+  }
   clone(): ChartDataRecord {
-
-    const chartData = [];
-    /*for (const record in this.lineChartData) {
+    const cdr = new ChartDataRecord;
+    this.copyTo(cdr);
+    return cdr;
+    /*const chartData = [];
+    /!*for (const record in this.lineChartData) {
       chartData.push(record);
-    }*/
+    }*!/
     this.lineChartData.forEach((record) => {
       chartData.push(record);
     });
 
     const chartLabels = [];
-    /*for (const record in this.lineChartLabels) {
+    /!*for (const record in this.lineChartLabels) {
       chartLabels.push(record);
-    }*/
+    }*!/
     this.lineChartLabels.forEach((record) => {
       chartLabels.push(record);
     });
 
     const chartColors = [];
-    /*for (const record in this.lineChartColors) {
+    /!*for (const record in this.lineChartColors) {
       chartColors.push(record);
-    }*/
+    }*!/
     this.lineChartColors.forEach((record) => {
       chartColors.push(record);
     });
     return ChartDataRecord.createChartRecord(
+      this.name.toString(),
       chartData,
       chartLabels,
       this.lineChartOptions,
@@ -163,8 +256,42 @@ export class ChartDataRecord {
       this.lineChartLegend,
       this.lineChartType,
       this.tag
-    );
+    );*/
   }
+
+
+
+  copyTo(dest: ChartDataRecord): void {
+
+    dest.name = this.name.toString();
+
+    const chartData: Array<ChartSerie> = [];
+    this.lineChartData.forEach((record) => {
+      chartData.push(ChartDataRecord.cloneSerie(record));
+    });
+    dest.lineChartData = chartData;
+
+    const chartLabels: Array<string> = [];
+    this.lineChartLabels.forEach((record) => {
+      chartLabels.push(record.toString());
+    });
+
+    dest.lineChartLabels = chartLabels;
+
+    dest.lineChartOptions = this.lineChartOptions;
+
+    const chartColors: Array<LineChartColors> = [];
+    this.lineChartColors.forEach((record) => {
+      chartColors.push(record);
+    });
+
+    dest.lineChartColors = chartColors;
+    dest.lineChartLegend = this.lineChartLegend;
+    dest.lineChartType = this.lineChartType.toString();
+    dest.tag = this.tag;
+  }
+
+
 }
 
 export class LineChartColors {

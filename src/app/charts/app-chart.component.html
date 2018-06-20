@@ -1,11 +1,11 @@
 <div class="gridInNine">
   <canvas class="center" baseChart width="320" height="265"
-          [datasets]="data.lineChartData"
-          [labels]="data.lineChartLabels"
-          [options]="data.lineChartOptions"
-          [colors]="data.lineChartColors"
-          [legend]="data.lineChartLegend"
-          [chartType]="data.lineChartType"
+          [datasets]="datasets"
+          [labels]="labels"
+          [options]="options"
+          [colors]="colors"
+          [legend]="legend"
+          [chartType]="chartType"
           (chartHover)="chartHovered($event)"
           (chartClick)="chartClicked($event)">
   </canvas>
