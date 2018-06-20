@@ -3,10 +3,11 @@ import {ChartData, ChartDataRecord} from '../models/ChartData';
 import {ArchitectService} from '../architect.service';
 import {ICallback} from '../models/ICallback';
 import {ObjectID} from '../models/object-id.enum';
-
+import * as Chart from 'chart.js';
 
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+
 
 // import {filter} from 'rxjs/internal/operators';
 
@@ -26,7 +27,7 @@ export class AppChartComponent implements OnInit, ICallback {
   private _subscription: Subscription;
   private UID;
   public data: ChartDataRecord;
-
+  myChart; // This will hold our chart info
   constructor(private router: Router, private activatedRoute: ActivatedRoute, public service: ArchitectService) {
     console.log('Chart constructor');
     this.data = ChartData.voidChart();
@@ -45,6 +46,7 @@ export class AppChartComponent implements OnInit, ICallback {
   }
 
   ngOnInit() {
+    this.paintChart();
     console.log('Chart ' + this.contextID + ' init: before registerObject');
     this.UID = this.service.registerObject(this, this.contextID);
 
@@ -52,14 +54,14 @@ export class AppChartComponent implements OnInit, ICallback {
     if (this.contextID == ObjectID.notSet) {
 
       console.log('Chart ' + this.contextID + ' init: register route: subscribe ');
-      if (!this.isBusy()){
+      if (!this.isBusy()) {
         this._subscription = this.router.events
         .subscribe((event) => {
           if (event instanceof NavigationEnd) {
             console.log('Chart ' + this.contextID + ' NavigationEnd: ' , event);
             const response = this.service.getActiveChart();
             if (response.valid) {
-              this.data = response.data.clone();
+              this.data = response.data;
             }
           }
         });
@@ -121,4 +123,45 @@ export class AppChartComponent implements OnInit, ICallback {
   }
 
 
+  private paintChart() {
+    /*/!*let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');*!/
+    const ctx = document.getElementById('canvas').getContext('2d');
+     this.myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });*/
+  }
 }
