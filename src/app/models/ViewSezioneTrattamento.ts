@@ -1,9 +1,9 @@
 import {ObjectID} from './object-id.enum';
 import {ObjectOfView} from './ObjectOfView';
 
-export class ViewSezionePretrattamento {
+export class ViewSezioneTrattamento {
   public static JSON () {
-    const data: ObjectOfView = new ObjectOfView('ViewSezionePretrattamento');
+    const data: ObjectOfView = new ObjectOfView('ViewSezioneTrattamento');
     const objs = [];
     data.objects = objs;
 
