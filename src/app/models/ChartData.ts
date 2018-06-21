@@ -28,7 +28,7 @@ export class ChartData {
         LineChartColors.getGreyTheme()
       ],
       true,
-      'bar'
+      'line'
       )
     ;
     // fine grafico 1
