@@ -18,10 +18,11 @@ export class TreeOfView {
 
   constructor() {
     this.data[ObjectID.viewPiantinaAngus] = ViewPiantinaAngus.JSON();
+
     this.data[ObjectID.viewSezioneLavaggio] = ViewSezioneLavaggio.JSON();
-    this.data[ObjectID.viewPrelavaggio] = ViewPrelavaggio.JSON();
-    this.data[ObjectID.viewLavaggio] = ViewLavaggio.JSON();
-    this.data[ObjectID.viewAsciugatura] = ViewAsciugatura.JSON();
+      this.data[ObjectID.viewPrelavaggio] = ViewPrelavaggio.JSON();
+      this.data[ObjectID.viewLavaggio] = ViewLavaggio.JSON();
+      this.data[ObjectID.viewAsciugatura] = ViewAsciugatura.JSON();
     // this.data[ObjectID.viewPompaAcqua] = ViewPompaAcqua.JSON();
     // this.data[ObjectID.viewContatoreAcqua] = ViewContatoreAcqua.JSON();
     // this.data[ObjectID.viewSensoreTemperatura] = ViewSensoreTemperatura.JSON();
@@ -29,12 +30,14 @@ export class TreeOfView {
     // this.data[ObjectID.viewPompa] = ViewPompa.JSON();
     // this.data[ObjectID.viewVentilatore] = ViewVentilatore.JSON();
     // this.data[ObjectID.viewSensoreUmidita] = ViewSensoreUmidita.JSON();
+
     this.data[ObjectID.viewSezionePretrattamento] = ViewSezionePretrattamento.JSON();
     // this.data[ObjectID.viewVascaPretrattamento] = ViewVascaPretrattamento.JSON();
     this.data[ObjectID.viewVascaPrimer] = ViewVascaPrimer.JSON();
     this.data[ObjectID.viewVascaFinisher] = ViewVascaFinisher.JSON();
     // this.data[ObjectID.viewSensoreLivello] = ViewSensoreLivello.JSON();
     // this.data[ObjectID.viewSensorePH] = ViewSensorePH.JSON();
+
     this.data[ObjectID.viewSezioneStoccaggio] = ViewSezioneStoccaggio.JSON();
     this.data[ObjectID.viewImpilatore] = ViewImpilatore.JSON();
     // this.data[ObjectID.viewMotore1] = ViewMotore1.JSON();

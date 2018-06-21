@@ -146,7 +146,7 @@
   width: calc(100% - 5px);
   border-radius: 5px;
   box-shadow: 2px 1px 12px black;
-  background-image: url("../../documentation/MAGAZZINOL_DIGITAL.png");
+  background-image: url("../../documentation/treeView.png");
 }
 
 #tips {
