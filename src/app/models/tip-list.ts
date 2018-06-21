@@ -10,9 +10,10 @@ const _tips = [
   'Questo pulsante permette di ottimizzare [XXX] nell\'area che stai analizzando',
   'Questo pulsante permette di introdurre un elemento di digitalizzazione nelle apparecchiature presenti nell\'area che stai analizzando',
   'Questo pulsante permette di introdurre un elemento di digitalizzazione nei processi presenti nell\'area che stai analizzando',
-  `Grafico Relativo alla Produttività`,
-  'Grafico Relativo all\'Economic Impact',
-  'Work In Progress',
+  `Rappresentazione dell\'andamento nell\'ultimo mese per il parametro "Consumo di energia", fai un click sulla X
+  in alto a destra per chiudere questa visualizzazione`,
+  'Rappresentazione dell\'andamento nell\'ultimo mese per il parametro "Consumo di energia", fai un click per ingrandire',
+  'Rappresentazione dell\'andamento nell\'ultimo mese per il parametro "Pezzi scartati", fai un click per ingrandire',
   'Rappresentazione dell\'andamento nell\'ultimo mese per il parametro "AAA", fai un click per ingrandire',
   'Rappresentazione dell\'andamento nell\'ultimo mese per il parametro "BBB", fai un click per ingrandire',
   'Visulizzazione della object-view dello stabilimento',

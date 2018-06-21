@@ -88,22 +88,17 @@
   padding: 10px;
   box-shadow: 0 0 12px black;
   z-index: 4;
-  overflow: scroll;
-}
-
-#topmenu {
-  margin-top: -19px;
-}
-
-#bottommenu {
-  margin-top: -19px;
-  padding: 0;
 }
 
 #home {
   grid-area: home;
   padding: 10px;
   grid-column: 1;
+}
+
+#topmenu {
+  grid-area: topmenu;
+  padding: 10px;
 }
 
 #text {
@@ -129,31 +124,23 @@
   height: 532px;
 }
 
+#bottommenu {
+  grid-area: bottommenu;
+  padding: 10px;
+}
+
 #menu {
-  display: grid;
   grid-area: menu;
   padding: 10px;
   box-shadow: 0 0 12px black;
   z-index: 4;
-  grid-template-rows: 60px auto 1fr;
-}
-
-.map {
-  position: relative;
-  margin-top: 15px;
-  height: calc(100% - 15px);
-  background-color: #ffffff;
-  width: calc(100% - 5px);
-  border-radius: 5px;
-  box-shadow: 2px 1px 12px black;
-  background-image: url("../../documentation/MAGAZZINOL_DIGITAL.png");
 }
 
 #tips {
   grid-area: tips;
   padding: 10px;
   box-shadow: 0 0 12px black;
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 #intro {

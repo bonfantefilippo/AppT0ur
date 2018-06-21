@@ -6,8 +6,7 @@
   border-radius: 10px;
   padding: 7px;
   grid-column-gap: 7px;
-  margin-top: -15px;
-  margin-bottom: 19px;
+  margin-top: 8px;
 }
 
 #digital {
@@ -18,19 +17,18 @@
   border-radius: 10px;
   padding: 7px;
   grid-column-gap: 7px;
-}
-
-p {
-  padding: 0;
-  margin-top: 29px;
-  width: calc(100% - 5px);
-  font-size: 20px;
-  text-align: center;
+  margin-top: 8px;
 }
 
 .container {
   display: grid;
   grid-template-columns: 1fr;
+  padding-left: 10px;
   grid-column-gap: 10px;
-  width: calc(100% - 5px);
+}
+
+
+p {
+  font-size: 20px;
+  text-align: center;
 }

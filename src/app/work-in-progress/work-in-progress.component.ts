@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ArchitectService} from '../architect.service';
 import {ObjectID} from '../models/object-id.enum';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-work-in-progress',
@@ -11,7 +10,7 @@ import {Router} from '@angular/router';
 export class WorkInProgressComponent implements OnInit {
   ObjectID = ObjectID;
 
-  constructor(public service: ArchitectService, public router: Router) {
+  constructor(public service: ArchitectService) {
     /*this.service.viewChange.subscribe(res => {
       this.index = res.curIndex;
     });*/
@@ -20,9 +19,6 @@ export class WorkInProgressComponent implements OnInit {
   ngOnInit() {
   }
 
-  homeRedirect() {
-    this.router.navigate(['apptour/' + ObjectID.viewHome]);
-  }
 
   onDivMouseOver(index) {
     this.service.onMouseOver({curIndex: index});

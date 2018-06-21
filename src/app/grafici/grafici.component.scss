@@ -4,13 +4,17 @@
 .container5v1 {
   display: grid;
   grid-template-columns: 1fr;
+  padding: 20px;
   grid-row-gap: 30px;
-  margin-top: 18px;
 }
 
 .container5v1  .graphic {
-  height: 250px;
-  width: 300px;
+  /*height: 250px;
+  width: 300px;*/
+
+  height: 190px;
+  width: 230px;
+
   border-radius: 5px;
   border: 1px solid black;
   margin-left: auto;
@@ -21,29 +25,7 @@
 
 .container5v1  .graphic:hover {
   cursor: pointer;
-  transform: scale3d(1.03,1.03,1.03);
+  transform: scale3d(1.15,1.15,1.15);
   opacity: 1;
   transition-duration: 0.7s;
-}
-
-.top {
-  background: linear-gradient(#1e2426, #1e2426, transparent);
-  position: absolute;
-  height: 25px;
-  margin-left: -10px;
-  margin-top: -10px;
-  width: 327.5px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.bottom {
-  background: linear-gradient(transparent, #1e2426, #1e2426);
-  position: absolute;
-  height: 30px;
-  margin-left: -10px;
-  margin-top: 780px;
-  width: 327px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
