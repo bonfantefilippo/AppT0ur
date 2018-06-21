@@ -17,10 +17,14 @@ export class AppChartComponent implements OnInit, ICallback {
   contextID: ObjectID; // = ObjectID.notSet;
   private UID;
   public data: ChartDataRecord;
+  show = false;
 
   constructor(public service: ArchitectService) {
     console.log('Chart constructor');
-    this.data = ChartData.voidChart();
+     this.data = ChartData.voidChart();
+    this.service.dataChange.subscribe( (result) => {
+      this.data = this.service.getChart(this.contextID, result);
+    });
   }
 
   // i dati vengono passati dal service se è un grafico nella barra laterale
@@ -36,13 +40,13 @@ export class AppChartComponent implements OnInit, ICallback {
   }
 
   ngOnInit() {
-    console.log('Chart ' + this.contextID + ' init: before registerObject');
+    /*console.log('Chart ' + this.contextID + ' init: before registerObject');
     this.UID = this.service.registerObject(this, this.contextID);
     console.log('Chart ' + this.contextID + ' init: get chart');
     this.data = this.service.getDefaultChart(this.UID);
     this.data.tag = this.contextID;
-    console.log('Chart ' + this.contextID + ' init: End 2');
-
+    console.log('Chart ' + this.contextID + ' init: End 2');*/
+    this.show = true;
   }
 
   // events
@@ -59,28 +63,34 @@ export class AppChartComponent implements OnInit, ICallback {
   }
 
   get datasets() {
+    if (!this.data) {return null; }
     return this.data.lineChartData;
   }
 
   get labels() {
+    if (!this.data) {return null; }
     return this.data.lineChartLabels;
   }
 
   get options() {
+    if (!this.data) {return null; }
     /*return ChartData.notResponsiveOptions(this.data.lineChartOptions);*/
     return this.data.lineChartOptions;
   }
 
   get colors() {
+    if (!this.data) {return null; }
     return this.data.lineChartColors;
   }
 
   get legend() {
+    if (!this.data) {return null; }
     return false;
     // return this.data.lineChartLegend;
   }
 
   get chartType() {
+    if (!this.data) {return null; }
     return this.data.lineChartType;
   }
 

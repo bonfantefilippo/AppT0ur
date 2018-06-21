@@ -4,6 +4,7 @@ export class OptionOfView {
   public options: OptionType[] = [];
   public leanOnCount = 0;
   public cssDefault: string;
+  public active = false;
   constructor() {
   }
 

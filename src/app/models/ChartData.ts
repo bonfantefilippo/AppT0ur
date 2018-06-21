@@ -32,47 +32,47 @@ export class ChartData {
       )
     ;
     // fine grafico 1
-    /*
-       // grafico 2
-        this.data.push(ChartDataRecord.createChartRecord(
-          'grafico 2',
-          [
-            {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
-            {data: [28, 48, 40, 19, 86, 27, 90], label: 'Lean'}
-          ],
-          ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-          {responsive: true},
-          [
-            LineChartColors.getGreyTheme(),
-            LineChartColors.getDarkGreyTheme()
-          ],
-          true,
-          'line'
-          )
-        );
-        // fine grafico 2
+
+    // grafico 2
+    const grafico2 = ChartDataRecord.createChartRecord(
+      'grafico2',
+      [
+        {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
+        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Lean'}
+      ],
+      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+      {responsive: true},
+      [
+        LineChartColors.getGreyTheme(),
+        LineChartColors.getDarkGreyTheme()
+      ],
+      true,
+      'line'
+      )
+    ;
+    // fine grafico 2
 
 
-        // grafico 3
-        this.data.push(ChartDataRecord.createChartRecord(
-          'grafico 3',
-          [
-            {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
-            {data: [28, 48, 40, 19, 86, 27, 90], label: 'Lean'},
-            {data: [78, 48, 77, 9, 100, 27, 40], label: 'Digital'}
-          ],
-          ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-          {responsive: true},
-          [
-            LineChartColors.getGreyTheme(),
-            LineChartColors.getDarkGreyTheme(),
-            LineChartColors.getBlueTheme()
-          ],
-          true,
-          'line'
-          )
-        );
-        // fine grafico 3*/
+    // grafico 3
+    const grafico3 = ChartDataRecord.createChartRecord(
+      'grafico3',
+      [
+        {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
+        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Lean'},
+        {data: [78, 48, 77, 9, 100, 27, 40], label: 'Digital'}
+      ],
+      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+      {responsive: true},
+      [
+        LineChartColors.getGreyTheme(),
+        LineChartColors.getDarkGreyTheme(),
+        LineChartColors.getBlueTheme()
+      ],
+      true,
+      'line'
+      )
+    ;
+    // fine grafico 3
 
     // grafico 4
     const grafico4 = ChartDataRecord.createChartRecord(
@@ -354,11 +354,16 @@ export class ChartData {
     );
 
     this.data.push(
+      grafico1,
+      grafico2,
+      grafico3,
+      grafico4,
+      grafico5,
+      grafico6,
+      grafico7,
       productionBarGraph,
       economicImpactBarGraph,
-      workInProgressGraphBar,
-      grafico1,
-      grafico7
+      workInProgressGraphBar
     );
   } // fine costruttore
 

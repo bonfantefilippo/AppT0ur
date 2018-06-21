@@ -58,7 +58,7 @@ export class ArchitectService {
   * */
   @Output() leanSetChange = new EventEmitter();
   @Output() digitalSetChange = new EventEmitter();
-
+  @Output() dataChange = new EventEmitter();
   @Output() objectMouseOver = new EventEmitter();
   @Output() route = new EventEmitter();
 
@@ -129,7 +129,7 @@ export class ArchitectService {
     caller.setData(_treeOfView.data[contextID]);
 
     console.log('registering object of context: ' + contextID + ' return', _treeOfView.data[contextID]);
-
+    this.dataChange.emit(_treeOfView.data[contextID]);
     return UID;
   }
 
@@ -143,16 +143,10 @@ export class ArchitectService {
   }
 
   onLeanOption(btn) {
-    /* btn.index punta all'array degli oggetti
-    * todo: implementare l'arry*/
-    console.log('onLeanOption ' + btn.index);
-    // console.log('onLeanOption(' + btn.index + ').checked = ' + this.leanOption[btn.index].checked);
-    // this.leanOption[btn.index].checked = btn.checked;
     this.leanChange.emit(_treeOfView.data[this.index].leanOptions);
   }
 
   onDigitalOption(btn) {
-    // this.digitalOption[btn.index ].checked = btn.checked;
     this.digitalChange.emit(_treeOfView.data[this.index].digitalOptions);
   }
 
@@ -163,6 +157,7 @@ export class ArchitectService {
   onRoute(contextID: ObjectID) {
     console.log('Routing to ' + contextID);
     this.route.emit(contextID);
+    this.dataChange.emit(_treeOfView.data[contextID]);
   }
 
   onChartRoute(contextID: ObjectID) {
@@ -202,5 +197,9 @@ export class ArchitectService {
   setActiveChart(UID: number, data: ChartDataRecord) {
     this._activeChart = {'UID': UID, 'data': data, 'valid': true};
     console.log('setActiveChart', this._activeChart.UID, this._activeChart.data, this._activeChart.valid);
+  }
+
+  getChart(contextID: ObjectID, result: any) {
+    return this._chartData.getChart(contextID - ObjectID.chart1);
   }
 }
