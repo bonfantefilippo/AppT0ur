@@ -1,0 +1,164 @@
+.centraApp {
+  position: absolute;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1340px 1fr;
+  z-index: 2;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.intestazione {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  grid-template-rows: 58px;
+}
+
+.home {
+  height: 10px;
+  width: 10px;
+  margin-top: 3px;
+  margin-left: 10px;
+  border-radius: 5px;
+  background-image: url("../../documentation/home-512.png");
+  background-size: cover;
+  background-position: center;
+  z-index: 4;
+}
+
+.home:hover {
+  cursor: pointer;
+}
+
+.centraApp .app {
+  margin-left: 1fr;
+  margin-right: 1fr;
+  width: 1340px;
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  box-shadow: 2px 1px 12px black;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: 58px repeat(7, 76px) 145px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  height: 825px;
+  padding: 10px;
+  padding-bottom: 0;
+  grid-template-areas:
+    'menu menu intestazione intestazione intestazione intestazione grafici grafici'
+    'menu menu view view view view grafici grafici'
+    'menu menu view view view view grafici grafici'
+    'menu menu view view view view grafici grafici'
+    'menu menu view view view view grafici grafici'
+    'menu menu view view view view grafici grafici'
+    'menu menu view view view view grafici grafici'
+    'menu menu tips tips tips tips grafici grafici'
+    'menu menu tips tips tips tips grafici grafici';
+  border-radius: 5px;
+  background-color: #293133;
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+.centraApp h1 {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 40px;
+  text-shadow: 1px 1px 1px black;
+}
+
+.background {
+  margin-left: -8px;
+  margin-top: -8px;
+  z-index: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #49b675;
+  background-image: url("../../documentation/apps.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+}
+
+#grafici {
+  grid-area: grafici;
+  padding: 10px;
+  box-shadow: 0 0 12px black;
+  z-index: 4;
+  overflow: scroll;
+}
+
+#topmenu {
+  margin-top: -19px;
+}
+
+#bottommenu {
+  margin-top: -19px;
+  padding: 0;
+}
+
+#home {
+  grid-area: home;
+  padding: 10px;
+  grid-column: 1;
+}
+
+#text {
+  grid-area: text;
+  padding: 10px;
+  grid-column: 1;
+  margin-top: 0px;
+}
+
+
+#intestazione {
+  display: grid;
+  height: 40px;
+  grid-template-columns: 1fr;
+  grid-area: intestazione;
+  padding: 10px;
+  box-shadow: 0 0 12px black;
+  z-index: 4;
+}
+
+#view {
+  grid-area: view;
+  height: 532px;
+}
+
+#menu {
+  display: grid;
+  grid-area: menu;
+  padding: 10px;
+  box-shadow: 0 0 12px black;
+  z-index: 4;
+  grid-template-rows: 60px auto 1fr;
+}
+
+.map {
+  position: relative;
+  margin-top: 15px;
+  height: calc(100% - 15px);
+  background-color: #ffffff;
+  width: calc(100% - 5px);
+  border-radius: 5px;
+  box-shadow: 2px 1px 12px black;
+  background-image: url("../../documentation/treeView.png");
+}
+
+#tips {
+  grid-area: tips;
+  padding: 10px;
+  box-shadow: 0 0 12px black;
+  margin-top: 25px;
+}
+
+#intro {
+  position: absolute;
+  margin-top: -850px;
+  height: 850px;
+  width: 100%;
+}
