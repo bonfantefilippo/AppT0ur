@@ -12,8 +12,8 @@ export class ViewPiantinaAngus {
       'childId': 'child1', 'contextID': ObjectID.viewSezioneLavaggio
     });
     objs.push({
-      'routerLink': '/apptour/' + ObjectID.viewSezionePretrattamento,
-      'childId': 'child2', 'contextID': ObjectID.viewSezionePretrattamento
+      'routerLink': '/apptour/' + ObjectID.viewSezioneTrattamento,
+      'childId': 'child2', 'contextID': ObjectID.viewSezioneTrattamento
     });
     objs.push({
       'routerLink': '/apptour/' + ObjectID.viewSezioneStoccaggio,
