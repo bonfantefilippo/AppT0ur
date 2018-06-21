@@ -3,14 +3,14 @@ import {ObjectID} from './models/object-id.enum';
 import {ChartData, ChartDataRecord} from './models/ChartData';
 import {ICallback} from './models/ICallback';
 import {TreeOfView} from './models/TreeBuilder';
-import {OptionOfView, OptionType} from './models/OptionBuilder';
+import {Router} from '@angular/router';
 
 
 const _treeOfView = new TreeOfView();
 
 @Injectable()
 export class ArchitectService {
-  private rndChartIndex = 0;
+  /*private rndChartIndex = 0;*/
   /*
     index è l'indice DI CONTESTO  dell'oggetto corrente caricato nella View
     ogni oggetto rappresenta un contesto specifico e il suo indice di contesto
@@ -18,6 +18,8 @@ export class ArchitectService {
     visualizzazione.
    */
   index: ObjectID = ObjectID.viewPiantinaAngus;
+
+  chartCounter = 0;
 
   /*
     Unique Identifier: utilizzato per identificare in maniera univoca
@@ -63,8 +65,6 @@ export class ArchitectService {
   @Output() route = new EventEmitter();
 
 
-  registeredObjects: Array<any> = [];
-
   /*
     quando si fa il click su uno dei grafici di sinistra memorizziamo le informazioni relative
     in modo che quando viene eseguito il routing il componente caricato nella view
@@ -74,12 +74,12 @@ export class ArchitectService {
   private _activeChart: { UID: number; data: ChartDataRecord; valid: boolean } = {UID: 0, data: null, valid: false};
 
 
-  constructor() {
+  constructor(public router: Router) {
   }
 
   registerOptimizer(contextID: ObjectID) {
     if (!_treeOfView.data[this.index]) {
-      console.log('registe FAIL btn of context: ' + contextID + ' set change', _treeOfView.data[this.index]);
+      console.log('register FAIL btn of context: ' + contextID + ' set change', _treeOfView.data[this.index]);
       return -1;
     }
     console.log('registering btn of context: ' + contextID + ' set change', _treeOfView.data[this.index]);
@@ -106,11 +106,9 @@ export class ArchitectService {
       che non sono titolati a riceverli
      */
     if (!_treeOfView.data[contextID]) {
-      console.log('registering object of context: ' + contextID + ' enter', contextID, caller);
+      console.log('register object FAIL', contextID, caller);
       return -1;
     }
-    console.log('registering object of context: ' + contextID + ' enter', _treeOfView.data[contextID], caller);
-
     console.log('registering object of context: ' + contextID + ' set change', _treeOfView.data[contextID]);
     this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
     this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
@@ -120,11 +118,7 @@ export class ArchitectService {
     }
     this.index = contextID;
     const UID = ++this._UID;
-    this.registeredObjects.push({
-      'caller': caller,
-      'contextID': contextID,
-      'UID': UID
-    });
+
     console.log('registering object of context: ' + contextID + ' set data', _treeOfView.data[contextID]);
     caller.setData(_treeOfView.data[contextID]);
 
@@ -143,10 +137,12 @@ export class ArchitectService {
   }
 
   onLeanOption(btn) {
+    console.log('onLeanOption ' + btn.index);
     this.leanChange.emit(_treeOfView.data[this.index].leanOptions);
   }
 
   onDigitalOption(btn) {
+    console.log('onDigitalOption ' + btn.index);
     this.digitalChange.emit(_treeOfView.data[this.index].digitalOptions);
   }
 
@@ -160,33 +156,8 @@ export class ArchitectService {
     this.dataChange.emit(_treeOfView.data[contextID]);
   }
 
-  onChartRoute(contextID: ObjectID) {
-    console.log('Routing to ' + contextID);
-    // this.route.emit(contextID);
-  }
-
-
-  getRandomChart() {
-    /*const chartIndex = Math.floor(Math.random() * this._chartData.getCount());
-    console.log('getRandomChart: ' + chartIndex + ' of ' + this._chartData.getCount());*/
-
-    if (this.rndChartIndex >= this._chartData.getCount()) {
-      this.rndChartIndex = 0;
-    }
-    return this._chartData.getChart(this.rndChartIndex++);
-  }
-
-  getDefaultChart(UID: number) {
-    if (UID === this._activeChart.UID && this._activeChart && this._activeChart.valid) {
-      console.log('Show chart in view with UID ' + UID);
-      this._activeChart.valid = false;
-      const data = this._activeChart.data.clone();
-      this._activeChart = null;
-      return data; // .clone();
-    }
-    console.log('Show random chart for UID ' + UID);
-    // return this._chartData.getChart(0);
-    return this.getRandomChart();
+  getChart(contextID: ObjectID) {
+    return this._chartData.getChart(contextID - ObjectID.chart1);
   }
 
   getActiveChart() {
@@ -199,7 +170,30 @@ export class ArchitectService {
     console.log('setActiveChart', this._activeChart.UID, this._activeChart.data, this._activeChart.valid);
   }
 
-  getChart(contextID: ObjectID, result: any) {
-    return this._chartData.getChart(contextID - ObjectID.chart1);
+  chartCounterUp() {
+    this.chartCounter++;
+    console.log(this.chartCounter);
   }
+
+  chartCounterZero() {
+    this.chartCounter = 0;
+  }
+
+  async chartClose(id) {
+    if (this.chartCounter !== 0) {
+      window.history.back();
+      await this.sleep(10);
+      this.router.navigate([/chart/ + id]);
+      return this.chartCounter;
+    } else {
+      this.chartCounterUp();
+      this.router.navigate([/chart/ + id]);
+      return this.chartCounter;
+    }
+  }
+
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
 }

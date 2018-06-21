@@ -2,17 +2,23 @@ import {ObjectID} from './object-id.enum';
 import {ObjectOfView} from './ObjectOfView';
 
 export class ViewPiantinaAngus {
-  public static JSON () {
+  public static JSON() {
     const data: ObjectOfView = new ObjectOfView('ViewPiantinaAngus');
     const objs = [];
     data.objects = objs;
 
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSezioneLavaggio,
-      'childId': 'child1', 'contextID': ObjectID.viewSezioneLavaggio});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSezionePretrattamento,
-      'childId': 'child2', 'contextID': ObjectID.viewSezionePretrattamento});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSezioneStoccaggio,
-      'childId': 'child3', 'contextID': ObjectID.viewSezioneStoccaggio});
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewSezioneLavaggio,
+      'childId': 'child1', 'contextID': ObjectID.viewSezioneLavaggio
+    });
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewSezionePretrattamento,
+      'childId': 'child2', 'contextID': ObjectID.viewSezionePretrattamento
+    });
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewSezioneStoccaggio,
+      'childId': 'child3', 'contextID': ObjectID.viewSezioneStoccaggio
+    });
 
     // Per descrizione stili guardare in styleAngus.scss e styleAngusBackgroundd.scss
 

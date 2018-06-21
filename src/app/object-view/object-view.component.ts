@@ -8,7 +8,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-piantina',
   templateUrl: './object-view.component.html',
-  styleUrls: ['./styleAngus.scss',
+  styleUrls: [
+    './styleAngus.scss',
     './styleAngusBackground.scss']
 })
 

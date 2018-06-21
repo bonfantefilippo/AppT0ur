@@ -5,6 +5,7 @@ import {ChartData, ChartDataRecord} from '../../models/ChartData';
 import {ArchitectService} from '../../architect.service';
 
 import * as Chart from 'chart.js';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-app-chart',
@@ -17,36 +18,21 @@ export class AppChartComponent implements OnInit, ICallback {
   contextID: ObjectID; // = ObjectID.notSet;
   private UID;
   public data: ChartDataRecord;
-  show = false;
 
-  constructor(public service: ArchitectService) {
-    console.log('Chart constructor');
-     this.data = ChartData.voidChart();
+  constructor(public service: ArchitectService, public router: Router) {
+    console.log('Chart ' + this.contextID + ' constructor: get chart');
     this.service.dataChange.subscribe( (result) => {
-      this.data = this.service.getChart(this.contextID, result);
+      this.data = this.service.getChart(this.contextID);
     });
   }
 
-  // i dati vengono passati dal service se è un grafico nella barra laterale
-  // se invece è nella view, il grafico se li deve prendere quando la route è
-  // completa.
-  // Quando il componente viene creato nella barra laterale riceve immediatamente
-  // un contextID, se invece nasce nella View il contextID è notSet.
-  // con contestID = notSet, dobbiamo sottoscrivere il router.events che notifica
-  // l'evento NavigationEnd, momento in cui andiamo a prendere i dati
-  // dall'Architect.
+
   setData(data: any) {
     // this.data = data.console.log('Got new data');
   }
 
   ngOnInit() {
-    /*console.log('Chart ' + this.contextID + ' init: before registerObject');
-    this.UID = this.service.registerObject(this, this.contextID);
-    console.log('Chart ' + this.contextID + ' init: get chart');
-    this.data = this.service.getDefaultChart(this.UID);
-    this.data.tag = this.contextID;
-    console.log('Chart ' + this.contextID + ' init: End 2');*/
-    this.show = true;
+    this.data = this.service.getChart(this.contextID);
   }
 
   // events
@@ -74,8 +60,7 @@ export class AppChartComponent implements OnInit, ICallback {
 
   get options() {
     if (!this.data) {return null; }
-    /*return ChartData.notResponsiveOptions(this.data.lineChartOptions);*/
-    return this.data.lineChartOptions;
+    return this.data.lineChartOptionsThumbnail;
   }
 
   get colors() {
@@ -84,7 +69,7 @@ export class AppChartComponent implements OnInit, ICallback {
   }
 
   get legend() {
-    if (!this.data) {return null; }
+    /*if (!this.data) {return null; }*/
     return false;
     // return this.data.lineChartLegend;
   }

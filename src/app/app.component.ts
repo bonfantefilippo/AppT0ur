@@ -19,4 +19,8 @@ export class AppComponent {
     this.router.navigate(['apptour/' + ObjectID.viewHome]);
   }
 
+  counterChartZero() {
+    this.service.chartCounterZero();
+  }
+
 }
