@@ -9,8 +9,7 @@ import {Subscription} from 'rxjs';
 @Component({
   selector: 'app-piantina',
   templateUrl: './object-view.component.html',
-  styleUrls: ['./obsoleto/stylePiantina.scss',
-    './obsoleto/styleMagazzino.scss',
+  styleUrls: [
     './styleAngus.scss',
     './styleAngusBackground.scss']
 })

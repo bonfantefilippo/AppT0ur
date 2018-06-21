@@ -17,7 +17,6 @@ export class AppChartComponent implements OnInit, ICallback {
   contextID: ObjectID; // = ObjectID.notSet;
   private UID;
   public data: ChartDataRecord;
-
   constructor(public service: ArchitectService) {
     console.log('Chart constructor');
     this.data = ChartData.voidChart();
@@ -68,7 +67,7 @@ export class AppChartComponent implements OnInit, ICallback {
 
   get options() {
     /*return ChartData.notResponsiveOptions(this.data.lineChartOptions);*/
-    return this.data.lineChartOptions;
+    return this.data.lineChartOptionsThumbnail;
   }
 
   get colors() {
