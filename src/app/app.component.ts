@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {ArchitectService} from './architect.service';
+import {Router} from '@angular/router';
+import {ObjectID} from './models/object-id.enum';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +9,18 @@ import {ArchitectService} from './architect.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'appT0urist';
 
-  constructor(public service: ArchitectService) {
+  constructor(public service: ArchitectService, public router: Router) {
+    this.homeRedirect();
+  }
+
+  homeRedirect() {
+    this.router.navigate(['apptour/' + ObjectID.viewHome]);
+  }
+
+  counterChartZero() {
+    this.service.chartCounterZero();
   }
 
 }
