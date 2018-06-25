@@ -7,10 +7,9 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-grafici',
   templateUrl: './grafici.component.html',
-  styleUrls: ['./grafici.component.css']
+  styleUrls: ['./grafici.component.scss']
 })
 export class GraficiComponent implements OnInit {
-
   ObjectID = ObjectID;
   routerLink: any;
   charts: Array<ObjectID> = [
@@ -27,6 +26,9 @@ export class GraficiComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    console.log('Grafici ngOnInit enter' );
+
   }
 
   onDivMouseOver(index) {

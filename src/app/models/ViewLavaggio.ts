@@ -12,7 +12,7 @@ export class ViewLavaggio {
     objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreTemperatura, 'childId': 'child3', 'contextID': ObjectID.viewSensoreTemperatura});
     objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreLivelloAcqua, 'childId': 'child4', 'contextID': ObjectID.viewSensoreLivelloAcqua});
 
-    data.leanOptions.cssDefault = 'an4 bl';
+    data.leanOptions.cssDefault = 'an4D bl';
 
     data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an4L blL');
 

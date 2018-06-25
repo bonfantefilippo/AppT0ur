@@ -23,26 +23,13 @@ export class AppChartComponent implements OnInit, ICallback {
     this.data = ChartData.voidChart();
   }
 
-  // i dati vengono passati dal service se è un grafico nella barra laterale
-  // se invece è nella view, il grafico se li deve prendere quando la route è
-  // completa.
-  // Quando il componente viene creato nella barra laterale riceve immediatamente
-  // un contextID, se invece nasce nella View il contextID è notSet.
-  // con contestID = notSet, dobbiamo sottoscrivere il router.events che notifica
-  // l'evento NavigationEnd, momento in cui andiamo a prendere i dati
-  // dall'Architect.
+
   setData(data: any) {
     // this.data = data.console.log('Got new data');
   }
 
   ngOnInit() {
-    console.log('Chart ' + this.contextID + ' init: before registerObject');
-    this.UID = this.service.registerObject(this, this.contextID);
-    console.log('Chart ' + this.contextID + ' init: get chart');
-    this.data = this.service.getDefaultChart(this.UID);
-    this.data.tag = this.contextID;
-    console.log('Chart ' + this.contextID + ' init: End 2');
-    console.log(this.router.url);
+    this.data = this.service.getChart(this.contextID);
   }
 
   // events
@@ -59,28 +46,33 @@ export class AppChartComponent implements OnInit, ICallback {
   }
 
   get datasets() {
+    if (!this.data) {return null; }
     return this.data.lineChartData;
   }
 
   get labels() {
+    if (!this.data) {return null; }
     return this.data.lineChartLabels;
   }
 
   get options() {
-    /*return ChartData.notResponsiveOptions(this.data.lineChartOptions);*/
+    if (!this.data) {return null; }
     return this.data.lineChartOptionsThumbnail;
   }
 
   get colors() {
+    if (!this.data) {return null; }
     return this.data.lineChartColors;
   }
 
   get legend() {
+    /*if (!this.data) {return null; }*/
     return false;
     // return this.data.lineChartLegend;
   }
 
   get chartType() {
+    if (!this.data) {return null; }
     return this.data.lineChartType;
   }
 

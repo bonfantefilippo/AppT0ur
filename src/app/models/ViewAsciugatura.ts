@@ -12,7 +12,7 @@ export class ViewAsciugatura {
     objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreTemperatura, 'childId': 'child3', 'contextID': ObjectID.viewSensoreTemperatura});
     objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreUmidita, 'childId': 'child4', 'contextID': ObjectID.viewSensoreUmidita});
 
-    data.leanOptions.cssDefault = 'an4 ba';
+    data.leanOptions.cssDefault = 'an4D ba';
 
     data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an4L baL');
 

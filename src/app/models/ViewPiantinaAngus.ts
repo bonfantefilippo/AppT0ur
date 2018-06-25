@@ -2,7 +2,7 @@ import {ObjectID} from './object-id.enum';
 import {ObjectOfView} from './ObjectOfView';
 
 export class ViewPiantinaAngus {
-  public static JSON() {
+  public static JSON () {
     const data: ObjectOfView = new ObjectOfView('ViewPiantinaAngus');
     const objs = [];
     data.objects = objs;

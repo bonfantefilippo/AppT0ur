@@ -124,6 +124,7 @@ export class ChartData {
       )
     ;
     // fine grafico 5
+
     // grafico 6
     const grafico6 = ChartDataRecord.createChartRecord(
       'grafico6',
@@ -248,56 +249,56 @@ export class ChartData {
                               stackedX, stackedY, tipTitleFontSize, tipFontSize, tipEnable, myCallbacks, legend = false) {
     return {
       responsive: responsive,
-      display: true,
-      title: {
         display: true,
-        position: 'top',
+        title: {
+          display: true,
+          position: 'top',
         fontSize: titleFontSize,
         text: text,
-        fontStyle: 'bold',
-        fontColor: '#000'
-      },
-      legend: {
+          fontStyle: 'bold',
+          fontColor: '#000'
+        },
+        legend: {
         display: legend,
         labels: {
           fontColor: 'rgb(255, 99, 132)'
         }
-      },
-      scales: {
-        xAxes: [
-          {
+        },
+        scales: {
+          xAxes: [
+            {
             stacked: stackedX,
-            ticks: {
-              beginAtZero: true,
-              fontColor: '#000',
+              ticks: {
+                beginAtZero: true,
+                fontColor: '#000',
               fontSize: scaleFontSizeX,
-              fontStyle: 'bold'
+                fontStyle: 'bold'
+              }
             }
-          }
-        ],
-        yAxes: [
-          {
+          ],
+          yAxes: [
+            {
             stacked: stackedY,
-            ticks: {
-              beginAtZero: true,
-              fontColor: '#000',
+              ticks: {
+                beginAtZero: true,
+                fontColor: '#000',
               fontSize: scaleFontSizeY,
-              fontStyle: 'bold'
+                fontStyle: 'bold'
+              }
             }
-          }
-        ]
-      },
-      tooltips: {
+          ]
+        },
+        tooltips: {
         enabled: tipEnable,
-        mode: 'index',
-        backgroundColor: 'rgba(0, 0, 0, 1)',
+          mode: 'index',
+          backgroundColor: 'rgba(0, 0, 0, 1)',
         titleFontSize: tipTitleFontSize,
-        titleFontColor: '#0066ff',
-        bodyFontColor: '#FFF',
+          titleFontColor: '#0066ff',
+          bodyFontColor: '#FFF',
         bodyFontSize: tipFontSize,
-        displayColors: false,
+          displayColors: false,
         callbacks: myCallbacks
-      }
+          }
     };
   }
 
