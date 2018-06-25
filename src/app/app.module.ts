@@ -20,8 +20,6 @@ import {AppChartComponent} from './charts/app-chart/app-chart.component';
 import {MatIconModule, MatTabsModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ChartMirrorComponent} from './charts/chart-mirror/chart-mirror.component';
-import {TreeModule} from 'angular-tree-component';
-import { NodeComponent } from './node/node.component';
 
 const appRoutes: Routes = [
   {path: 'apptour/:contextID', component: ObjectViewComponent},
@@ -56,8 +54,7 @@ const appRoutes: Routes = [
     DigitalComponent,
     WorkInProgressComponent,
     AppChartComponent,
-    ChartMirrorComponent,
-    NodeComponent
+    ChartMirrorComponent
   ],
   imports: [
     BrowserModule,
@@ -68,8 +65,7 @@ const appRoutes: Routes = [
     ),
     ChartsModule,
     MatTabsModule,
-    MatIconModule,
-    TreeModule
+    MatIconModule
   ],
   providers: [ArchitectService],
   bootstrap: [AppComponent]

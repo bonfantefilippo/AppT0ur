@@ -20,18 +20,15 @@ export class ChartData {
     const grafico1 = ChartDataRecord.createChartRecord(
       'grafico1',
       [
-        {data: [75, 89, 80, 81, 86, 85, 90, 80], label: 'Standard'},
+        {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Current absorption', true, 25, 17, 17, false,
-        false, 20, 17, true, null),
-      ChartData.ChartOptions1('Current absorption', true, 14, 9, 9, false,
-        false, 12, 9, false, null),
+      {responsive: true, barThickness: 1},
       [
         LineChartColors.getGreyTheme()
       ],
       true,
-      'line'
+      'bar'
       )
     ;
     // fine grafico 1
@@ -40,14 +37,11 @@ export class ChartData {
     const grafico2 = ChartDataRecord.createChartRecord(
       'grafico2',
       [
-        {data: [75, 89, 80, 81, 86, 85, 90, 12], label: 'Standard'},
-        {data: [28, 48, 40, 19, 86, 27, 90, 23], label: 'Lean'}
+        {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
+        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Lean'}
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Current absorption after Lean', true, 25, 17, 17, false,
-        false, 20, 17, true, null),
-      ChartData.ChartOptions1('Current absorption after Lean', true, 14, 9, 9, false,
-        false, 12, 9, false, null),
+      {responsive: true},
       [
         LineChartColors.getGreyTheme(),
         LineChartColors.getDarkGreyTheme()
@@ -63,15 +57,12 @@ export class ChartData {
     const grafico3 = ChartDataRecord.createChartRecord(
       'grafico3',
       [
-        {data: [75, 89, 80, 81, 86, 85, 90, 83], label: 'Standard'},
-        {data: [28, 48, 40, 19, 86, 27, 90, 55], label: 'Lean'},
-        {data: [78, 48, 77, 9, 100, 27, 40, 66], label: 'Digital'}
+        {data: [75, 89, 80, 81, 86, 85, 90], label: 'Standard'},
+        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Lean'},
+        {data: [78, 48, 77, 9, 100, 27, 40], label: 'Digital'}
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Current absorption after Digital', true, 25, 17, 17, false,
-        false, 20, 17, true, null),
-      ChartData.ChartOptions1('Current absorption after Digital', true, 14, 9, 9, false,
-        false, 12, 9, false, null),
+      {responsive: true},
       [
         LineChartColors.getGreyTheme(),
         LineChartColors.getDarkGreyTheme(),
@@ -87,15 +78,12 @@ export class ChartData {
     const grafico4 = ChartDataRecord.createChartRecord(
       'grafico4',
       [
-        {data: [75, 89, 40, 40, 86, 85, 90, 70], label: 'Standard'},
+        {data: [75, 89, 40, 40, 86, 85, 90], label: 'Standard'},
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Wastege', true, 25, 17, 17, false,
-        false, 20, 17, true, null),
-      ChartData.ChartOptions1('Wastege', true, 14, 9, 9, false,
-        false, 12, 9, false, null),
+      {responsive: true, barThickness: 1},
       [
-        LineChartColors.getRedTheme(),
+        LineChartColors.getGreyTheme()
       ],
       true,
       'bar'
@@ -107,17 +95,12 @@ export class ChartData {
     const grafico5 = ChartDataRecord.createChartRecord(
       'grafico5',
       [
-        {data: [75, 89, 80, 81, 70, 73, 90, 85], label: 'Standard'},
-        {data: [70, 80, 75, 79, 66, 65, 70, 71], label: 'Lean'},
+        {data: [75, 89, 80, 81, 12, 12, 90], label: 'Standard'},
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Wastege  after Lean', true, 25, 17, 17, false,
-        false, 20, 17, true, null),
-      ChartData.ChartOptions1('Wastege  after Lean', true, 14, 9, 9, false,
-        false, 12, 9, false, null),
+      {responsive: true, barThickness: 1},
       [
-        LineChartColors.getRedTheme(),
-        LineChartColors.getGreenTheme(),
+        LineChartColors.getGreyTheme()
       ],
       true,
       'bar'
@@ -129,34 +112,9 @@ export class ChartData {
     const grafico6 = ChartDataRecord.createChartRecord(
       'grafico6',
       [
-        {data: [75, 89, 80, 81, 70, 73, 90, 85], label: 'Standard'},
-        {data: [70, 80, 75, 79, 66, 65, 70, 71], label: 'Lean'},
-        {data: [68, 72, 68, 69, 65, 64, 64, 65], label: 'Digital'},
+        {data: [4, 4, 80, 81, 12, 4, 4], label: 'Standard'},
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Wastege after Digital', true, 25, 17, 17, false,
-        false, 20, 17, true, null, true),
-      ChartData.ChartOptions1('Wastege after Digital', true, 14, 9, 9, false,
-        false, 12, 9, false, null, true),
-      [
-        LineChartColors.getRedTheme(),
-        LineChartColors.getGreenTheme(),
-        LineChartColors.getBlueTheme()
-      ],
-      true,
-      'bar'
-      )
-    ;
-    // fine grafico 6
-
-    /*// grafico 7
-    const grafico7 = ChartDataRecord.createChartRecord(
-      'grafico7',
-      [
-        {data: [2, 2, 80, 81, 12, 12, 90], label: 'Standard'},
-      ],
-      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      {responsive: true, barThickness: 1},
       {responsive: true, barThickness: 1},
       [
         LineChartColors.getGreyTheme()
@@ -165,16 +123,94 @@ export class ChartData {
       'bar'
       )
     ;
-    // fine grafico 7*/
+    // fine grafico 6
+
+    // grafico 7
+    const grafico7 = ChartDataRecord.createChartRecord(
+      'grafico7',
+      [
+        {data: [2, 2, 80, 81, 12, 12, 90], label: 'Standard'},
+      ],
+      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
+      {responsive: true, barThickness: 1},
+      [
+        LineChartColors.getGreyTheme()
+      ],
+      true,
+      'bar'
+      )
+    ;
+    // fine grafico 7
 
     const productionBarGraph = ChartDataRecord.createChartRecord(
       'productionBarGraph',
       [{data: [2, 4, 5, 8], label: null}],
       ['Before Lean', 'After Lean', 'After Digital 1', 'After Digital 2'],
-      ChartData.ChartOptions1('Productivity', true, 25, 17, 17, true, true, 20,
-        17, true, ChartData.Callback1(' pieces/man-hour')),
-      ChartData.ChartOptions1('Productivity', true, 14, 9, 9, true, true, 12,
-        9, false, ChartData.Callback1(' pieces/man-hour')),
+      {
+        responsive: true,
+        display: true,
+        title: {
+          display: true,
+          position: 'top',
+          fontSize: 25,
+          text: 'Productivity',
+          fontStyle: 'bold',
+          fontColor: '#000'
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                fontColor: '#000',
+                fontSize: 17,
+                fontStyle: 'bold'
+              }
+            }
+          ],
+          yAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                fontColor: '#000',
+                fontSize: 17,
+                fontStyle: 'bold'
+              }
+            }
+          ]
+        },
+        tooltips: {
+          enabled: true,
+          mode: 'index',
+          backgroundColor: 'rgba(0, 0, 0, 1)',
+          titleFontSize: 20,
+          titleFontColor: '#0066ff',
+          bodyFontColor: '#FFF',
+          bodyFontSize: 17,
+          displayColors: false,
+          callbacks: {
+            label: function (tooltipItem, data) {
+              return (
+                data['datasets'][0]['data'][tooltipItem['index']] +
+                ' pieces/man-hour'
+              );
+            }
+            /* afterLabel: function(tooltipItem, data) {
+              const sum = data.datasets.reduce((sum, dataset) => {
+                return sum + dataset.data[tooltipItem.index];
+              }, 0);
+              const percent = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] / sum * 100;
+              percent = percent.toFixed(2); // make a nice string
+              return data.datasets[tooltipItem.datasetIndex].label + ': ' + percent + '%';
+            }*/
+          }
+        }
+      },
       [LineChartColors.getGraphBarTheme()],
       false,
       'bar'
@@ -185,11 +221,68 @@ export class ChartData {
       'economicImpactBarGraph',
       [{data: [2.4, 5.8, 10.2, 13.4], label: null}],
       ['Before Lean', 'After Lean', 'After Digital 1', 'After Digital 2'],
-      ChartData.ChartOptions1(['Economic Impact', 'EBITDA %'], true, 25, 17, 17, true, true, 20,
-        17, true, ChartData.Callback2('%')),
-      ChartData.ChartOptions1(['Economic Impact', 'EBITDA %'], true, 14, 9, 9, true, true, 12,
-        9, false, ChartData.Callback2('%')),
+      {
+        responsive: true,
+        display: true,
+        title: {
+          display: true,
+          position: 'top',
+          fontSize: 25,
+          text: ['Economic Impact', 'EBITDA %'],
+          fontStyle: 'bold',
+          fontColor: '#000'
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                fontColor: '#000',
+                fontSize: 17,
+                fontStyle: 'bold'
+              }
+            }
+          ],
+          yAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                fontColor: '#000',
+                fontSize: 17,
+                fontStyle: 'bold',
+                callback: function (value) {
+                  return value + '%';
+                }
+              }
+            }
+          ]
+        },
+        tooltips: {
+          enabled: true,
+          mode: 'index',
+          backgroundColor: 'rgba(0, 0, 0, 1)',
+          titleFontSize: 20,
+          titleFontColor: '#0066ff',
+          bodyFontColor: '#FFF',
+          bodyFontSize: 17,
+          displayColors: false,
+          callbacks: {
+            label: function (tooltipItem, data) {
+              // get the concerned dataset
+              const dataset = data.datasets[tooltipItem.datasetIndex];
+              // get the current items value
+              const currentValue = dataset.data[tooltipItem.index];
 
+              return currentValue + '%';
+            }
+          }
+        }
+      },
       [LineChartColors.getGraphBarTheme()],
       false,
       'bar'
@@ -199,10 +292,62 @@ export class ChartData {
       'workInProgressGraphBar',
       [{data: [194, 54, 50, 42], label: null}],
       ['Before Lean', 'After Lean', 'After Digital 1', 'After Digital 2'],
-      ChartData.ChartOptions1('Work In Progress (WIP)', true, 25, 17, 17, true, true, 20,
-        17, true, ChartData.Callback1(' pieces')),
-      ChartData.ChartOptions1('Work In Progress (WIP)', true, 14, 9, 9, true, true, 12,
-        9, false, ChartData.Callback1(' pieces')),
+      {
+        responsive: true,
+        display: true,
+        title: {
+          display: true,
+          position: 'top',
+          fontSize: 25,
+          text: 'Work In Progress (WIP)',
+          fontStyle: 'bold',
+          fontColor: '#000'
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                fontColor: '#000',
+                fontSize: 17,
+                fontStyle: 'bold'
+              }
+            }
+          ],
+          yAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                fontColor: '#000',
+                fontSize: 17,
+                fontStyle: 'bold'
+              }
+            }
+          ]
+        },
+        tooltips: {
+          enabled: true,
+          mode: 'index',
+          backgroundColor: 'rgba(0, 0, 0, 1)',
+          titleFontSize: 20,
+          titleFontColor: '#0066ff',
+          bodyFontColor: '#FFF',
+          bodyFontSize: 17,
+          displayColors: false,
+          callbacks: {
+            label: function (tooltipItem, data) {
+              return (
+                data['datasets'][0]['data'][tooltipItem['index']] + ' pieces'
+              );
+            }
+          }
+        }
+      },
       [LineChartColors.getGraphBarTheme()],
       false,
       'bar'
@@ -215,91 +360,23 @@ export class ChartData {
       grafico4,
       grafico5,
       grafico6,
-      /*grafico7,*/
+      grafico7,
       productionBarGraph,
       economicImpactBarGraph,
       workInProgressGraphBar
     );
   } // fine costruttore
 
-  public static Callback1(text) {
-    return {
-      label: function (tooltipItem, data) {
-        return (
-          data['datasets'][0]['data'][tooltipItem['index']] + text /*' pieces'   ' pieces/man-hour'*/
-        );
-      }
+  public static notResponsiveOptions(origin: any) {
+    const no = {
+      responsive: origin.responsive,
+      display: origin.display,
+      title: origin.title,
+      legend: origin.legend,
+      scales: origin.scales,
+      tooltips: origin.tooltips
     };
-  }
-
-  public static Callback2(text) {
-    return {
-      label: function (tooltipItem, data) {
-        // get the concerned dataset
-        const dataset = data.datasets[tooltipItem.datasetIndex];
-        // get the current items value
-        const currentValue = dataset.data[tooltipItem.index];
-
-        return currentValue + text /*'%'*/;
-      }
-    };
-  }
-
-  public static ChartOptions1(text, responsive, titleFontSize, scaleFontSizeX, scaleFontSizeY,
-                              stackedX, stackedY, tipTitleFontSize, tipFontSize, tipEnable, myCallbacks, legend = false) {
-    return {
-      responsive: responsive,
-        display: true,
-        title: {
-          display: true,
-          position: 'top',
-        fontSize: titleFontSize,
-        text: text,
-          fontStyle: 'bold',
-          fontColor: '#000'
-        },
-        legend: {
-        display: legend,
-        labels: {
-          fontColor: 'rgb(255, 99, 132)'
-        }
-        },
-        scales: {
-          xAxes: [
-            {
-            stacked: stackedX,
-              ticks: {
-                beginAtZero: true,
-                fontColor: '#000',
-              fontSize: scaleFontSizeX,
-                fontStyle: 'bold'
-              }
-            }
-          ],
-          yAxes: [
-            {
-            stacked: stackedY,
-              ticks: {
-                beginAtZero: true,
-                fontColor: '#000',
-              fontSize: scaleFontSizeY,
-                fontStyle: 'bold'
-              }
-            }
-          ]
-        },
-        tooltips: {
-        enabled: tipEnable,
-          mode: 'index',
-          backgroundColor: 'rgba(0, 0, 0, 1)',
-        titleFontSize: tipTitleFontSize,
-          titleFontColor: '#0066ff',
-          bodyFontColor: '#FFF',
-        bodyFontSize: tipFontSize,
-          displayColors: false,
-        callbacks: myCallbacks
-          }
-    };
+    return no;
   }
 
   public static voidChart(): ChartDataRecord {
@@ -309,7 +386,6 @@ export class ChartData {
         {data: [], label: ''}
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      {responsive: true},
       {responsive: true},
       [
         LineChartColors.getDarkGreyTheme()
@@ -342,7 +418,6 @@ export class ChartDataRecord {
   public lineChartData: Array<ChartSerie>;
   public lineChartLabels: Array<string>;
   public lineChartOptions: any;
-  public lineChartOptionsThumbnail: any;
   public lineChartColors: Array<LineChartColors>;
   public lineChartLegend: boolean;
   public lineChartType: string;
@@ -356,7 +431,6 @@ export class ChartDataRecord {
                                   lineChartData: Array<ChartSerie>,
                                   lineChartLabels: Array<string>,
                                   lineChartOptions: any,
-                                  lineChartOptionsThumbnail: any,
                                   lineChartColors: Array<LineChartColors>,
                                   lineChartLegend: boolean,
                                   lineChartType: string,
@@ -366,7 +440,6 @@ export class ChartDataRecord {
     cdr.lineChartData = lineChartData;
     cdr.lineChartLabels = lineChartLabels;
     cdr.lineChartOptions = lineChartOptions;
-    cdr.lineChartOptionsThumbnail = lineChartOptionsThumbnail;
     cdr.lineChartColors = lineChartColors;
     cdr.lineChartLegend = lineChartLegend;
     cdr.lineChartType = lineChartType;
@@ -409,8 +482,6 @@ export class ChartDataRecord {
     dest.lineChartLabels = chartLabels;
 
     dest.lineChartOptions = this.lineChartOptions;
-
-    dest.lineChartOptionsThumbnail = this.lineChartOptionsThumbnail;
 
     const chartColors: Array<LineChartColors> = [];
     this.lineChartColors.forEach((record) => {
@@ -462,34 +533,9 @@ export class LineChartColors {
     return t;
   }
 
-  public static getGreenTheme(): LineChartColors {
-    const t = new LineChartColors(
-      ['rgba(10,240,10,1)'],
-      'rgba(0,0,96,1)',
-      2,
-      'rgba(0,0,64,1)',
-      '#fff',
-      '#fff',
-      'rgba(96,96,160,1)'
-    );
-    return t;
-  }
-  public static getRedTheme(): LineChartColors {
-    const t = new LineChartColors(
-      ['rgba(200,10,10,1)'],
-      'rgba(0,0,96,1)',
-      2,
-      'rgba(0,0,64,1)',
-      '#fff',
-      '#fff',
-      'rgba(96,96,160,1)'
-    );
-    return t;
-  }
-
   public static getBlueTheme(): LineChartColors {
     const t = new LineChartColors(
-      ['rgba(10,10, 240,1)'],
+      ['rgba(244,255,46,1)'],
       'rgba(0,0,96,1)',
       2,
       'rgba(0,0,64,1)',
