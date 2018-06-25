@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="SezioneTrattamentoL.svg"
+   sodipodi:docname="SezioneTrattamento.svg"
    enable-background="new">
   <sodipodi:namedview
      id="base"
@@ -25,8 +25,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="333.53244"
-     inkscape:cy="267.51439"
+     inkscape:cx="267.88436"
+     inkscape:cy="179.22042"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -104,7 +104,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -115,7 +115,7 @@
      transform="translate(0,-156.24165)">
     <g
        id="g4947"
-       transform="matrix(1.4371024,0,0,1.4371024,-78.865574,-328.90525)">
+       transform="matrix(1.4371024,0,0,1.4371024,-121.80185,-261.96567)">
       <path
          inkscape:connector-curvature="0"
          id="path4939"
@@ -140,7 +140,7 @@
     </g>
     <g
        id="g5204"
-       transform="matrix(1.3973743,0,0,1.3973743,8.1435293,0.80781652)">
+       transform="matrix(1.3230757,0,0,1.3230757,12.972362,-44.060369)">
       <g
          id="g4957"
          transform="translate(-56.173055,-179.25872)">
@@ -174,7 +174,7 @@
     </g>
     <g
        id="g7075"
-       transform="matrix(1.3522047,0,0,1.3522047,-75.944632,-137.36778)">
+       transform="matrix(1.3522047,0,0,1.3522047,-75.944632,-163.56153)">
       <path
          style="opacity:1;fill:#0000ff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.26677918;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
          d="m 83.853903,262.6945 c -4.1858,0.12642 -14.76148,7.99949 -14.76654,11.01587 h -5.1e-4 v 14.26889 h 0.004 c 0.0397,0.58908 0.51418,0.97657 1.56424,1.05834 h 28.4825 c 4.134257,-0.12487 14.501787,-7.80666 14.761367,-10.90218 h 0.005 v -14.45803 h -0.0108 c -0.0743,-0.54663 -0.55244,-0.90465 -1.55701,-0.98289 h -0.99582 -3.76463 -0.68832 v 0.94827 h 0.68832 1.51102 c 5.32616,0.41475 -6.86194,10.13268 -11.140397,10.2619 h -24.04076 c -5.32615,-0.41476 6.86194,-10.13268 11.1404,-10.2619 h 2.57142 3.76256 0.68988 v -0.94827 h -0.68988 -3.76256 z m 1.96009,2.56212 c -3.74908,0.0938 -14.42933,7.14811 -9.76219,7.44916 h 21.0659 c 3.749077,-0.0938 14.429327,-7.14809 9.762187,-7.44916 H 91.379543 Z"

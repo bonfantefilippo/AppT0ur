@@ -18,21 +18,31 @@ export class AppChartComponent implements OnInit, ICallback {
   contextID: ObjectID; // = ObjectID.notSet;
   private UID;
   public data: ChartDataRecord;
-
   constructor(public service: ArchitectService, public router: Router) {
-    console.log('Chart ' + this.contextID + ' constructor: get chart');
-    this.service.dataChange.subscribe( (result) => {
-      this.data = this.service.getChart(this.contextID);
-    });
+    console.log('Chart constructor');
+    this.data = ChartData.voidChart();
   }
 
-
+  // i dati vengono passati dal service se è un grafico nella barra laterale
+  // se invece è nella view, il grafico se li deve prendere quando la route è
+  // completa.
+  // Quando il componente viene creato nella barra laterale riceve immediatamente
+  // un contextID, se invece nasce nella View il contextID è notSet.
+  // con contestID = notSet, dobbiamo sottoscrivere il router.events che notifica
+  // l'evento NavigationEnd, momento in cui andiamo a prendere i dati
+  // dall'Architect.
   setData(data: any) {
     // this.data = data.console.log('Got new data');
   }
 
   ngOnInit() {
-    this.data = this.service.getChart(this.contextID);
+    console.log('Chart ' + this.contextID + ' init: before registerObject');
+    this.UID = this.service.registerObject(this, this.contextID);
+    console.log('Chart ' + this.contextID + ' init: get chart');
+    this.data = this.service.getDefaultChart(this.UID);
+    this.data.tag = this.contextID;
+    console.log('Chart ' + this.contextID + ' init: End 2');
+    console.log(this.router.url);
   }
 
   // events
@@ -49,33 +59,28 @@ export class AppChartComponent implements OnInit, ICallback {
   }
 
   get datasets() {
-    if (!this.data) {return null; }
     return this.data.lineChartData;
   }
 
   get labels() {
-    if (!this.data) {return null; }
     return this.data.lineChartLabels;
   }
 
   get options() {
-    if (!this.data) {return null; }
+    /*return ChartData.notResponsiveOptions(this.data.lineChartOptions);*/
     return this.data.lineChartOptionsThumbnail;
   }
 
   get colors() {
-    if (!this.data) {return null; }
     return this.data.lineChartColors;
   }
 
   get legend() {
-    /*if (!this.data) {return null; }*/
     return false;
     // return this.data.lineChartLegend;
   }
 
   get chartType() {
-    if (!this.data) {return null; }
     return this.data.lineChartType;
   }
 

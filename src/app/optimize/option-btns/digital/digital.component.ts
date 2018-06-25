@@ -24,15 +24,6 @@ export class DigitalComponent implements OnInit {
       console.log('digital set change', result.options);
       this.btns = result.options;
     });
-    this.service.digitalClick.subscribe(result => {
-      if (!result.stato) {
-        // disabilitare tutti i bottoni
-        this.btns.forEach(btn => {
-          btn.checked = false;
-        });
-        this.service.onDigitalOption(null);
-      }
-    });
     this.service.registerOptimizer( this.contextID);
   }
 

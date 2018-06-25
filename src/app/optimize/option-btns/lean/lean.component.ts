@@ -19,15 +19,6 @@ export class LeanComponent implements OnInit {
       console.log('lean set change', result.options);
       this.btns = result.options;
     });
-    this.service.leanClick.subscribe(result => {
-      if (!result.stato) {
-        // disabilitare tutti i bottoni
-        this.btns.forEach(btn => {
-          btn.checked = false;
-        });
-        this.service.onLeanOption(null);
-      }
-    });
     this.service.registerOptimizer( this.contextID);
   }
 

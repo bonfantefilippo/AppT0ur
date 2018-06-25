@@ -13,7 +13,7 @@ export enum ObjectID {
   viewPompa,
   viewVentilatore,
   viewSensoreUmidita,
-  viewSezioneTrattamento,
+  viewSezionePretrattamento,
   viewVascaPretrattamento,
   viewVascaPrimer,
   viewVascaFinisher,

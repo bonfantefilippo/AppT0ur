@@ -9,10 +9,10 @@ import {ObjectID} from './models/object-id.enum';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'appT0urist';
+  title = 'app';
 
   constructor(public service: ArchitectService, public router: Router) {
-    this.homeRedirect();
+    this.router.navigate(['apptour/' + ObjectID.viewHome]);
   }
 
   homeRedirect() {
