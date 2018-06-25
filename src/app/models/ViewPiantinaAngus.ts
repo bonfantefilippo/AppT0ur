@@ -9,8 +9,10 @@ export class ViewPiantinaAngus {
 
     objs.push({'routerLink': '/apptour/' + ObjectID.viewSezioneLavaggio,
       'childId': 'child1', 'contextID': ObjectID.viewSezioneLavaggio});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSezionePretrattamento,
-      'childId': 'child2', 'contextID': ObjectID.viewSezionePretrattamento});
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewSezioneTrattamento,
+      'childId': 'child2', 'contextID': ObjectID.viewSezioneTrattamento
+    });
     objs.push({'routerLink': '/apptour/' + ObjectID.viewSezioneStoccaggio,
       'childId': 'child3', 'contextID': ObjectID.viewSezioneStoccaggio});
 

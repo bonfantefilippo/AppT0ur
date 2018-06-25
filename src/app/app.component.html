@@ -7,11 +7,12 @@
       <div (click)="homeRedirect()" class="home" id="home"></div>
       <h3 id="text" class="backScuro">Stabilimento Centrale Lavaggio</h3>
     </div>
-    <app-view id="view" class="backAntracite"></app-view>
+    <app-view (click)="counterChartZero()" id="view" class="backAntracite"></app-view>
     <div id="menu" class="backScuro">
       <app-topmenu id="topmenu"></app-topmenu>
       <app-bottommenu id="bottommenu"></app-bottommenu>
       <div class="map">
+        <app-node id="node"></app-node>
       </div>
     </div>
     <app-tips id="tips" class="backScuro"></app-tips>
