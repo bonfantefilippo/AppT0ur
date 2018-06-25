@@ -6,7 +6,7 @@ import {ViewSezioneLavaggio} from './ViewSezioneLavaggio';
 import {ViewPrelavaggio} from './ViewPrelavaggio';
 import {ViewLavaggio} from './ViewLavaggio';
 import {ViewAsciugatura} from './ViewAsciugatura';
-import {ViewSezionePretrattamento} from './ViewSezionePretrattamento';
+import {ViewSezioneTrattamento} from './ViewSezioneTrattamento';
 import {ViewVascaPrimer} from './ViewVascaPrimer';
 import {ViewVascaFinisher} from './ViewVascaFinisher';
 import {ViewSezioneStoccaggio} from './ViewSezioneStoccaggio';
@@ -29,7 +29,7 @@ export class TreeOfView {
     // this.data[ObjectID.viewPompa] = ViewPompa.JSON();
     // this.data[ObjectID.viewVentilatore] = ViewVentilatore.JSON();
     // this.data[ObjectID.viewSensoreUmidita] = ViewSensoreUmidita.JSON();
-    this.data[ObjectID.viewSezionePretrattamento] = ViewSezionePretrattamento.JSON();
+    this.data[ObjectID.viewSezioneTrattamento] = ViewSezioneTrattamento.JSON();
     // this.data[ObjectID.viewVascaPretrattamento] = ViewVascaPretrattamento.JSON();
     this.data[ObjectID.viewVascaPrimer] = ViewVascaPrimer.JSON();
     this.data[ObjectID.viewVascaFinisher] = ViewVascaFinisher.JSON();
