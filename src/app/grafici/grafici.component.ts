@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ArchitectService} from '../architect.service';
 import {ObjectID} from '../models/object-id.enum';
-import * as _ from 'underscore';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-grafici',
   templateUrl: './grafici.component.html',
-  styleUrls: ['./grafici.component.css']
+  styleUrls: ['./grafici.component.scss']
 })
 export class GraficiComponent implements OnInit {
 
@@ -33,13 +32,13 @@ export class GraficiComponent implements OnInit {
     this.service.onMouseOver({curIndex: index});
   }
 
-  objectIDs() {
+/*  objectIDs() {
     return _.filter(this.charts, function (item) {
       const id = item - ObjectID.chart1;
       // return (this.chartsVisible[id]);
       return true;
     });
-  }
+  }*/
 
   chartCounterUp(id) {
     this.service.chartClose(id);

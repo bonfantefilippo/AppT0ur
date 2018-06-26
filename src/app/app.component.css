@@ -160,7 +160,7 @@
   width: calc(100% - 5px);
   border-radius: 5px;
   box-shadow: 2px 1px 12px black;
-  background-image: url("../../documentation/treeView.png");
+  /*background-image: url("../../documentation/treeView.png");*/
 }
 
 #topmenu {
