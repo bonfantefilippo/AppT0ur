@@ -21,7 +21,7 @@ import {MatIconModule, MatTabsModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ChartMirrorComponent} from './charts/chart-mirror/chart-mirror.component';
 import {TreeModule} from 'angular-tree-component';
-import { NodeComponent } from './node/node.component';
+import {NodeComponent} from './node/node.component';
 
 const appRoutes: Routes = [
   {path: 'apptour/:contextID', component: ObjectViewComponent},

@@ -41,11 +41,11 @@ export class ObjectOfView {
   routerLink(): string {
     return  '/apptour/' + this.contextID;
   }
-  getChild(index: number) {
+  getChildByIndex(index: number) {
     return this._children[index];
 
   }
-  getChild(name: string) {
+  getChildByName(name: string) {
     this._children.forEach( child => {
       if (child.name == name) {
         return child;
