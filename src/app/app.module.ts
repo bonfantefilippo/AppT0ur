@@ -39,7 +39,7 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'not_yet_but_soon'
+    redirectTo: 'apptour/' + ObjectID.viewHome // 'not_yet_but_soon'
   }
 ];
 
