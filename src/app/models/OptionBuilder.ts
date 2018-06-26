@@ -25,6 +25,15 @@ export class OptionOfView {
   get digitalEnable(): boolean {
     return (this.leanOnCount > 0);
   }
+
+  setEnable(value) {
+    if (value) {
+      return;
+    }
+    this.options.forEach(option => {
+      option.checked = false;
+    });
+  }
 }
 
 
