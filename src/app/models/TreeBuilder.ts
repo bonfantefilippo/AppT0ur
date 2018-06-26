@@ -16,7 +16,7 @@ import {ViewVascaPreTrattamento} from './ViewVascaPreTrattamento';
 
 export class TreeOfView {
   public data: ObjectOfView[] = [];
-
+  private _tree: ObjectOfView;
   constructor() {
     this.data[ObjectID.viewPiantinaAngus] = ViewPiantinaAngus.JSON();
     this.data[ObjectID.viewSezioneLavaggio] = ViewSezioneLavaggio.JSON();
@@ -41,6 +41,14 @@ export class TreeOfView {
     // this.data[ObjectID.viewMotore1] = ViewMotore1.JSON();
     // this.data[ObjectID.viewMotore2] = ViewMotore2.JSON();
 
-
+    // definiamo la radice dell'albero, il resto si fa da se e il risultatao
+    // è la struttura ad albero completa
+    this._tree = this.data[ObjectID.viewPiantinaAngus];
+    this._tree.fromJSON(index => {
+      return this.data[index];
+    });
+  }
+  get root() {
+    return this._tree.node;
   }
 }

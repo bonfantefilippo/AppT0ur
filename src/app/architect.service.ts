@@ -167,7 +167,9 @@ export class ArchitectService {
     // this.route.emit(contextID);
   }
 
-
+  get root(): {id: ObjectID, name: string,  children: any[], routerlink: string} {
+    return _treeOfView.root;
+  }
   getRandomChart() {
     /*const chartIndex = Math.floor(Math.random() * this._chartData.getCount());
     console.log('getRandomChart: ' + chartIndex + ' of ' + this._chartData.getCount());*/

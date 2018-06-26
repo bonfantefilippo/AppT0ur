@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions} from 'angular-tree-component';
 import {Router} from '@angular/router';
+import {ArchitectService} from '../architect.service';
+
+// todo: correggere il metodo per il routing: il click sull'albero genera un errore nel router
+let mRouter: Router;
 
 @Component({
   selector: 'app-node',
@@ -9,12 +13,14 @@ import {Router} from '@angular/router';
 })
 export class NodeComponent {
 
-  test: string = '';
-
-  constructor(public router: Router) {
+  test = '';
+  nodes = [];
+  constructor(public router: Router, service: ArchitectService) {
+    mRouter = router;
+    this.nodes = [service.root];
   }
 
-  nodes = [
+  /*nodes = [
     {
       id: 45,
       name: 'Sezione Lavaggio',
@@ -81,7 +87,7 @@ export class NodeComponent {
         }
       ]
     }
-  ];
+  ];*/
   options: ITreeOptions = {
     actionMapping
   };
@@ -91,7 +97,8 @@ const actionMapping: IActionMapping = {
   mouse: {
     click: (tree, node, $event) => {
       $event.preventDefault();
-      console.dir(node.data.name);
+      console.dir(node.data.routerlink);
+      mRouter.navigate(node.data.routerlink);
     },
   },
   keys: {
