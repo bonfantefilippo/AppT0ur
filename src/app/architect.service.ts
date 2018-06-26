@@ -4,6 +4,7 @@ import {ChartData, ChartDataRecord} from './models/ChartData';
 import {ICallback} from './models/ICallback';
 import {TreeOfView} from './models/TreeBuilder';
 import {OptionOfView, OptionType} from './models/OptionBuilder';
+import {Router} from '@angular/router';
 
 
 const _treeOfView = new TreeOfView();
@@ -18,6 +19,8 @@ export class ArchitectService {
     visualizzazione.
    */
   index: ObjectID = ObjectID.viewPiantinaAngus;
+
+  chartCounter = 0;
 
   /*
     Unique Identifier: utilizzato per identificare in maniera univoca
@@ -58,7 +61,7 @@ export class ArchitectService {
   * */
   @Output() leanSetChange = new EventEmitter();
   @Output() digitalSetChange = new EventEmitter();
-  @Output() dataChange = new EventEmitter();
+
   @Output() objectMouseOver = new EventEmitter();
   @Output() route = new EventEmitter();
 
@@ -74,7 +77,7 @@ export class ArchitectService {
   private _activeChart: { UID: number; data: ChartDataRecord; valid: boolean } = {UID: 0, data: null, valid: false};
 
 
-  constructor() {
+  constructor(public router: Router) {
   }
 
   registerOptimizer(contextID: ObjectID) {
@@ -110,7 +113,6 @@ export class ArchitectService {
       return -1;
     }
     console.log('registering object of context: ' + contextID + ' enter', _treeOfView.data[contextID], caller);
-
     console.log('registering object of context: ' + contextID + ' set change', _treeOfView.data[contextID]);
     this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
     this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
@@ -129,7 +131,7 @@ export class ArchitectService {
     caller.setData(_treeOfView.data[contextID]);
 
     console.log('registering object of context: ' + contextID + ' return', _treeOfView.data[contextID]);
-    this.dataChange.emit(_treeOfView.data[contextID]);
+
     return UID;
   }
 
@@ -143,10 +145,16 @@ export class ArchitectService {
   }
 
   onLeanOption(btn) {
+    /* btn.index punta all'array degli oggetti
+    * todo: implementare l'arry*/
+    console.log('onLeanOption ' + btn.index);
+    // console.log('onLeanOption(' + btn.index + ').checked = ' + this.leanOption[btn.index].checked);
+    // this.leanOption[btn.index].checked = btn.checked;
     this.leanChange.emit(_treeOfView.data[this.index].leanOptions);
   }
 
   onDigitalOption(btn) {
+    // this.digitalOption[btn.index ].checked = btn.checked;
     this.digitalChange.emit(_treeOfView.data[this.index].digitalOptions);
   }
 
@@ -157,7 +165,6 @@ export class ArchitectService {
   onRoute(contextID: ObjectID) {
     console.log('Routing to ' + contextID);
     this.route.emit(contextID);
-    this.dataChange.emit(_treeOfView.data[contextID]);
   }
 
   onChartRoute(contextID: ObjectID) {
@@ -199,7 +206,30 @@ export class ArchitectService {
     console.log('setActiveChart', this._activeChart.UID, this._activeChart.data, this._activeChart.valid);
   }
 
-  getChart(contextID: ObjectID, result: any) {
-    return this._chartData.getChart(contextID - ObjectID.chart1);
+  chartCounterUp() {
+    this.chartCounter++;
+    console.log(this.chartCounter);
   }
+
+  chartCounterZero() {
+    this.chartCounter = 0;
+  }
+
+  async chartClose (id) {
+    if(this.chartCounter !== 0) {
+      window.history.back();
+      await this.sleep(10);
+      this.router.navigate([/chart/ + id]);
+      return this.chartCounter;
+    } else {
+      this.chartCounterUp();
+      this.router.navigate([/chart/ + id]);
+      return this.chartCounter;
+    }
+  }
+
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
 }

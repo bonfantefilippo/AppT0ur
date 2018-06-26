@@ -20,6 +20,8 @@ import {AppChartComponent} from './charts/app-chart/app-chart.component';
 import {MatIconModule, MatTabsModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ChartMirrorComponent} from './charts/chart-mirror/chart-mirror.component';
+import {TreeModule} from 'angular-tree-component';
+import { NodeComponent } from './node/node.component';
 
 const appRoutes: Routes = [
   {path: 'apptour/:contextID', component: ObjectViewComponent},
@@ -37,7 +39,7 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'apptour/' + ObjectID.viewHome // 'not_yet_but_soon'
+    redirectTo: 'not_yet_but_soon'
   }
 ];
 
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     DigitalComponent,
     WorkInProgressComponent,
     AppChartComponent,
-    ChartMirrorComponent
+    ChartMirrorComponent,
+    NodeComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ const appRoutes: Routes = [
     ),
     ChartsModule,
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    TreeModule
   ],
   providers: [ArchitectService],
   bootstrap: [AppComponent]

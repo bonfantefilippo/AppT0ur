@@ -4,7 +4,7 @@ export class OptionOfView {
   public options: OptionType[] = [];
   public leanOnCount = 0;
   public cssDefault: string;
-  public active = false;
+
   constructor() {
   }
 
@@ -24,6 +24,15 @@ export class OptionOfView {
 
   get digitalEnable(): boolean {
     return (this.leanOnCount > 0);
+  }
+
+  setEnable(value) {
+    if (value) {
+      return;
+    }
+    this.options.forEach(option => {
+      option.checked = false;
+    });
   }
 }
 

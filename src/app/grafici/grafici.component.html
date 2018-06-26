@@ -2,35 +2,22 @@
 <div class="bottom"></div>
 <h1 class="dashboardtitle">DASHBOARD</h1>
 
-<div class="container5v1" *ngIf="show">
+<div class="container5v1">
 
-  <!--<app-app-chart *ngFor="let id of charts" routerLink="/chart/{{id}}" routerLinkActive="active"
+  <app-app-chart (click)="chartCounterUp(id)" *ngFor="let id of charts" routerLinkActive="active"
                  [contextID]="id"
-                 class="graphic backWhite"
-                 (mouseover)="onDivMouseOver(id)">
-  </app-app-chart>-->
-
-
-
-  <app-app-chart routerLink="/chart/{{ObjectID.chart7}}" routerLinkActive="active"
-                 [contextID]="ObjectID.chart1"
                  class="graphic backWhite"
                  (mouseover)="onDivMouseOver(ObjectID.chart1)">
   </app-app-chart>
-
+ <!-- <app-app-chart routerLink="/chart/{{ObjectID.chart2}}" routerLinkActive="active"
+                 [contextID]="ObjectID.chart2"
+                 class="graphic backWhite"
+                 (mouseover)="onDivMouseOver(ObjectID.chart2)">
+  </app-app-chart>
   <app-app-chart routerLink="/chart/{{ObjectID.chart3}}" routerLinkActive="active"
                  [contextID]="ObjectID.chart3"
                  class="graphic backWhite"
                  (mouseover)="onDivMouseOver(ObjectID.chart3)">
-  </app-app-chart>
-
-
-  <app-app-chart routerLink="/chart/{{ObjectID.chart8}}" routerLinkActive="active"
-                 [contextID]="ObjectID.chart8"
-                 class="graphic backWhite"
-                 (mouseover)="onDivMouseOver(ObjectID.chart8)">
-  </app-app-chart>
-
-
+  </app-app-chart>-->
 
 </div>

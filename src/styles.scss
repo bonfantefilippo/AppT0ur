@@ -1,12 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~angular-tree-component/dist/angular-tree-component.css';
 
 p {
   font-family: 'Roboto', sans-serif;
   color: #fcfcfc;
   padding-left: 10px;
   text-shadow: 1px 1px 1px black;
+}
+
+tree-viewport {
+  z-index: 30;
+  padding: 15px;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: calc(100% - 30px);
+}
+
+.node {
+  position:absolute;
+  height: 642px;
+  width: 100%;
+  background-color: #fcfcfc;
+  border-radius: 5px
+}
+
+tree-viewport::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+tree-viewport::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+tree-viewport::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 body::-webkit-scrollbar {
@@ -20,7 +52,6 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   outline: 1px solid slategrey;
-  padding-top: 10px;
 }
 
 .mat-tab-label {
@@ -117,41 +148,6 @@ a {
     font-size: 14px;
   }
 }
-/*.grafico {
-  background-image: url("../documentation/grafico-min.png");
-  background-size: auto 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.grafico1 {
-  background-image: url("../documentation/grafico1-min.png");
-  background-size: auto 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.grafico2 {
-  background-image: url("../documentation/grafico2-min.png");
-  background-size: auto 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.grafico3 {
-  background-image: url("../documentation/grafico3-min.png");
-  background-size: auto 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.graficoAll {
-  background-image: url("../documentation/graficoAll.png");
-  background-size: auto 100%;
-  background-position: bottom;
-  background-repeat: no-repeat;
-}
-.scarti {
-  background-image: url("../documentation/scarti3.png");
-  background-size: cover;
-  background-position: center;
-}*/
 .containerWork {
   width: 100%;
   height: 532px;
