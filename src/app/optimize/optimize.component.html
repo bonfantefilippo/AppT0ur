@@ -3,7 +3,8 @@
   <label class="switch">
     <input (click)="onLean()"
            (mouseover)="onLeanOver()" type="checkbox"
-           [checked]="btnLeanState">
+           [checked]="btnLeanState"
+           [disabled]="btnsDisable">
     <span class="slider round one"></span>
   </label>
   <p>DIGITAL</p>

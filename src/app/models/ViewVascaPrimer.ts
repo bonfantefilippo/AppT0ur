@@ -3,7 +3,7 @@ import {ObjectOfView} from './ObjectOfView';
 
 export class ViewVascaPrimer {
   public static JSON () {
-    const data: ObjectOfView = new ObjectOfView('ViewVascaPrimer');
+    const data: ObjectOfView = new ObjectOfView('Vasca Primer');
     const objs = [];
     data.objects = objs;
 

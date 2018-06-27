@@ -7,7 +7,7 @@ import { ArchitectService} from '../../architect.service';
   styleUrls: ['./option-btns.component.css']
 })
 export class OptionBtnsComponent implements OnInit {
-
+// todo: ricevere il nodo arttivo e operare sul record direttamente
   leanStato = false;
   digitalStato = false;
   constructor(public service: ArchitectService) {

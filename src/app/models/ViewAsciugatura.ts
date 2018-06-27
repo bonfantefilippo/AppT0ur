@@ -3,7 +3,7 @@ import {ObjectOfView} from './ObjectOfView';
 
 export class ViewAsciugatura {
   public static JSON () {
-    const data: ObjectOfView = new ObjectOfView('ViewAsciugatura');
+    const data: ObjectOfView = new ObjectOfView('Asciugatura');
     const objs = [];
     data.objects = objs;
 

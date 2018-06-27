@@ -1,167 +1,422 @@
 // BACKGROUND HOME
 
-.baH { // Sfondo piantina generale impianto Angus Default
+.baH {
+  // Sfondo piantina generale impianto Angus Default
   background-image: url("../../../documentation/PiantinaAngus.svg");
 }
 
-.baHL { // Sfondo piantina generale impianto Angus Lean
+.baHL {
+  // Sfondo piantina generale impianto Angus Lean
   background-image: url("../../../documentation/PiantinaAngusL.svg");
 }
 
-.baHD { // Sfondo piantina generale impianto Angus Digital
+.baHD {
+  // Sfondo piantina generale impianto Angus Digital
   background-image: url("../../../documentation/PiantinaAngusD.svg");
 }
 
-    // BACKGROUND SEZIONE LAVAGGIO
+// BACKGROUND SEZIONE LAVAGGIO
 
-    .bsl { // Sfondo sezione lavaggio Default
-      background-image: url("../../../documentation/SezioneLavaggio.svg");
-    }
+.bsl {
+  // Sfondo sezione lavaggio Default
+  background-image: url("../../../documentation/SezioneLavaggio.svg");
+}
 
-    .bslL { // Sfondo sezione lavaggio Lean
-      background-image: url("../../../documentation/SezioneLavaggioL.svg");
-    }
+.bslL {
+  // Sfondo sezione lavaggio Lean
+  background-image: url("../../../documentation/SezioneLavaggioL.svg");
+}
 
-    .bslD { // Sfondo sezione lavaggio Digital
-      background-image: url("../../../documentation/SezioneLavaggioD.svg");
-    }
+.bslD {
+  // Sfondo sezione lavaggio Digital
+  background-image: url("../../../documentation/SezioneLavaggioD.svg");
+}
+
+// BACKGROUND PRELAVAGGIO(SOTTOSEZIONE LAVAGGIO)
+
+.bp {
+  // Sfondo prelavaggio Default
+  background-image: url("../../../documentation/Prelavaggio.svg");
+}
+
+.bpL {
+  // Sfondo prelavaggio Lean
+  background-image: url("../../../documentation/PrelavaggioL.svg");
+}
+
+.bpD {
+  // Sfondo prelavaggio Digital
+  background-image: url("../../../documentation/PrelavaggioD.svg");
+}
+
+//BACKGROUND LAVAGGIO (SOTTOSEZIONE LAVAGGIO)
+
+.bl {
+  // Sfondo lavaggio Default
+  background-image: url("../../../documentation/Lavaggio.svg");
+}
+
+.blL {
+  // Sfondo lavaggio Lean
+  background-image: url("../../../documentation/LavaggioL.svg");
+}
+
+.blD {
+  // Sfondo lavaggio Digital
+  background-image: url("../../../documentation/LavaggioD.svg");
+}
+
+// BACKGROUND ASCIUGATURA (SOTTOSEZIONE LAVAGGIO)
+
+.ba {
+  // Sfondo asciugatura Default
+  background-image: url("../../../documentation/Asciugatura.svg");
+}
+
+.baL {
+  // Sfondo asciugatura Lean
+  background-image: url("../../../documentation/AsciugaturaL.svg");
+}
+
+.baD {
+  // Sfondo asciugatura Digital
+  background-image: url("../../../documentation/AsciugaturaD.svg");
+}
+
+// BACKGROUND SEZIONE PRETRATTAMENTO
+
+.bsp {
+  // Sfondo sezione lavaggio Default
+  background-image: url("../../../documentation/SezioneTrattamento.svg");
+}
+
+.bspL {
+  // Sfondo sezione lavaggio Lean
+  background-image: url("../../../documentation/SezioneTrattamentoL.svg");
+}
+
+.bspD {
+  // Sfondo sezione lavaggio Digital
+  background-image: url("../../../documentation/SezioneTrattamentoD.svg");
+}
+
+// BACKGROUND VASCA PRE TRATTAMENTO (SOTTOSEZIONE PRETRATTAMENTO)
+
+.bvt {
+  // Sfondo vasca pre trattamento Default
+  background-image: url("../../../documentation/VascaPreTrattamento.svg");
+}
+
+.bvtL {
+  // Sfondo vasca pre trattamento Lean
+  background-image: url("../../../documentation/VascaPreTrattamentoL.svg");
+}
+
+.bvtD {
+  // Sfondo vasca pre trattamento Digital
+  background-image: url("../../../documentation/VascaPreTrattamentoD.svg");
+}
+
+// BACKGROUND VASCA PRIMER (SOTTOSEZIONE PRETRATTAMENTO)
+
+.bvp {
+  // Sfondo vasca primer Default
+  background-image: url("../../../documentation/VascaPrimer.svg");
+}
+
+.bvpL {
+  // Sfondo vasca primer Lean
+  background-image: url("../../../documentation/VascaPrimerL.svg");
+}
+
+.bvpD {
+  // Sfondo vasca primer Digital
+  background-image: url("../../../documentation/VascaPrimerD.svg");
+}
+
+// BACKGROUND VASCA FINISHER (SOTTOSEZIONE PRETRATTAMENTO)
+
+.bvf {
+  // Sfondo vasca finisher Default
+  background-image: url("../../../documentation/VascaFinisher.svg");
+}
+
+.bvfL {
+  // Sfondo vasca finisher Lean
+  background-image: url("../../../documentation/VascaFinisherL.svg");
+}
+
+.bvfD {
+  // Sfondo vasca finisher Digital
+  background-image: url("../../../documentation/VascaFinisherD.svg");
+}
+
+// BACKGROUND SEZIONE STOCCAGGIO
+
+.bss {
+  // Sfondo sezione stoccaggio Default
+  background-image: url("../../../documentation/SezioneStoccaggio.svg");
+}
+
+.bssL {
+  // Sfondo sezione stoccaggio Lean
+  background-image: url("../../../documentation/SezioneStoccaggioL.svg");
+}
+
+.bssD {
+  // Sfondo sezione stoccaggio Digital
+  background-image: url("../../../documentation/SezioneStoccaggioD.svg");
+}
+
+// BACKGROUND IMPILATORE (SOTTOSEZIONE STOCCAGGIO)
+
+.bi {
+  // Sfondo impilatore Default
+  background-image: url("../../../documentation/Impilatore.svg");
+}
+
+.biL {
+  // Sfondo impilatore Lean
+  background-image: url("../../../documentation/ImpilatoreL.svg");
+}
+
+.biD {
+  // Sfondo impilatore Digital
+  background-image: url("../../../documentation/ImpilatoreD.svg");
+}
+
+// BACKGROUND POMPAACQUA (SOTTOSEZIONE PRELAVAGGIO)
+.bpa {
+  // Sfondo pompa acqua Default
+  background-color: red;
+}
+
+.bpaL {
+  // Sfondo  pompa acqua Lean
+  background-color: blue;
+}
+
+.bpaD {
+  // Sfondo  pompa acqua Digital
+  background-color: green;
+}
+
+// BACKGROUND CONTATORE (SOTTOSEZIONE PRELAVAGGIO)
+.bc {
+  // Sfondo CONTATORE Default
+  background-color: black;
+}
+
+.bcL {
+  // Sfondo CONTATORE Lean
+  background-color: blueviolet;
+}
+
+.bcD {
+  // Sfondo  CONTATORE Digital
+  background-color: rgb(0, 128, 85);
+}
+
+// BACKGROUND Sensore temperatura (SOTTOSEZIONE PRELAVAGGIO)
+.bsts {
+  // Sfondo Sensore temperatura Default
+  background-color: rgb(212, 129, 187);
+}
+
+.bstsL {
+  // Sfondo Sensore temperatura Lean
+  background-color: rgba(255, 230, 0, 0.938);
+}
+
+.bstsD {
+  // Sfondo  Sensore temperatura Digital
+  background-color: rgb(128, 0, 0);
+}
+
+// BACKGROUND SensoreLivelloAcqua (SOTTOSEZIONE PRELAVAGGIO)
+.bsla {
+  // Sfondo SensoreLivelloAcqua Default
+  background-color: rgb(0, 110, 24);
+}
+
+.bslaL {
+  // Sfondo SensoreLivelloAcqua Lean
+  background-color: rgba(33, 23, 68, 0.938);
+}
+
+.bslaD {
+  // Sfondo  SensoreLivelloAcqua Digital
+  background-color: rgb(119, 132, 190);
+}
+
+// BACKGROUND Pompa (SOTTOSEZIONE LAVAGGIO)
+.bpom {
+  // Sfondo Pompa Default
+  background-color: rgb(92, 127, 179);
+}
+
+.bpomL {
+  // Sfondo Pompa Lean
+  background-color: rgba(143, 8, 87, 0.938);
+}
+
+.bpomD {
+  // Sfondo  Pompa Digital
+  background-color: rgb(214, 119, 55);
+}
+
+// BACKGROUND Ventilatore (SOTTOSEZIONE ASCIUGATURA)
+.bvent {
+  // Sfondo Ventilatore Default
+  background-color: rgb(178, 181, 185);
+}
+
+.bventL {
+  // Sfondo Ventilatore Lean
+  background-color: rgba(143, 207, 22, 0.938);
+}
+
+.bventD {
+  // Sfondo  Ventilatore Digital
+  background-color: rgb(255, 51, 0);
+}
+
+// BACKGROUND SensoreUmidità (SOTTOSEZIONE ASCIUGATURA)
+.bsu {
+  // Sfondo SensoreUmidità Default
+  background-color: rgb(240, 211, 46);
+}
+
+.bsuL {
+  // Sfondo SensoreUmidità Lean
+  background-color: rgba(170, 47, 133, 0.938);
+}
+
+.bsuD {
+  // Sfondo  SensoreUmidità Digital
+  background-color: rgb(77, 77, 77);
+}
 
 
-        // BACKGROUND PRELAVAGGIO(SOTTOSEZIONE LAVAGGIO)
+// BACKGROUND SensoreLivello (SOTTOSEZIONE PRETRATTAMENTO)
+.bsenliv {
+  // Sfondo SensoreUmidità Default
+  background-color: rgb(20, 66, 151);
+}
 
-        .bp { // Sfondo prelavaggio Default
-          background-image: url("../../../documentation/Prelavaggio.svg");
-        }
+.bsenlivL {
+  // Sfondo SensoreUmidità Lean
+  background-color: rgba(122, 10, 25, 0.938);
+}
 
-        .bpL { // Sfondo prelavaggio Lean
-          background-image: url("../../../documentation/PrelavaggioL.svg");
-        }
-
-        .bpD { // Sfondo prelavaggio Digital
-          background-image: url("../../../documentation/PrelavaggioD.svg");
-        }
-
-
-        //BACKGROUND LAVAGGIO (SOTTOSEZIONE LAVAGGIO)
-
-        .bl { // Sfondo lavaggio Default
-          background-image: url("../../../documentation/Lavaggio.svg");
-        }
-
-        .blL { // Sfondo lavaggio Lean
-          background-image: url("../../../documentation/LavaggioL.svg");
-        }
-
-        .blD { // Sfondo lavaggio Digital
-          background-image: url("../../../documentation/LavaggioD.svg");
-        }
+.bsenlivD {
+  // Sfondo  SensoreUmidità Digital
+  background-color: rgb(101, 112, 4);
+}
 
 
-        // BACKGROUND ASCIUGATURA (SOTTOSEZIONE LAVAGGIO)
+// BACKGROUND SensorePH (SOTTOSEZIONE PRETRATTAMENTO)
+.bsenph {
+  // Sfondo SensoreUmidità Default
+  background-color: rgb(37, 228, 132);
+}
 
-        .ba { // Sfondo asciugatura Default
-          background-image: url("../../../documentation/Asciugatura.svg");
-        }
+.bsenphL {
+  // Sfondo SensoreUmidità Lean
+  background-color: rgba(226, 166, 164, 0.938);
+}
 
-        .baL { // Sfondo asciugatura Lean
-          background-image: url("../../../documentation/AsciugaturaL.svg");
-        }
-
-        .baD { // Sfondo asciugatura Digital
-          background-image: url("../../../documentation/AsciugaturaD.svg");
-        }
-
-
-    // BACKGROUND SEZIONE PRETRATTAMENTO
-
-    .bsp { // Sfondo sezione lavaggio Default
-      background-image: url("../../../documentation/SezioneTrattamento.svg");
-    }
-
-    .bspL { // Sfondo sezione lavaggio Lean
-      background-image: url("../../../documentation/SezioneTrattamentoL.svg");
-    }
-
-    .bspD { // Sfondo sezione lavaggio Digital
-      background-image: url("../../../documentation/SezioneTrattamentoD.svg");
-    }
+.bsenphD {
+  // Sfondo  SensoreUmidità Digital
+  background-color: rgb(196, 25, 159);
+}
 
 
-        // BACKGROUND VASCA PRE TRATTAMENTO (SOTTOSEZIONE PRETRATTAMENTO)
 
-        .bvt { // Sfondo vasca pre trattamento Default
-          background-image: url("../../../documentation/VascaPreTrattamento.svg");
-        }
+// BACKGROUND Motore1 (SOTTOSEZIONE IMPILATORE)
+.bmot1 {
+  // Sfondo SensoreUmidità Default
+  background-color: rgb(111, 1, 255);
+}
 
-        .bvtL { // Sfondo vasca pre trattamento Lean
-          background-image: url("../../../documentation/VascaPreTrattamentoL.svg");
-        }
+.bmot1L {
+  // Sfondo SensoreUmidità Lean
+  background-color: rgba(255, 115, 0, 0.938);
+}
 
-        .bvtD { // Sfondo vasca pre trattamento Digital
-          background-image: url("../../../documentation/VascaPreTrattamentoD.svg");
-        }
-
-
-        // BACKGROUND VASCA PRIMER (SOTTOSEZIONE PRETRATTAMENTO)
-
-        .bvp { // Sfondo vasca primer Default
-          background-image: url("../../../documentation/VascaPrimer.svg");
-        }
-
-        .bvpL { // Sfondo vasca primer Lean
-          background-image: url("../../../documentation/VascaPrimerL.svg");
-        }
-
-        .bvpD { // Sfondo vasca primer Digital
-          background-image: url("../../../documentation/VascaPrimerD.svg");
-        }
+.bmot1D {
+  // Sfondo  SensoreUmidità Digital
+  background-color: rgb(25, 162, 196);
+}
 
 
-        // BACKGROUND VASCA FINISHER (SOTTOSEZIONE PRETRATTAMENTO)
 
-        .bvf { // Sfondo vasca finisher Default
-          background-image: url("../../../documentation/VascaFinisher.svg");
-        }
+// BACKGROUND Motore2 (SOTTOSEZIONE IMPILATORE)
+.bmot2 {
+  // Sfondo SensoreUmidità Default
+  background-color: rgb(124, 255, 1);
+}
 
-        .bvfL { // Sfondo vasca finisher Lean
-          background-image: url("../../../documentation/VascaFinisherL.svg");
-        }
+.bmot2L {
+  // Sfondo SensoreUmidità Lean
+  background-color: rgba(82, 95, 75, 0.938);
+}
 
-        .bvfD { // Sfondo vasca finisher Digital
-          background-image: url("../../../documentation/VascaFinisherD.svg");
-        }
-
-
-    // BACKGROUND SEZIONE STOCCAGGIO
-
-    .bss { // Sfondo sezione stoccaggio Default
-      background-image: url("../../../documentation/SezioneStoccaggio.svg");
-    }
-
-    .bssL { // Sfondo sezione stoccaggio Lean
-      background-image: url("../../../documentation/SezioneStoccaggioL.svg");
-    }
-
-    .bssD { // Sfondo sezione stoccaggio Digital
-      background-image: url("../../../documentation/SezioneStoccaggioD.svg");
-    }
+.bmot2D {
+  // Sfondo  SensoreUmidità Digital
+  background-color: rgb(255, 0, 0);
+}
 
 
-        // BACKGROUND IMPILATORE (SOTTOSEZIONE STOCCAGGIO)
+// BACKGROUND SensoreCorrenteAssorbita (SOTTOSEZIONE di VARIE sottosez)
+.bsca {
+  // Sfondo SensoreCorrenteAssorbita Default
+  background-color: rgb(112, 16, 16);
+}
 
-        .bi { // Sfondo impilatore Default
-          background-image: url("../../../documentation/Impilatore.svg");
-        }
+.bscaL {
+  // Sfondo SensoreCorrenteAssorbita Lean
+  background-color: rgba(101, 221, 36, 0.938);
+}
 
-        .biL { // Sfondo impilatore Lean
-          background-image: url("../../../documentation/ImpilatoreL.svg");
-        }
-
-        .biD { // Sfondo impilatore Digital
-          background-image: url("../../../documentation/ImpilatoreD.svg");
-        }
+.bscaD {
+  // Sfondo  SensoreCorrenteAssorbita Digital
+  background-color: rgb(151, 158, 141);
+}
 
 
+// BACKGROUND SensoreNumeroDiGiri (SOTTOSEZIONE di VARIE sottosez)
+.bsng {
+  // Sfondo SensoreNumeroDiGiri Default
+  background-color: rgb(4, 197, 231);
+}
+
+.bsngL {
+  // Sfondo SensoreNumeroDiGiri Lean
+  background-color: rgba(255, 0, 221, 0.938);
+}
+
+.bsngD {
+  // Sfondo  SensoreNumeroDiGiri Digital
+  background-color: rgb(41, 83, 2);
+}
+
+
+// BACKGROUND SensoreOreLavoro (SOTTOSEZIONE di VARIE sottosez)
+.bsolav {
+  // Sfondo SensoreNumeroDiGiri Default
+  background-color: rgb(227, 231, 4);
+}
+
+.bsolavL {
+  // Sfondo SensoreNumeroDiGiri Lean
+  background-color: rgba(255, 0, 0, 0.938);
+}
+
+.bsolavD {
+  // Sfondo  SensoreNumeroDiGiri Digital
+  background-color: rgb(62, 54, 175);
+}
 
 
 

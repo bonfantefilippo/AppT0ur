@@ -3,12 +3,12 @@ import {ObjectOfView} from './ObjectOfView';
 
 export class ViewVascaPreTrattamento {
   public static JSON () {
-    const data: ObjectOfView = new ObjectOfView('ViewVascaPretrattamento');
+    const data: ObjectOfView = new ObjectOfView('Vasca Pre-trattamento');
     const objs = [];
     data.objects = objs;
 
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreLivello, 'childId': 'child1', 'contextID': ObjectID.viewSensoreLivello});
     objs.push({'routerLink': '/apptour/' + ObjectID.viewSensorePH, 'childId': 'child2', 'contextID': ObjectID.viewSensorePH});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreLivello, 'childId': 'child1', 'contextID': ObjectID.viewSensoreLivello});
 
     data.leanOptions.cssDefault = 'an2 bvt';
 

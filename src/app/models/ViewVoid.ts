@@ -3,7 +3,7 @@ import {ObjectOfView} from './ObjectOfView';
 
 export class ViewVoid {
   public static JSON () {
-    const data: ObjectOfView = new ObjectOfView('ViewPiantina');
+    const data: ObjectOfView = new ObjectOfView('Piantina');
     const objs = [];
     data.objects = objs;
 

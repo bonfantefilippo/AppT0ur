@@ -3,14 +3,18 @@ import {ObjectOfView} from './ObjectOfView';
 
 export class ViewPrelavaggio {
   public static JSON () {
-    const data: ObjectOfView = new ObjectOfView('ViewPrelavaggio');
+    const data: ObjectOfView = new ObjectOfView('Pre-lavaggio');
     const objs = [];
     data.objects = objs;
 
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewPompaAcqua, 'childId': 'child1', 'contextID': ObjectID.viewPompaAcqua});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewContatoreAcqua, 'childId': 'child2', 'contextID': ObjectID.viewContatoreAcqua});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreTemperatura, 'childId': 'child3', 'contextID': ObjectID.viewSensoreTemperatura});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreLivelloAcqua, 'childId': 'child4', 'contextID': ObjectID.viewSensoreLivelloAcqua});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewPompaAcqua,
+      'childId': 'child1', 'contextID': ObjectID.viewPompaAcqua});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewContatoreAcqua,
+      'childId': 'child2', 'contextID': ObjectID.viewContatoreAcqua});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreTemperatura,
+      'childId': 'child3', 'contextID': ObjectID.viewSensoreTemperatura});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreLivelloAcqua,
+      'childId': 'child4', 'contextID': ObjectID.viewSensoreLivelloAcqua});
 
     data.leanOptions.cssDefault = 'an4 bp';
 

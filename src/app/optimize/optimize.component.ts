@@ -13,10 +13,11 @@ export class OptimizeComponent implements OnInit {
   btnLeanState = null;
   btnDigitalState = null;
   btns: OptionOfView = null;
+
   constructor(public service: ArchitectService) {
     this.service.leanSetChange.subscribe(result => {
       //   {'index': 3, 'text': 'layout', 'checked': false},
-      console.log('Optimize lean set change', result );
+      console.log('Optimize lean set change', result);
       this.btns = result;
     });
     this.setLean(false);
@@ -24,16 +25,20 @@ export class OptimizeComponent implements OnInit {
 
   ngOnInit() {
   }
+
   /* eventi del componete */
   onLeanOver() {
     this.service.onMouseOver({curIndex: ObjectID.btnLean});
   }
+
   onDigitalOver() {
     this.service.onMouseOver({curIndex: ObjectID.btnDigital});
   }
+
   onLean() {
     this.setLean(!this.btnLeanState);
   }
+
   onDigital() {
     this.setDigital(!this.btnDigitalState);
   }
@@ -50,6 +55,7 @@ export class OptimizeComponent implements OnInit {
       this.setDigital(false);
     }
   }
+
   setDigital(value: boolean) {
     if (this.btnDigitalState === value) {
       return;
@@ -65,5 +71,14 @@ export class OptimizeComponent implements OnInit {
       return true;
     }
     return !this.btns.digitalEnable;
+  }
+
+  /* se nessuna non ci sono opzioni Lean attivabili allora non ci sono bottoni disponibili */
+  get btnsDisable(): boolean {
+    if (this.btns && this.btns.options.length > 0) {
+      return false;
+    }
+    this.setLean(false);
+    return true;
   }
 }

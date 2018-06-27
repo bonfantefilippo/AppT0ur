@@ -3,7 +3,7 @@ import {ObjectOfView} from './ObjectOfView';
 
 export class ViewSezioneTrattamento {
   public static JSON () {
-    const data: ObjectOfView = new ObjectOfView('ViewSezioneTrattamento');
+    const data: ObjectOfView = new ObjectOfView('Sezione Trattamento');
     const objs = [];
     data.objects = objs;
 
