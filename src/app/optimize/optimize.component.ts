@@ -45,13 +45,14 @@ export class OptimizeComponent implements OnInit {
 
   /* i cambiamenti di stato dei bottoni vengono comunicati all'Architect */
   setLean(value: boolean) {
+    // todo: fare in modo che il pulsante Digital sia attivabile quando non ci sono opzioni lean
     if (this.btnLeanState === value) {
       return;
     }
     this.btnLeanState = value;
     this.service.onLean({stato: this.btnLeanState});
     /* alla disattivazione di Lean bisogna disabilitare Digital */
-    if (!this.btnLeanState) {
+    if (!this.btnLeanState && (!this.btns || this.btns && this.btns.options.length == 0)) {
       this.setDigital(false);
     }
   }
@@ -73,8 +74,8 @@ export class OptimizeComponent implements OnInit {
     return !this.btns.digitalEnable;
   }
 
-  /* se nessuna non ci sono opzioni Lean attivabili allora non ci sono bottoni disponibili */
-  get btnsDisable(): boolean {
+  /* se non ci sono opzioni Lean attivabili allora non ci sono bottoni disponibili */
+  get btnLeanDisable(): boolean {
     if (this.btns && this.btns.options.length > 0) {
       return false;
     }

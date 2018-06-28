@@ -188,7 +188,7 @@
 // BACKGROUND POMPAACQUA (SOTTOSEZIONE PRELAVAGGIO)
 .bpa {
   // Sfondo pompa acqua Default
-  background-color: red;
+  background-image: url("../../../documentation/PompaAcqua.svg");
 }
 
 .bpaL {
@@ -198,13 +198,13 @@
 
 .bpaD {
   // Sfondo  pompa acqua Digital
-  background-color: green;
+  background-image: url("../../../documentation/PompaAcquaD.svg");
 }
 
 // BACKGROUND CONTATORE (SOTTOSEZIONE PRELAVAGGIO)
 .bc {
   // Sfondo CONTATORE Default
-  background-color: black;
+  background-image: url("../../../documentation/ContatoreAcqua.svg");
 }
 
 .bcL {
@@ -214,13 +214,13 @@
 
 .bcD {
   // Sfondo  CONTATORE Digital
-  background-color: rgb(0, 128, 85);
+  background-image: url("../../../documentation/ContatoreAcquaD.svg");
 }
 
 // BACKGROUND Sensore temperatura (SOTTOSEZIONE PRELAVAGGIO)
 .bsts {
   // Sfondo Sensore temperatura Default
-  background-color: rgb(212, 129, 187);
+  background-image: url("../../../documentation/SensoreTemperatura.svg");
 }
 
 .bstsL {
@@ -230,13 +230,13 @@
 
 .bstsD {
   // Sfondo  Sensore temperatura Digital
-  background-color: rgb(128, 0, 0);
+  background-image: url("../../../documentation/SensoreTemperaturaD.svg");
 }
 
 // BACKGROUND SensoreLivelloAcqua (SOTTOSEZIONE PRELAVAGGIO)
 .bsla {
   // Sfondo SensoreLivelloAcqua Default
-  background-color: rgb(0, 110, 24);
+  background-image: url("../../../documentation/SensoreLivelloAcqua.svg");
 }
 
 .bslaL {
@@ -246,13 +246,13 @@
 
 .bslaD {
   // Sfondo  SensoreLivelloAcqua Digital
-  background-color: rgb(119, 132, 190);
+  background-image: url("../../../documentation/SensoreLivelloAcquaD.svg");
 }
 
 // BACKGROUND Pompa (SOTTOSEZIONE LAVAGGIO)
 .bpom {
   // Sfondo Pompa Default
-  background-color: rgb(92, 127, 179);
+  background-image: url("../../../documentation/Pompa.svg");
 }
 
 .bpomL {
@@ -262,13 +262,13 @@
 
 .bpomD {
   // Sfondo  Pompa Digital
-  background-color: rgb(214, 119, 55);
+  background-image: url("../../../documentation/PompaD.svg");
 }
 
 // BACKGROUND Ventilatore (SOTTOSEZIONE ASCIUGATURA)
 .bvent {
   // Sfondo Ventilatore Default
-  background-color: rgb(178, 181, 185);
+  background-image: url("../../../documentation/Ventilatore.svg");
 }
 
 .bventL {
@@ -278,13 +278,13 @@
 
 .bventD {
   // Sfondo  Ventilatore Digital
-  background-color: rgb(255, 51, 0);
+  background-image: url("../../../documentation/VentilatoreD.svg");
 }
 
 // BACKGROUND SensoreUmidità (SOTTOSEZIONE ASCIUGATURA)
 .bsu {
   // Sfondo SensoreUmidità Default
-  background-color: rgb(240, 211, 46);
+  background-image: url("../../../documentation/SensoreUmidita.svg");
 }
 
 .bsuL {
@@ -294,14 +294,14 @@
 
 .bsuD {
   // Sfondo  SensoreUmidità Digital
-  background-color: rgb(77, 77, 77);
+  background-image: url("../../../documentation/SensoreUmiditaD.svg");
 }
 
 
 // BACKGROUND SensoreLivello (SOTTOSEZIONE PRETRATTAMENTO)
 .bsenliv {
   // Sfondo SensoreUmidità Default
-  background-color: rgb(20, 66, 151);
+  background-image: url("../../../documentation/SensoreLivello.svg");
 }
 
 .bsenlivL {
@@ -311,14 +311,14 @@
 
 .bsenlivD {
   // Sfondo  SensoreUmidità Digital
-  background-color: rgb(101, 112, 4);
+  background-image: url("../../../documentation/SensoreLivelloD.svg");
 }
 
 
 // BACKGROUND SensorePH (SOTTOSEZIONE PRETRATTAMENTO)
 .bsenph {
   // Sfondo SensoreUmidità Default
-  background-color: rgb(37, 228, 132);
+  background-image: url("../../../documentation/SensorePH.svg");
 }
 
 .bsenphL {
@@ -328,7 +328,7 @@
 
 .bsenphD {
   // Sfondo  SensoreUmidità Digital
-  background-color: rgb(196, 25, 159);
+  background-image: url("../../../documentation/SensorePHD.svg");
 }
 
 
@@ -336,7 +336,7 @@
 // BACKGROUND Motore1 (SOTTOSEZIONE IMPILATORE)
 .bmot1 {
   // Sfondo SensoreUmidità Default
-  background-color: rgb(111, 1, 255);
+  background-image: url("../../../documentation/Motore1.svg");
 }
 
 .bmot1L {
@@ -346,7 +346,7 @@
 
 .bmot1D {
   // Sfondo  SensoreUmidità Digital
-  background-color: rgb(25, 162, 196);
+  background-image: url("../../../documentation/Motore1D.svg");
 }
 
 
@@ -354,7 +354,7 @@
 // BACKGROUND Motore2 (SOTTOSEZIONE IMPILATORE)
 .bmot2 {
   // Sfondo SensoreUmidità Default
-  background-color: rgb(124, 255, 1);
+  background-image: url("../../../documentation/Motore2.svg");
 }
 
 .bmot2L {
@@ -364,14 +364,14 @@
 
 .bmot2D {
   // Sfondo  SensoreUmidità Digital
-  background-color: rgb(255, 0, 0);
+  background-image: url("../../../documentation/Motore2D.svg");
 }
 
 
 // BACKGROUND SensoreCorrenteAssorbita (SOTTOSEZIONE di VARIE sottosez)
 .bsca {
   // Sfondo SensoreCorrenteAssorbita Default
-  background-color: rgb(112, 16, 16);
+  background-image: url("../../../documentation/ContatoreCorrenteAssorbita.svg");
 }
 
 .bscaL {
@@ -381,14 +381,14 @@
 
 .bscaD {
   // Sfondo  SensoreCorrenteAssorbita Digital
-  background-color: rgb(151, 158, 141);
+  background-image: url("../../../documentation/ContatoreCorrenteAssorbitaD.svg");
 }
 
 
 // BACKGROUND SensoreNumeroDiGiri (SOTTOSEZIONE di VARIE sottosez)
 .bsng {
   // Sfondo SensoreNumeroDiGiri Default
-  background-color: rgb(4, 197, 231);
+  background-image: url("../../../documentation/ContatoreGiriAlMinuto.svg");
 }
 
 .bsngL {
@@ -398,14 +398,14 @@
 
 .bsngD {
   // Sfondo  SensoreNumeroDiGiri Digital
-  background-color: rgb(41, 83, 2);
+  background-image: url("../../../documentation/ContatoreGiriAlMinutoD.svg");
 }
 
 
 // BACKGROUND SensoreOreLavoro (SOTTOSEZIONE di VARIE sottosez)
 .bsolav {
   // Sfondo SensoreNumeroDiGiri Default
-  background-color: rgb(227, 231, 4);
+  background-image: url("../../../documentation/ContatoreOreLavoro.svg");
 }
 
 .bsolavL {
@@ -415,7 +415,7 @@
 
 .bsolavD {
   // Sfondo  SensoreNumeroDiGiri Digital
-  background-color: rgb(62, 54, 175);
+  background-image: url("../../../documentation/ContatoreOreLavoroD.svg");
 }
 
 

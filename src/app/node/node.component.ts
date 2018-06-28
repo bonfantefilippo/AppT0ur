@@ -20,12 +20,27 @@ export class NodeComponent {
     this.nodes = [service.root];
   }
 
-  options: ITreeOptions = {
-    actionMapping
+  actionMapping: IActionMapping = {
+    mouse: {
+      click: ( tree, node, $event) => {
+        $event.preventDefault();
+        console.dir(node.data.routerlink);
+        this.router.navigate([node.data.routerlink]);
+      },
+    },
+    keys: {
+      [KEYS.ENTER]: (tree, node, $event) => alert(`This is ${node.data.name}`)
+    }
   };
+
+  options: ITreeOptions = {
+    actionMapping: this.actionMapping
+  };
+
+
 }
 
-const actionMapping: IActionMapping = {
+/*const actionMapping: IActionMapping = {
   mouse: {
     click: ( tree, node, $event) => {
       $event.preventDefault();
@@ -36,4 +51,4 @@ const actionMapping: IActionMapping = {
   keys: {
     [KEYS.ENTER]: (tree, node, $event) => alert(`This is ${node.data.name}`)
   }
-};
+};*/
