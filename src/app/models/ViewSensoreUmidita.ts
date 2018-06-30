@@ -3,7 +3,7 @@ import { ObjectID } from './object-id.enum';
 
 export class ViewSensoreUmidita {
   public static JSON() {
-    const data: ObjectOfView = new ObjectOfView('Sensore Umidità');
+    const data: ObjectOfView = new ObjectOfView('Sensore di Umidità (RH)');
     const objs = [];
     data.objects = objs;
 
@@ -11,7 +11,7 @@ export class ViewSensoreUmidita {
 
     // TODO --> SISTEMARE CSS
     data.leanOptions.cssDefault = 'an1 bsu';
-    /*data.leanOptions.addOption(
+    data.leanOptions.addOption(
       3,
       'layout',
       false,
@@ -26,7 +26,7 @@ export class ViewSensoreUmidita {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bsuD'
-    );*/
+    );
     return data;
   }
 }

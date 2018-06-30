@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.1767767"
-     inkscape:cx="1756.7868"
-     inkscape:cy="514.66171"
+     inkscape:zoom="0.7071068"
+     inkscape:cx="683.5141"
+     inkscape:cy="333.25842"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -63,36 +63,6 @@
        spacingx="28.883682"
        spacingy="12.796214"
        empspacing="1" />
-    <sodipodi:guide
-       position="86.651049,153.55457"
-       orientation="1,0"
-       id="guide3733"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="-252.10351,16.204667"
-       orientation="1,0"
-       id="guide4174"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="-110.58353,48.08179"
-       orientation="1,0"
-       id="guide4176"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="-310.92954,118.20855"
-       orientation="1,0"
-       id="guide4207"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="86.61875,116.13911"
-       orientation="0,1"
-       id="guide7233"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="86.65105,16.10651"
-       orientation="0,1"
-       id="guide7235"
-       inkscape:locked="false" />
   </sodipodi:namedview>
   <defs
      id="defs2" />
@@ -104,7 +74,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>

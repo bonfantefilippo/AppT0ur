@@ -1,5 +1,5 @@
-import { ObjectOfView } from './ObjectOfView';
-import { ObjectID } from './object-id.enum';
+import {ObjectOfView} from './ObjectOfView';
+import {ObjectID} from './object-id.enum';
 
 export class ViewMotore2 {
   public static JSON() {
@@ -8,12 +8,21 @@ export class ViewMotore2 {
     data.objects = objs;
 
     // tslint:disable-next-line:max-line-length
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreCorrenteAssorbita,
-      'childId': 'child1', 'contextID': ObjectID.viewSensoreCorrenteAssorbita});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreNumeroDiGiri,
-      'childId': 'child2', 'contextID': ObjectID.viewSensoreNumeroDiGiri});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreOreLavoro,
-      'childId': 'child3', 'contextID': ObjectID.viewSensoreOreLavoro});
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewSensoreCorrenteAssorbita,
+      'childId': 'child1',
+      'contextID': ObjectID.viewSensoreCorrenteAssorbita
+    });
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewSensoreNumeroDiGiri,
+      'childId': 'child2',
+      'contextID': ObjectID.viewSensoreNumeroDiGiri
+    });
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewSensoreOreLavoro,
+      'childId': 'child3',
+      'contextID': ObjectID.viewSensoreOreLavoro
+    });
 
     // TODO --> SISTEMARE CSS
     data.leanOptions.cssDefault = 'an3 bmot2';

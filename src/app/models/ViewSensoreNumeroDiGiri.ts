@@ -8,7 +8,7 @@ export class ViewSensoreNumeroDiGiri {
     data.objects = objs;
 
     data.leanOptions.cssDefault = 'an1 bsng';
-    /*data.leanOptions.addOption(
+    data.leanOptions.addOption(
       3,
       'layout',
       false,
@@ -23,7 +23,7 @@ export class ViewSensoreNumeroDiGiri {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bsngD'
-    );*/
+    );
     return data;
   }
 }

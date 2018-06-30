@@ -3,12 +3,12 @@ import { ObjectID } from './object-id.enum';
 
 export class ViewSensoreCorrenteAssorbita {
   public static JSON() {
-    const data: ObjectOfView = new ObjectOfView('Corrente Assorbita (ampere)');
+    const data: ObjectOfView = new ObjectOfView('Corrente Assorbita (A)');
     const objs = [];
     data.objects = objs;
 
     data.leanOptions.cssDefault = 'an1 bsca';
-    /*data.leanOptions.addOption(
+    data.leanOptions.addOption(
       3,
       'layout',
       false,
@@ -23,7 +23,7 @@ export class ViewSensoreCorrenteAssorbita {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bscaD'
-    );*/
+    );
     return data;
   }
 }
