@@ -3,7 +3,7 @@ import { ObjectID } from './object-id.enum';
 
 export class ViewSensoreLivelloAcqua {
   public static JSON() {
-    const data: ObjectOfView = new ObjectOfView('Sensore di Livello Acqua (m)');
+    const data: ObjectOfView = new ObjectOfView('Livello Acqua (m)');
     const objs = [];
     data.objects = objs;
 
