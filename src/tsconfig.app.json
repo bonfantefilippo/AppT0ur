@@ -3,9 +3,7 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "types": [
-      "underscore"
-    ]
+    "types": []
   },
   "exclude": [
     "src/test.ts",

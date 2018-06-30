@@ -49,6 +49,7 @@ export class TreeOfView {
 
 
     this.data[ObjectID.viewSezioneTrattamento] = ViewSezioneTrattamento.JSON();
+    // Andrea @ Filippo: ho sistemato l'ordine dei senosi
     this.data[ObjectID.viewVascaPretrattamento] = ViewVascaPreTrattamento.JSON();
     this.data[ObjectID.viewVascaPrimer] = ViewVascaPrimer.JSON();
     this.data[ObjectID.viewVascaFinisher] = ViewVascaFinisher.JSON();
