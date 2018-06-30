@@ -7,8 +7,8 @@ export class ViewVascaFinisher {
     const objs = [];
     data.objects = objs;
 
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreLivello, 'childId': 'child1', 'contextID': ObjectID.viewSensoreLivello});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensorePH, 'childId': 'child2', 'contextID': ObjectID.viewSensorePH});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensorePH, 'childId': 'child1', 'contextID': ObjectID.viewSensorePH});
+    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreLivello, 'childId': 'child2', 'contextID': ObjectID.viewSensoreLivello});
 
     data.leanOptions.cssDefault = 'an2 bvf';
 
