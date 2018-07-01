@@ -28,6 +28,7 @@ export class ObjectOfView {
   public objects: ChildOfView[]; // obsoleto
   private _children: ObjectOfView[] = [];
   public parent: ObjectOfView = null;
+  private _activeNode: ObjectOfView = null;
 
   css: string;
   childId: string;
@@ -69,27 +70,56 @@ export class ObjectOfView {
         node.contextID = child.contextID;
         this._children.push(node.fromJSON(i => callbackFn(i)));
       } else {
-        node = new ObjectOfView('nodo ' + child.contextID);
+        /*if (child.name) {*/
+          node = new ObjectOfView(child.name);
+        /*} else {
+          node = new ObjectOfView('nodo ' + child.contextID);
+        }*/
         node.parent = this;
         node.css = child.css;
         node.contextID = child.contextID;
         this._children.push(node);
       }
     });
+    // console.log('BuildTree', this.contextID);
     return this;
   }
-
-  get node(): { id: ObjectID, name: string, children: any[], routerlink: string } {
+  get root(): ObjectOfView {
+    if (this.parent) {
+      return this.parent.root;
+    }
+    return this;
+  }
+  setActive() {
+    this.activeNode = this;
+  }
+  set activeNode(node: ObjectOfView) {
+    if (this.parent) {
+      this.parent.activeNode = node;
+     }
+    this._activeNode = node;
+  }
+  get activeNode(): ObjectOfView {
+    if (this.parent) {
+      return this.parent.activeNode;
+    }
+    return this._activeNode;
+  }
+  get isActive(): boolean {
+    return (this === this.activeNode);
+  }
+  get node(): NodeOfView {
     return {
       id: this.contextID,
       name: this.name,
       children: this.children,
-      routerlink: this.routerLink()
+      isSelected: this.isActive,
+      data: this
     };
   }
 
-  get children(): any[] {
-    const nodes = [];
+  get children(): NodeOfView[] {
+    const nodes: NodeOfView[] = [];
     this._children.forEach(child => {
       nodes.push(child.node);
     });
@@ -103,6 +133,14 @@ export class ObjectOfView {
   numChildren(): number {
     return this._children.length;
   }
+}
+
+export class NodeOfView {
+  id: ObjectID;
+  name: string;
+  children: NodeOfView[];
+  isSelected: boolean;
+  data: ObjectOfView;
 }
 
 export class ChildOfView { // obsoleto

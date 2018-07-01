@@ -7,6 +7,9 @@ export class ViewPiantinaAngus {
     const objs = [];
     data.objects = objs;
 
+    // la home va impostata a mano
+    data.contextID = ObjectID.viewHome;
+
     objs.push({
       'routerLink': '/apptour/' + ObjectID.viewSezioneLavaggio,
       'childId': 'child1', 'contextID': ObjectID.viewSezioneLavaggio

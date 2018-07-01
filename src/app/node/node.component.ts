@@ -3,8 +3,7 @@ import {TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions} from 'angular-tree-com
 import {Router} from '@angular/router';
 import {ArchitectService} from '../architect.service';
 
-// todo: correggere il metodo per il routing: il click sull'albero genera un errore nel router
-let mRouter: Router;
+// http://demos.wijmo.com/5/Angular2/TreeViewIntro/TreeViewIntro/
 
 @Component({
   selector: 'app-node',
@@ -15,8 +14,7 @@ export class NodeComponent {
 
   test = '';
   nodes = [];
-  constructor(public router: Router, service: ArchitectService) {
-    mRouter = router;
+  constructor(/*public router: Router,*/ public service: ArchitectService) {
     this.nodes = [service.root];
   }
 
@@ -24,8 +22,9 @@ export class NodeComponent {
     mouse: {
       click: ( tree, node, $event) => {
         $event.preventDefault();
-        console.dir(node.data.routerlink);
-        this.router.navigate([node.data.routerlink]);
+        // console.dir(node.data.routerlink);
+        this.service.onRoute(node.id);
+        // this.router.navigate([node.data.routerlink]);
       },
     },
     keys: {
@@ -39,16 +38,3 @@ export class NodeComponent {
 
 
 }
-
-/*const actionMapping: IActionMapping = {
-  mouse: {
-    click: ( tree, node, $event) => {
-      $event.preventDefault();
-      console.dir(node.data.routerlink);
-      mRouter.navigate(node.data.routerlink);
-    },
-  },
-  keys: {
-    [KEYS.ENTER]: (tree, node, $event) => alert(`This is ${node.data.name}`)
-  }
-};*/

@@ -49,7 +49,7 @@ export class TreeOfView {
 
 
     this.data[ObjectID.viewSezioneTrattamento] = ViewSezioneTrattamento.JSON();
-    // Andrea @ Filippo: ho sistemato l'ordine dei senosi
+    // Andrea @ Filippo: ho sistemato l'ordine dei sensosi
     this.data[ObjectID.viewVascaPretrattamento] = ViewVascaPreTrattamento.JSON();
     this.data[ObjectID.viewVascaPrimer] = ViewVascaPrimer.JSON();
     this.data[ObjectID.viewVascaFinisher] = ViewVascaFinisher.JSON();
@@ -74,8 +74,11 @@ export class TreeOfView {
 
     // definiamo la radice dell'albero, il resto si fa da se e il risultatao
     // è la struttura ad albero completa
-    this._tree = this.data[ObjectID.viewPiantinaAngus];
+   /* this._tree = this.data[ObjectID.viewPiantinaAngus];
     this._tree.fromJSON(index => {
+      return this.data[index];
+    });*/
+    this._tree = this.data[ObjectID.viewPiantinaAngus].fromJSON(index => {
       return this.data[index];
     });
   }

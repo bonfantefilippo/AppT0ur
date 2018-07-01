@@ -2,15 +2,31 @@ import {ObjectID} from './object-id.enum';
 import {ObjectOfView} from './ObjectOfView';
 
 export class ViewAsciugatura {
-  public static JSON () {
+  public static JSON() {
     const data: ObjectOfView = new ObjectOfView('Asciugatura');
     const objs = [];
     data.objects = objs;
 
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewVentilatore, 'childId': 'child1', 'contextID': ObjectID.viewVentilatore});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewContatoreAcqua, 'childId': 'child2', 'contextID': ObjectID.viewContatoreAcqua});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreTemperatura, 'childId': 'child3', 'contextID': ObjectID.viewSensoreTemperatura});
-    objs.push({'routerLink': '/apptour/' + ObjectID.viewSensoreUmidita, 'childId': 'child4', 'contextID': ObjectID.viewSensoreUmidita});
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewVentilatore,
+      'childId': 'child1',
+      'contextID': ObjectID.viewVentilatore
+    });
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewContatoreAcqua,
+      'childId': 'child2',
+      'contextID': ObjectID.viewContatoreAcqua
+    });
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewSensoreTemperatura,
+      'childId': 'child3',
+      'contextID': ObjectID.viewSensoreTemperatura
+    });
+    objs.push({
+      'routerLink': '/apptour/' + ObjectID.viewSensoreUmidita,
+      'childId': 'child4',
+      'contextID': ObjectID.viewSensoreUmidita
+    });
 
     data.leanOptions.cssDefault = 'an4 ba';
 

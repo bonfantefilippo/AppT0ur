@@ -37,7 +37,7 @@ export class AppChartComponent implements OnInit, ICallback {
 
   ngOnInit() {
     console.log('Chart ' + this.contextID + ' init: before registerObject');
-    this.UID = this.service.registerObject(this, this.contextID);
+    this.UID = this.service.registerChart(this, this.contextID);
     console.log('Chart ' + this.contextID + ' init: get chart');
     this.data = this.service.getDefaultChart(this.UID);
     this.data.tag = this.contextID;

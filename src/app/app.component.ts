@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {ArchitectService} from './architect.service';
-import {Router} from '@angular/router';
 import {ObjectID} from './models/object-id.enum';
 
 @Component({
@@ -11,12 +10,12 @@ import {ObjectID} from './models/object-id.enum';
 export class AppComponent {
   title = 'appT0urist';
 
-  constructor(public service: ArchitectService, public router: Router) {
+  constructor(public service: ArchitectService) {
     this.homeRedirect();
   }
 
   homeRedirect() {
-    this.router.navigate(['apptour/' + ObjectID.viewHome]);
+    this.service.onRoute(ObjectID.viewHome);
   }
 
   counterChartZero() {

@@ -5,6 +5,7 @@ import {ICallback} from './models/ICallback';
 import {TreeOfView} from './models/TreeBuilder';
 import {OptionOfView, OptionType} from './models/OptionBuilder';
 import {Router} from '@angular/router';
+import {NodeOfView, ObjectOfView} from './models/ObjectOfView';
 
 
 const _treeOfView = new TreeOfView();
@@ -97,7 +98,7 @@ export class ArchitectService {
 
   }
 
-  registerObject(caller: ICallback, contextID: number) {
+  registerChart(caller: ICallback, contextID: number) {
     /*
       quando contextID = -1 l'oggetto viene creato da un routing
 
@@ -135,6 +136,23 @@ export class ArchitectService {
     return UID;
   }
 
+  registerObject(contextID: number): ObjectOfView {
+
+    if (!_treeOfView.data[contextID]) {
+      console.log('registering object of context: ' + contextID + ' enter', contextID);
+      return null;
+    }
+    console.log('registering object of context: ' + contextID + ' enter', _treeOfView.data[contextID]);
+
+    console.log('registering object of context: ' + contextID + ' set change', _treeOfView.data[contextID]);
+    this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
+    this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
+
+    this.index = contextID;
+    console.log('registering object of context: ' + contextID + ' set data', _treeOfView.data[contextID]);
+    return _treeOfView.data[contextID];
+  }
+
   onLean(event) {
     this.leanClick.emit(event);
   }
@@ -157,9 +175,13 @@ export class ArchitectService {
   }
 
   onRoute(contextID: ObjectID) {
-    console.log('Routing to ' + contextID);
+    console.log('onRoute Routing to ' + contextID);
+    _treeOfView.data[contextID].setActive();
+    console.log('onRoute active node is: ' + _treeOfView.data[contextID].activeNode.name);
+    console.log('onRoute route.emit');
+    this.router.navigate([_treeOfView.data[contextID].routerLink()]);
     this.route.emit(contextID);
-    this.dataChange.emit(_treeOfView.data[contextID]);
+    console.log('onRoute Routed to ' + contextID);
   }
 
   onChartRoute(contextID: ObjectID) {
@@ -167,9 +189,10 @@ export class ArchitectService {
     // this.route.emit(contextID);
   }
 
-  get root(): {id: ObjectID, name: string,  children: any[], routerlink: string} {
+  get root(): NodeOfView {
     return _treeOfView.root;
   }
+
   getRandomChart() {
     /*const chartIndex = Math.floor(Math.random() * this._chartData.getCount());
     console.log('getRandomChart: ' + chartIndex + ' of ' + this._chartData.getCount());*/
@@ -212,8 +235,8 @@ export class ArchitectService {
     this.chartCounter = 0;
   }
 
-  async chartClose (id) {
-    if(this.chartCounter !== 0) {
+  async chartClose(id) {
+    if (this.chartCounter !== 0) {
       window.history.back();
       await this.sleep(10);
       this.router.navigate([/chart/ + id]);

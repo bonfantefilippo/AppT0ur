@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ArchitectService} from '../architect.service';
 import {ObjectID} from '../models/object-id.enum';
-import {ICallback} from '../models/ICallback';
 import {ObjectOfView} from '../models/ObjectOfView';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-piantina',
@@ -27,12 +26,10 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
   https://github.com/shlomiassaf/ngx-modialog/issues/426
 
  */
-export class ObjectViewComponent implements OnInit, ICallback {
+export class ObjectViewComponent implements OnInit {
   ObjectID = ObjectID;
-  contextID: ObjectID = ObjectID.notSet;
   data: ObjectOfView;
   public css = '';
-  private UID = 0;
 
 
   constructor(private router: Router, private route: ActivatedRoute, public service: ArchitectService) {
@@ -49,23 +46,22 @@ export class ObjectViewComponent implements OnInit, ICallback {
   }
 
   register(contextID: number) {
-    this.UID = this.service.registerObject(this, contextID);
-    if (this.UID == -1) {
-      this.router.navigate(['notFound']);
+    this.data = this.service.registerObject(contextID);
+    if (!this.data) {
       return;
     }
-    this.contextID = contextID;
+    this.updateOptions();
   }
 
   ngOnInit() {
-    console.log('ObjView ' + this.contextID + ' init before register');
+    // console.log('ObjView ' + this.contextID + ' init before register');
     this.route.params.subscribe(params => {
-        console.log('ObjView ' + this.contextID + ' init: route.subscribe');
+        // console.log('ObjView ' + this.contextID + ' init: route.subscribe');
         this.register(params['contextID']);
-        console.log('ObjView ' + this.contextID + ' init: route registered');
+        console.log('ObjView ' + this.data.contextID + ' init: route registered');
       }
     );
-    console.log('ObjView  ' + this.contextID + ' init: after registerObject');
+    // console.log('ObjView  ' + this.contextID + ' init: after registerObject');
   }
 
   // todo: compilare la stringa dei css per tutte le opzioni attive
@@ -89,21 +85,13 @@ export class ObjectViewComponent implements OnInit, ICallback {
     this.css = cssResult;
   }
 
-  setData(data: ObjectOfView) {
-    console.log('objectView ' + this.contextID + ' setdata');
-    this.data = data;
-    this.css = this.data.leanOptions.cssDefault;
-    this.updateOptions();
-  }
-
-
   onDivMouseOver(index) {
-    console.log('Piantina mouseover ' + index);
+    console.log('ObjectOfView mouseover ' + index);
     this.service.onMouseOver({curIndex: index});
   }
 
   onClick(index) {
-    console.log('Piantina click ' + index);
+    console.log('ObjectOfView click ' + index);
     this.service.onRoute(index);
   }
 
