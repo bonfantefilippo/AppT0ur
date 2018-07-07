@@ -30,6 +30,7 @@ export class ViewPiantinaAngus {
     data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L baHL');
 
     data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an3L baHD');
+    data.updateOptions();
     return data;
 
   }

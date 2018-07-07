@@ -23,10 +23,12 @@ export class OptimizeComponent {
 
   /* eventi del componete */
   onLeanOver() {
+    console.log('Optimize onLeanOver', ObjectID.btnLean);
     this.service.onMouseOver({curIndex: ObjectID.btnLean});
   }
 
   onDigitalOver() {
+    console.log('Optimize onDigitalOver', ObjectID.btnDigital);
     this.service.onMouseOver({curIndex: ObjectID.btnDigital});
   }
 

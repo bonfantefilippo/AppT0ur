@@ -15,7 +15,7 @@ export class ViewSensoreNumeroDiGiri {
       ObjectID.btnLeanChild1,
       false,
       'an1 bsngL'
-    );
+    );*/
     data.digitalOptions.addOption(
       4,
       'QR',
@@ -23,7 +23,7 @@ export class ViewSensoreNumeroDiGiri {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bsngD'
-    );*/
+    );
     return data;
   }
 }

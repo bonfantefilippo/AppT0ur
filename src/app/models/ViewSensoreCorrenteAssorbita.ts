@@ -15,7 +15,7 @@ export class ViewSensoreCorrenteAssorbita {
       ObjectID.btnLeanChild1,
       false,
       'an1 bscaL'
-    );
+    );*/
     data.digitalOptions.addOption(
       4,
       'QR',
@@ -23,7 +23,7 @@ export class ViewSensoreCorrenteAssorbita {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bscaD'
-    );*/
+    );
     return data;
   }
 }

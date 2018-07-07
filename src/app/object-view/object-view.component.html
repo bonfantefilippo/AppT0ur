@@ -1,4 +1,4 @@
-<div [ngClass]="css">
+<div [ngClass]="css" (mouseover)="onObjMouseOver(data.contextID)">
   <div *ngFor="let node of data.children"
        id="{{node.childId}}"
        (mouseover)="onDivMouseOver(node.id)"

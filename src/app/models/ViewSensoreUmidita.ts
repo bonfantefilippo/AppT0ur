@@ -18,7 +18,7 @@ export class ViewSensoreUmidita {
       ObjectID.btnLeanChild1,
       false,
       'an1 bsuL'
-    );
+    );*/
     data.digitalOptions.addOption(
       4,
       'QR',
@@ -26,7 +26,7 @@ export class ViewSensoreUmidita {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bsuD'
-    );*/
+    );
     return data;
   }
 }

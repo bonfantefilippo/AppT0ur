@@ -18,7 +18,7 @@ export class ViewSensorePH {
       ObjectID.btnLeanChild1,
       false,
       'an1 bsenphL'
-    );
+    );*/
     data.digitalOptions.addOption(
       4,
       'QR',
@@ -26,7 +26,7 @@ export class ViewSensorePH {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bsenphD'
-    );*/
+    );
     return data;
   }
 }

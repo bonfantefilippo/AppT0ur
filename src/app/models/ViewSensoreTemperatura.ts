@@ -11,7 +11,7 @@ export class ViewSensoreTemperatura {
 
     data.leanOptions.cssDefault = 'an1 bsts';
     // data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an1 bstsL');
-    // data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an1 bstsD');
+    data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an1 bstsD');
     return data;
   }
 }

@@ -39,6 +39,11 @@ export class ObjectOfView implements NodeOfView {
   public chartOptions: OptionOfChart = new OptionOfChart();
   private _leanCount = 0;
 
+  chartsVisible: Array<boolean> = [
+    true, false, false,
+    false, true, false,
+    true, true, true];
+
   constructor(private _name) {
   }
 
@@ -46,6 +51,37 @@ export class ObjectOfView implements NodeOfView {
     return '/apptour/' + this.contextID;
   }
 
+  // todo: compilare la stringa dei css per tutte le opzioni attive
+  updateOptions() {
+    console.log('updateLeanOptions lean: ', this.leanOptions.options, this.digitalOptions.options);
+    let cssResult: string = this.leanOptions.cssDefault;
+    let hasLean: boolean;
+    let hasDigital: boolean;
+
+
+    if (this.btnLean) {
+      this.leanOptions.options.forEach(option => {
+        if (option.checked) {
+          hasLean = true;
+          cssResult = option.css;
+        }
+      });
+    }
+    if (this.btnDigital) {
+      this.digitalOptions.options.forEach(option => {
+        if (option.checked) {
+          hasDigital = true;
+          cssResult = option.css;
+        }
+      });
+    }
+    console.log('updateOptions css: ' + cssResult);
+    this.css = cssResult;
+
+    this.chartsVisible = [
+      !(hasLean || hasDigital), hasLean && !hasDigital, hasDigital,
+      false, true, false,
+      true, true, true];  }
 
   get btnLean(): boolean {
     return this.leanOptions.btnMain;
@@ -56,7 +92,10 @@ export class ObjectOfView implements NodeOfView {
   }
 
   set btnLean(value: boolean) {
-    this.leanOptions.btnMain = value;
+    if (this.leanOptions.btnMain !== value) {
+      this.leanOptions.btnMain = value;
+      this.updateOptions();
+    }
   }
 
 
@@ -66,11 +105,17 @@ export class ObjectOfView implements NodeOfView {
 
   get btnDigitalEnable(): boolean {
     /* abilitato se non ci sono opzioni lean o se è attivata l'opzione lean */
-    return !this.btnLeanEnable || (this.btnLean && this._leanCount > 0);
+    const hasDigitalOptions = this.digitalOptions.options.length > 0;
+    const leanActive = (this.btnLean && this._leanCount > 0);
+    const ignoreLean = !this.btnLeanEnable;
+    return hasDigitalOptions && (leanActive || ignoreLean);
   }
 
   set btnDigital(value: boolean) {
-    this.digitalOptions.btnMain = value;
+    if (this.digitalOptions.btnMain !== value) {
+      this.digitalOptions.btnMain = value;
+      this.updateOptions();
+    }
   }
 
 
@@ -86,6 +131,7 @@ export class ObjectOfView implements NodeOfView {
         }
         console.log('found option', option);
         option.checked = !option.checked;
+        this.updateOptions();
         return;
       }
     });
@@ -96,6 +142,7 @@ export class ObjectOfView implements NodeOfView {
     this.digitalOptions.options.forEach(option => {
       if (option.contextID == index) {
         option.checked = !option.checked;
+        this.updateOptions();
         return;
       }
     });
@@ -121,17 +168,18 @@ export class ObjectOfView implements NodeOfView {
         node.contextID = child.contextID;
         this._children.push(node);
       }
+      // node.updateOptions();
     });
     // console.log('BuildTree', this.contextID);
     return this;
   }
 
-/*  get root(): ObjectOfView {
-    if (this.parent) {
-      return this.parent.root;
-    }
-    return this;
-  }*/
+  /*  get root(): ObjectOfView {
+      if (this.parent) {
+        return this.parent.root;
+      }
+      return this;
+    }*/
 
   setActive() {
     this.activeNode = this;

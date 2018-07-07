@@ -29,28 +29,27 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ObjectViewComponent implements OnInit {
   ObjectID = ObjectID;
   data: ObjectOfView;
-  public css = '';
-
 
   constructor(private router: Router, private route: ActivatedRoute, public service: ArchitectService) {
-    this.service.leanChange.subscribe(() => {
-      this.updateOptions();
-    });
-    this.service.digitalChange.subscribe(() => {
-      this.updateOptions();
-    });
+
     this.service.route.subscribe(result => {
       console.log('View routed ' + result);
     });
+    this.service.dataChange.subscribe(result => {
+      //   {'index': 3, 'text': 'layout', 'checked': false},
+      console.log('Optimize data change', result);
+      this.data = result;
+    });
+  }
 
+
+  get css(): string {
+    return this.data.css;
   }
 
   register(contextID: number) {
     this.data = this.service.registerObject(contextID);
-    if (!this.data) {
-      return;
-    }
-    this.updateOptions();
+
   }
 
   ngOnInit() {
@@ -64,32 +63,15 @@ export class ObjectViewComponent implements OnInit {
     // console.log('ObjView  ' + this.contextID + ' init: after registerObject');
   }
 
-  // todo: compilare la stringa dei css per tutte le opzioni attive
-  updateOptions() {
-    console.log('updateLeanOptions lean: ', this.data.leanOptions.options, this.data.digitalOptions.options);
-    let cssResult: string = this.data.leanOptions.cssDefault;
-
-    this.data.leanOptions.options.forEach(option => {
-      if (option.checked) {
-        cssResult = option.css;
-      }
-    });
-
-    this.data.digitalOptions.options.forEach(option => {
-      if (option.checked) {
-        cssResult = option.css;
-      }
-    });
-
-    console.log('updateOptions css: ' + cssResult);
-    this.css = cssResult;
-  }
 
   onObjMouseOver(index) {
     console.log('ObjectOfView objMouseover ' + index);
-    if (this.data.children.length > 0) {return; }
+    if (this.data.children.length > 0) {
+      return;
+    }
     this.service.onMouseOver({curIndex: index});
   }
+
   onDivMouseOver(index) {
     console.log('ObjectOfView divMouseover ' + index);
     this.service.onMouseOver({curIndex: index});

@@ -52,8 +52,8 @@ export class ArchitectService {
   * Il click su un bottone del bottom menu genera _leanOption e l'Architect informa i consumer
   * con _leanChange
   */
-  @Output() leanChange = new EventEmitter();
-  @Output() digitalChange = new EventEmitter();
+ /* @Output() leanChange = new EventEmitter();
+  @Output() digitalChange = new EventEmitter();*/
   @Output() dataChange = new EventEmitter();
   @Output() objectMouseOver = new EventEmitter();
   @Output() route = new EventEmitter();
@@ -120,6 +120,7 @@ export class ArchitectService {
     console.log('registering object of context: ' + contextID + ' enter', _treeOfView.data[contextID]);
     this.index = contextID;
 
+    _treeOfView.data[contextID].updateOptions();
     console.log('registering object of context: ' + contextID + ' set change', _treeOfView.data[contextID]);
     this.dataChange.emit(_treeOfView.data[contextID]);
 
@@ -132,12 +133,12 @@ export class ArchitectService {
     console.log('service onBtnClick');
     _treeOfView.data[this.index].setBtnLeanOption(btn.contextID);
 
-    this.leanChange.emit(_treeOfView.data[this.index].leanOptions);
+    // this.leanChange.emit(_treeOfView.data[this.index].leanOptions);
   }
 
   onDigitalOption(btn) {
     _treeOfView.data[this.index].setBtnDigitalOption(btn.contextID);
-    this.digitalChange.emit(_treeOfView.data[this.index].digitalOptions);
+   //  this.digitalChange.emit(_treeOfView.data[this.index].digitalOptions);
   }
 
   onMouseOver(event) {
@@ -147,6 +148,7 @@ export class ArchitectService {
   onRoute(contextID: ObjectID) {
     console.log('onRoute Routing to ' + contextID);
     _treeOfView.data[contextID].setActive();
+    _treeOfView.data[contextID].updateOptions();
     console.log('onRoute active node is: ' + _treeOfView.data[contextID].activeNode.name);
     console.log('onRoute route.emit');
     this.router.navigate([_treeOfView.data[contextID].routerLink()]);

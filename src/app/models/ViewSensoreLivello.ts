@@ -18,7 +18,7 @@ export class ViewSensoreLivello {
       ObjectID.btnLeanChild1,
       false,
       'an1 bsenlivL'
-    );
+    );*/
     data.digitalOptions.addOption(
       4,
       'QR',
@@ -26,7 +26,7 @@ export class ViewSensoreLivello {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bsenlivD'
-    );*/
+    );
     return data;
   }
 }

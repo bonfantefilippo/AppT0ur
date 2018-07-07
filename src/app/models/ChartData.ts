@@ -11,6 +11,8 @@
  *                    TODO: aggiungere qui altri grafici da richiamare nell'applicazione
  *
  */
+import {ObjectID} from './object-id.enum';
+
 export class ChartData {
   private data: Array<ChartDataRecord> = [];
 
@@ -219,6 +221,15 @@ export class ChartData {
       economicImpactBarGraph,
       workInProgressGraphBar
     );
+    /*this.data[ObjectID.chart1] = grafico1;
+    this.data[ObjectID.chart2] = grafico2;
+    this.data[ObjectID.chart3] = grafico3;
+    this.data[ObjectID.chart4] = grafico4;
+    this.data[ObjectID.chart5] = grafico5;
+    this.data[ObjectID.chart6] = grafico6;
+    this.data[ObjectID.chart7] = productionBarGraph;
+    this.data[ObjectID.chart8] = economicImpactBarGraph;
+    this.data[ObjectID.chart9] = workInProgressGraphBar;*/
   } // fine costruttore
 
   public static Callback1(text) {

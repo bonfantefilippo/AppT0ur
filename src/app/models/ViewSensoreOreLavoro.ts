@@ -15,7 +15,7 @@ export class ViewSensoreOreLavoro {
       ObjectID.btnLeanChild1,
       false,
       'an1 bsolavL'
-    );
+    );*/
     data.digitalOptions.addOption(
       4,
       'QR',
@@ -23,7 +23,7 @@ export class ViewSensoreOreLavoro {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bsolavD'
-    );*/
+    );
     return data;
   }
 }
