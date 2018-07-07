@@ -10,8 +10,8 @@ export class ViewSensoreLivelloAcqua {
     // TODO NON CI DOVREBBERO ESSERE FIGLI (SENSORI(?))
 
     data.leanOptions.cssDefault = 'an1 bsla';
-    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an1 bslaL');
-    data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an1 bslaD');
+    // data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an1 bslaL');
+    // data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an1 bslaD');
     return data;
   }
 }

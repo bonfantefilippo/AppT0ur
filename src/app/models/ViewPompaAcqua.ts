@@ -26,7 +26,7 @@ export class ViewPompaAcqua {
 
     // TODO --> SISTEMARE CSS
     data.leanOptions.cssDefault = 'an3 bpa';
-    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L bpaL');
+    // data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L bpaL');
     data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an3L bpaD');
     return data;
 

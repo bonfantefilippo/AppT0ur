@@ -8,7 +8,7 @@ export class ViewSensoreCorrenteAssorbita {
     data.objects = objs;
 
     data.leanOptions.cssDefault = 'an1 bsca';
-    data.leanOptions.addOption(
+    /*data.leanOptions.addOption(
       3,
       'layout',
       false,
@@ -23,7 +23,7 @@ export class ViewSensoreCorrenteAssorbita {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bscaD'
-    );
+    );*/
     return data;
   }
 }

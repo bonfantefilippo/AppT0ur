@@ -46,5 +46,6 @@ export enum ObjectID {
   chart10	,
   chart11	,
   chart12	,
-  chart13
+  chart13,
+  node
 }

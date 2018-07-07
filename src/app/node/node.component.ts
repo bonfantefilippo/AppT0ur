@@ -1,30 +1,29 @@
-import {Component, OnInit} from '@angular/core';
-import {TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions} from 'angular-tree-component';
-import {Router} from '@angular/router';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions, ITreeState} from 'angular-tree-component';
 import {ArchitectService} from '../architect.service';
+import { ChangeDetectorRef } from '@angular/core';
+import {ObjectID} from '../models/object-id.enum';
 
 // http://demos.wijmo.com/5/Angular2/TreeViewIntro/TreeViewIntro/
 
 @Component({
   selector: 'app-node',
-  template: '<tree-root class="node" [nodes]="nodes" [options]="options"></tree-root>',
+  template: '<tree-root #tree class="node" [(state)]="state"  [nodes]="nodes" [options]="options" (mouseover)="onObjMouseOver(0)"></tree-root>',
   styleUrls: ['./node.component.css']
 })
-export class NodeComponent {
+export class NodeComponent implements AfterViewInit {
 
   test = '';
+  state: ITreeState;
   nodes = [];
-  constructor(/*public router: Router,*/ public service: ArchitectService) {
-    this.nodes = [service.root];
-  }
+
+  @ViewChild('tree') tree;
 
   actionMapping: IActionMapping = {
     mouse: {
       click: ( tree, node, $event) => {
         $event.preventDefault();
-        // console.dir(node.data.routerlink);
         this.service.onRoute(node.id);
-        // this.router.navigate([node.data.routerlink]);
       },
     },
     keys: {
@@ -36,5 +35,17 @@ export class NodeComponent {
     actionMapping: this.actionMapping
   };
 
+  constructor(public service: ArchitectService, private cdRef: ChangeDetectorRef) {
+    this.nodes = [service.root];
+  }
+
+  ngAfterViewInit() {
+    this.tree.treeModel.expandAll();
+    this.cdRef.detectChanges();
+  }
+  onObjMouseOver(index) {
+    console.log('Node objMouseover ' + index);
+    this.service.onMouseOver({curIndex: ObjectID.node});
+  }
 
 }

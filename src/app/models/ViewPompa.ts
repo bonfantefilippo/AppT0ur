@@ -26,7 +26,7 @@ export class ViewPompa {
 
     // TODO --> SISTEMARE CSS
     data.leanOptions.cssDefault = 'an3 bpom';
-    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L bpomL');
+    // data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L bpomL');
     data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an3L bpomD');
     return data;
 

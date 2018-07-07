@@ -11,7 +11,7 @@ export class ViewSensorePH {
 
     // TODO --> SISTEMARE CSS
     data.leanOptions.cssDefault = 'an1 bsenph';
-    data.leanOptions.addOption(
+    /*data.leanOptions.addOption(
       3,
       'layout',
       false,
@@ -26,7 +26,7 @@ export class ViewSensorePH {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bsenphD'
-    );
+    );*/
     return data;
   }
 }

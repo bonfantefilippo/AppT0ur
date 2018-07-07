@@ -24,7 +24,7 @@ import {ChartData} from './ChartData';
 
 *
 * */
-export class ObjectOfView {
+export class ObjectOfView implements NodeOfView {
   public objects: ChildOfView[]; // obsoleto
   private _children: ObjectOfView[] = [];
   public parent: ObjectOfView = null;
@@ -37,12 +37,151 @@ export class ObjectOfView {
   public leanOptions: OptionOfView = new OptionOfView();
   public digitalOptions: OptionOfView = new OptionOfView();
   public chartOptions: OptionOfChart = new OptionOfChart();
+  private _leanCount = 0;
 
-  constructor(public name) {
+  constructor(private _name) {
   }
 
   routerLink(): string {
     return '/apptour/' + this.contextID;
+  }
+
+
+  get btnLean(): boolean {
+    return this.leanOptions.btnMain;
+  }
+
+  get btnLeanEnable(): boolean {
+    return this.leanOptions.options.length > 0;
+  }
+
+  set btnLean(value: boolean) {
+    this.leanOptions.btnMain = value;
+  }
+
+
+  get btnDigital(): boolean {
+    return this.digitalOptions.btnMain && this.btnDigitalEnable;
+  }
+
+  get btnDigitalEnable(): boolean {
+    /* abilitato se non ci sono opzioni lean o se è attivata l'opzione lean */
+    return !this.btnLeanEnable || (this.btnLean && this._leanCount > 0);
+  }
+
+  set btnDigital(value: boolean) {
+    this.digitalOptions.btnMain = value;
+  }
+
+
+  setBtnLeanOption(index: number) {
+    console.log('setBtnLeanOption', index);
+    this.leanOptions.options.forEach(option => {
+      console.log('check option', option);
+      if (option.contextID == index) {
+        if (option.checked) {
+          this._leanCount--;
+        } else {
+          this._leanCount++;
+        }
+        console.log('found option', option);
+        option.checked = !option.checked;
+        return;
+      }
+    });
+
+  }
+
+  setBtnDigitalOption(index: number) {
+    this.digitalOptions.options.forEach(option => {
+      if (option.contextID == index) {
+        option.checked = !option.checked;
+        return;
+      }
+    });
+  }
+
+
+  fromJSON(callbackFn: (index: number) => ObjectOfView): ObjectOfView {
+    // utilizzato per integrare tutti i files ts già scritti
+    // trasforma la struttura lineare in struttura ad albero
+    this.objects.forEach(child => {
+      let node: ObjectOfView = callbackFn(child.contextID);
+      if (node) {
+        node.parent = this;
+        node.css = child.css;
+        node.childId = child.childId;
+        node.contextID = child.contextID;
+        this._children.push(node.fromJSON(i => callbackFn(i)));
+      } else {
+        node = new ObjectOfView(child.name);
+        node.parent = this;
+        node.css = child.css;
+        node.childId = child.childId;
+        node.contextID = child.contextID;
+        this._children.push(node);
+      }
+    });
+    // console.log('BuildTree', this.contextID);
+    return this;
+  }
+
+/*  get root(): ObjectOfView {
+    if (this.parent) {
+      return this.parent.root;
+    }
+    return this;
+  }*/
+
+  setActive() {
+    this.activeNode = this;
+  }
+
+  set activeNode(node: ObjectOfView) {
+    if (this.parent) {
+      this.parent.activeNode = node;
+    }
+    this._activeNode = node;
+  }
+
+  get activeNode(): ObjectOfView {
+    if (this.parent) {
+      return this.parent.activeNode;
+    }
+    return this._activeNode;
+  }
+
+  get isSelected(): boolean {
+    return (this === this.activeNode);
+  }
+
+  get id(): ObjectID {
+    return this.contextID;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  get data(): ObjectOfView {
+    return this;
+  }
+
+  get node(): NodeOfView {
+    return this;
+  }
+
+  get children(): NodeOfView[] {
+
+    return this._children;
+  }
+
+  /*appendChild(child: ObjectOfView) {
+    this._children.push(child);
+  }
+
+  numChildren(): number {
+    return this._children.length;
   }
 
   getChildByIndex(index: number) {
@@ -57,85 +196,10 @@ export class ObjectOfView {
       }
     });
     return null;
-  }
-
-  fromJSON(callbackFn: (index: number) => ObjectOfView): ObjectOfView {
-    // utilizzato per integrare tutti i files ts già scritti
-    // trasforma la struttura lineare in struttura ad albero
-    this.objects.forEach(child => {
-      let node: ObjectOfView = callbackFn(child.contextID);
-      if (node) {
-        node.parent = this;
-        node.css = child.css;
-        node.contextID = child.contextID;
-        this._children.push(node.fromJSON(i => callbackFn(i)));
-      } else {
-        /*if (child.name) {*/
-          node = new ObjectOfView(child.name);
-        /*} else {
-          node = new ObjectOfView('nodo ' + child.contextID);
-        }*/
-        node.parent = this;
-        node.css = child.css;
-        node.contextID = child.contextID;
-        this._children.push(node);
-      }
-    });
-    // console.log('BuildTree', this.contextID);
-    return this;
-  }
-  get root(): ObjectOfView {
-    if (this.parent) {
-      return this.parent.root;
-    }
-    return this;
-  }
-  setActive() {
-    this.activeNode = this;
-  }
-  set activeNode(node: ObjectOfView) {
-    if (this.parent) {
-      this.parent.activeNode = node;
-     }
-    this._activeNode = node;
-  }
-  get activeNode(): ObjectOfView {
-    if (this.parent) {
-      return this.parent.activeNode;
-    }
-    return this._activeNode;
-  }
-  get isActive(): boolean {
-    return (this === this.activeNode);
-  }
-  get node(): NodeOfView {
-    return {
-      id: this.contextID,
-      name: this.name,
-      children: this.children,
-      isSelected: this.isActive,
-      data: this
-    };
-  }
-
-  get children(): NodeOfView[] {
-    const nodes: NodeOfView[] = [];
-    this._children.forEach(child => {
-      nodes.push(child.node);
-    });
-    return nodes;
-  }
-
-  appendChild(child: ObjectOfView) {
-    this._children.push(child);
-  }
-
-  numChildren(): number {
-    return this._children.length;
-  }
+  }*/
 }
 
-export class NodeOfView {
+export interface NodeOfView {
   id: ObjectID;
   name: string;
   children: NodeOfView[];

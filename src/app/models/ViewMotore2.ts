@@ -26,7 +26,7 @@ export class ViewMotore2 {
 
     // TODO --> SISTEMARE CSS
     data.leanOptions.cssDefault = 'an3 bmot2';
-    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L bmot2L');
+    // data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L bmot2L');
     data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an3L bmot2D');
     return data;
 

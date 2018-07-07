@@ -52,16 +52,8 @@ export class ArchitectService {
   * Il click su un bottone del bottom menu genera _leanOption e l'Architect informa i consumer
   * con _leanChange
   */
-  @Output() leanClick = new EventEmitter();
-  @Output() digitalClick = new EventEmitter();
   @Output() leanChange = new EventEmitter();
   @Output() digitalChange = new EventEmitter();
-  /*
-  * quando il focus passa su un componente diverso cambia anche il set delle
-  * ottimizzazioni possibili
-  * */
-  @Output() leanSetChange = new EventEmitter();
-  @Output() digitalSetChange = new EventEmitter();
   @Output() dataChange = new EventEmitter();
   @Output() objectMouseOver = new EventEmitter();
   @Output() route = new EventEmitter();
@@ -81,22 +73,6 @@ export class ArchitectService {
   constructor(public router: Router) {
   }
 
-  registerOptimizer(contextID: ObjectID) {
-    if (!_treeOfView.data[this.index]) {
-      console.log('registe FAIL btn of context: ' + contextID + ' set change', _treeOfView.data[this.index]);
-      return -1;
-    }
-    console.log('registering btn of context: ' + contextID + ' set change', _treeOfView.data[this.index]);
-    switch (contextID) {
-      case ObjectID.btnDigital:
-        this.digitalSetChange.emit(_treeOfView.data[this.index].digitalOptions);
-        break;
-      case ObjectID.btnLean:
-        this.leanSetChange.emit(_treeOfView.data[this.index].leanOptions);
-        break;
-    }
-
-  }
 
   registerChart(caller: ICallback, contextID: number) {
     /*
@@ -113,10 +89,7 @@ export class ArchitectService {
       console.log('registering object of context: ' + contextID + ' enter', contextID, caller);
       return -1;
     }
-    console.log('registering object of context: ' + contextID + ' enter', _treeOfView.data[contextID], caller);
-    console.log('registering object of context: ' + contextID + ' set change', _treeOfView.data[contextID]);
-    this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
-    this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
+
 
     if (!caller) {
       return -1;
@@ -135,7 +108,9 @@ export class ArchitectService {
     this.dataChange.emit(_treeOfView.data[contextID]);
     return UID;
   }
-
+  get curView(): ObjectOfView {
+    return _treeOfView.data[this.index];
+  }
   registerObject(contextID: number): ObjectOfView {
 
     if (!_treeOfView.data[contextID]) {
@@ -143,30 +118,25 @@ export class ArchitectService {
       return null;
     }
     console.log('registering object of context: ' + contextID + ' enter', _treeOfView.data[contextID]);
+    this.index = contextID;
 
     console.log('registering object of context: ' + contextID + ' set change', _treeOfView.data[contextID]);
-    this.leanSetChange.emit(_treeOfView.data[contextID].leanOptions);
-    this.digitalSetChange.emit(_treeOfView.data[contextID].digitalOptions);
+    this.dataChange.emit(_treeOfView.data[contextID]);
 
-    this.index = contextID;
     console.log('registering object of context: ' + contextID + ' set data', _treeOfView.data[contextID]);
     return _treeOfView.data[contextID];
   }
 
-  onLean(event) {
-    this.leanClick.emit(event);
-  }
-
-  onDigital(event) {
-    this.digitalClick.emit(event);
-
-  }
 
   onLeanOption(btn) {
+    console.log('service onBtnClick');
+    _treeOfView.data[this.index].setBtnLeanOption(btn.contextID);
+
     this.leanChange.emit(_treeOfView.data[this.index].leanOptions);
   }
 
   onDigitalOption(btn) {
+    _treeOfView.data[this.index].setBtnDigitalOption(btn.contextID);
     this.digitalChange.emit(_treeOfView.data[this.index].digitalOptions);
   }
 

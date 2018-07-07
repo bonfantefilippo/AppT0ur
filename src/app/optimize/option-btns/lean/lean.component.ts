@@ -1,41 +1,34 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ArchitectService} from '../../../architect.service';
 import {ObjectID} from '../../../models/object-id.enum';
 import {OptionType} from '../../../models/OptionBuilder';
+import {ObjectOfView} from '../../../models/ObjectOfView';
 
 @Component({
   selector: 'app-lean',
   templateUrl: '../btn-array.component.html'
 })
-export class LeanComponent implements OnInit {
+export class LeanComponent {
   ObjectID = ObjectID;
   contextID = ObjectID.btnLean;
-  btns: Array<OptionType> = [];
 
+
+  data: ObjectOfView = null;
   constructor(public service: ArchitectService) {
-    console.log('lean constructor');
-    this.service.leanSetChange.subscribe(result => {
+    this.service.dataChange.subscribe(result => {
       //   {'index': 3, 'text': 'layout', 'checked': false},
-      console.log('lean set change', result.options);
-      this.btns = result.options;
+      console.log('leanComponent data change', result);
+      this.data = result;
     });
-    this.service.leanClick.subscribe(result => {
-      if (!result.stato) {
-        // disabilitare tutti i bottoni
-        this.btns.forEach(btn => {
-          btn.checked = false;
-        });
-        this.service.onLeanOption(null);
-      }
-    });
-    this.service.registerOptimizer( this.contextID);
+    this.data = this.service.curView;
   }
-
-  ngOnInit() {
+  get btns(): OptionType[] {
+    return this.data.leanOptions.options;
   }
 
   onBtnClick(btn) {
-    btn.checked = !btn.checked;
+    // btn.checked = !btn.checked;
+    console.log('lean onBtnClick', btn);
     this.service.onLeanOption(btn);
   }
 

@@ -4,6 +4,7 @@ export class OptionOfView {
   public options: OptionType[] = [];
   public leanOnCount = 0;
   public cssDefault: string;
+  public btnMain = false;
 
   constructor() {
   }
@@ -22,8 +23,8 @@ export class OptionOfView {
     }
   }
 
-  get digitalEnable(): boolean {
-    return (this.leanOnCount > 0);
+  /*get digitalEnable(): boolean {
+    return (this.leanOnCount > 0 || !this.options.length);
   }
 
   setEnable(value) {
@@ -33,25 +34,25 @@ export class OptionOfView {
     this.options.forEach(option => {
       option.checked = false;
     });
-  }
+  }*/
 }
 
 
 export class OptionType {
 
-  private _checked = false;
+  // private _checked = false;
 
   constructor(public index: number,
               public text: string,
-              checked: boolean,
+              public checked: boolean,
               public contextID: ObjectID,
               public parent = null,
               public css = ''
   ) {
-    this.checked = checked;
+    // this.checked = checked;
   }
 
-  set checked(value: boolean) {
+  /*set checked(value: boolean) {
     if (this._checked === value) {
       return;
     }
@@ -69,5 +70,5 @@ export class OptionType {
 
   get checked(): boolean {
     return this._checked;
-  }
+  }*/
 }

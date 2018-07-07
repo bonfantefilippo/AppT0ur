@@ -11,7 +11,7 @@ export class ViewSensoreLivello {
 
     // TODO --> SISTEMARE CSS
     data.leanOptions.cssDefault = 'an1 bsenliv';
-    data.leanOptions.addOption(
+    /*data.leanOptions.addOption(
       3,
       'layout',
       false,
@@ -26,7 +26,7 @@ export class ViewSensoreLivello {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bsenlivD'
-    );
+    );*/
     return data;
   }
 }

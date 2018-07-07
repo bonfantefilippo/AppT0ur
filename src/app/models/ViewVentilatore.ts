@@ -26,14 +26,14 @@ export class ViewVentilatore {
 
     // TODO --> SISTEMARE CSS
     data.leanOptions.cssDefault = 'an3 bvent';
-    data.leanOptions.addOption(
+    /*data.leanOptions.addOption(
       3,
       'layout',
       false,
       ObjectID.btnLeanChild1,
       false,
       'an3L bventL'
-    );
+    );*/
     data.digitalOptions.addOption(
       4,
       'QR',

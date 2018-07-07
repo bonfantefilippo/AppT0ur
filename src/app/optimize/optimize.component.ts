@@ -1,30 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ArchitectService} from '../architect.service';
 import {ObjectID} from '../models/object-id.enum';
-import {OptionOfView, OptionType} from '../models/OptionBuilder';
+import {ObjectOfView} from '../models/ObjectOfView';
 
 @Component({
   selector: 'app-topmenu',
   templateUrl: './optimize.component.html',
   styleUrls: ['./optimize.component.scss']
 })
-export class OptimizeComponent implements OnInit {
+export class OptimizeComponent {
 
-  btnLeanState = null;
-  btnDigitalState = null;
-  btns: OptionOfView = null;
-
+  data: ObjectOfView = null;
   constructor(public service: ArchitectService) {
-    this.service.leanSetChange.subscribe(result => {
+    this.service.dataChange.subscribe(result => {
       //   {'index': 3, 'text': 'layout', 'checked': false},
-      console.log('Optimize lean set change', result);
-      this.btns = result;
+      console.log('Optimize data change', result);
+      this.data = result;
     });
-    this.setLean(false);
+    this.data = this.service.curView;
   }
 
-  ngOnInit() {
-  }
 
   /* eventi del componete */
   onLeanOver() {
@@ -36,50 +31,30 @@ export class OptimizeComponent implements OnInit {
   }
 
   onLean() {
-    this.setLean(!this.btnLeanState);
+    this.data.btnLean = !this.data.btnLean;
   }
 
   onDigital() {
-    this.setDigital(!this.btnDigitalState);
+    this.data.btnDigital = !this.data.btnDigital;
   }
-
-  /* i cambiamenti di stato dei bottoni vengono comunicati all'Architect */
-  setLean(value: boolean) {
-    // todo: fare in modo che il pulsante Digital sia attivabile quando non ci sono opzioni lean
-    if (this.btnLeanState === value) {
-      return;
-    }
-    this.btnLeanState = value;
-    this.service.onLean({stato: this.btnLeanState});
-    /* alla disattivazione di Lean bisogna disabilitare Digital */
-    if (!this.btnLeanState && (!this.btns || this.btns && this.btns.options.length == 0)) {
-      this.setDigital(false);
-    }
+  get btnLeanState(): boolean {
+    return this.data.btnLean;
   }
-
-  setDigital(value: boolean) {
-    if (this.btnDigitalState === value) {
-      return;
-    }
-    this.btnDigitalState = value;
-    this.service.onDigital({stato: this.btnDigitalState});
-  }
-
-  /* se nessuna opzione Lean è attiva allora le opzioni Digital non sono disponibili */
-  get btnDigitalDisable(): boolean {
-    if (!this.btnLeanState || !this.btns.digitalEnable) {
-      this.setDigital(false);
-      return true;
-    }
-    return !this.btns.digitalEnable;
+  get btnDigitalState(): boolean {
+    return this.data.btnDigital;
   }
 
   /* se non ci sono opzioni Lean attivabili allora non ci sono bottoni disponibili */
   get btnLeanDisable(): boolean {
-    if (this.btns && this.btns.options.length > 0) {
-      return false;
-    }
-    this.setLean(false);
-    return true;
+    return ! this.data.btnLeanEnable;
   }
+
+  /* se nessuna opzione Lean è attiva allora le opzioni Digital non sono disponibili
+  *  se però non esistono opzioni lean allora le opzioni digital sono disponibili */
+  get btnDigitalDisable(): boolean {
+    return ! this.data.btnDigitalEnable;
+  }
+
+
+
 }

@@ -8,7 +8,7 @@ export class ViewSensoreOreLavoro {
     data.objects = objs;
 
     data.leanOptions.cssDefault = 'an1 bsolav';
-    data.leanOptions.addOption(
+    /*data.leanOptions.addOption(
       3,
       'layout',
       false,
@@ -23,7 +23,7 @@ export class ViewSensoreOreLavoro {
       ObjectID.btnDigitalChild1,
       false,
       'an1 bsolavD'
-    );
+    );*/
     return data;
   }
 }

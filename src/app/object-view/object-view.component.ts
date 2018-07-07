@@ -85,8 +85,13 @@ export class ObjectViewComponent implements OnInit {
     this.css = cssResult;
   }
 
+  onObjMouseOver(index) {
+    console.log('ObjectOfView objMouseover ' + index);
+    if (this.data.children.length > 0) {return; }
+    this.service.onMouseOver({curIndex: index});
+  }
   onDivMouseOver(index) {
-    console.log('ObjectOfView mouseover ' + index);
+    console.log('ObjectOfView divMouseover ' + index);
     this.service.onMouseOver({curIndex: index});
   }
 

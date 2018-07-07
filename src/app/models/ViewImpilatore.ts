@@ -12,7 +12,7 @@ export class ViewImpilatore {
 
     data.leanOptions.cssDefault = 'an2 bi';
 
-    data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an2L biL');
+    // data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an2L biL');
 
     data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an2L biD');
     return data;

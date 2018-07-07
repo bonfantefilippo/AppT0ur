@@ -1,7 +1,7 @@
 <div [ngClass]="css">
-  <div *ngFor="let obj of data.objects"
-       id="{{obj.childId}}"
-       (mouseover)="onDivMouseOver(obj.contextID)"
-       (click)="onClick(obj.contextID)"> <!--div {{obj.contextID}}-->
+  <div *ngFor="let node of data.children"
+       id="{{node.childId}}"
+       (mouseover)="onDivMouseOver(node.id)"
+       (click)="onClick(node.id)">
   </div>
 </div>

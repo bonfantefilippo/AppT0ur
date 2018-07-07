@@ -8,7 +8,7 @@ import {ViewSensoreUmidita} from './ViewSensoreUmidita';
 import {ViewVentilatore} from './ViewVentilatore';
 import {ViewSensoreLivelloAcqua} from './ViewSensoreLivelloAcqua';
 import {ObjectID} from './object-id.enum';
-import {ObjectOfView} from './ObjectOfView';
+import {NodeOfView, ObjectOfView} from './ObjectOfView';
 import {ViewPiantinaAngus} from './ViewPiantinaAngus';
 import {ViewSezioneLavaggio} from './ViewSezioneLavaggio';
 import {ViewPrelavaggio} from './ViewPrelavaggio';
@@ -83,7 +83,7 @@ export class TreeOfView {
     });
   }
 
-  get root() {
-    return this._tree.node;
+  get root(): NodeOfView {
+    return this._tree; // .node;
   }
 }
