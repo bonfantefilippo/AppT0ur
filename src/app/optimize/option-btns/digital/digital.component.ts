@@ -15,7 +15,7 @@ export class DigitalComponent {
 
   data: ObjectOfView = null;
   constructor(public service: ArchitectService) {
-    this.service.dataChange.subscribe(result => {
+    this.service.viewChange.subscribe(result => {
       //   {'index': 3, 'text': 'layout', 'checked': false},
       console.log('digitalComponent data change', result);
       this.data = result;

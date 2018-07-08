@@ -11,10 +11,11 @@ export class AppComponent {
   title = 'appT0urist';
 
   constructor(public service: ArchitectService) {
-    this.homeRedirect();
+    // this.homeRedirect();
   }
 
   homeRedirect() {
+    console.log('app homeRedirect')
     this.service.onRoute(ObjectID.viewHome);
   }
 

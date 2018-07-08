@@ -8,7 +8,11 @@ import {ObjectID} from '../models/object-id.enum';
 
 @Component({
   selector: 'app-node',
-  template: '<tree-root #tree class="node" [(state)]="state"  [nodes]="nodes" [options]="options" (mouseover)="onObjMouseOver(0)"></tree-root>',
+  template: `<tree-root #tree class="node"
+                        [(state)]="state"
+                        [nodes]="nodes"
+                        [options]="options"
+                        (mouseover)="onObjMouseOver(0)"></tree-root>`,
   styleUrls: ['./node.component.css']
 })
 export class NodeComponent implements AfterViewInit {
@@ -23,6 +27,7 @@ export class NodeComponent implements AfterViewInit {
     mouse: {
       click: ( tree, node, $event) => {
         $event.preventDefault();
+        console.log('node click', node, event);
         this.service.onRoute(node.id);
       },
     },

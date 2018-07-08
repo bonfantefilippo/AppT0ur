@@ -1,3 +1,6 @@
+import {ObjectID} from './object-id.enum';
+import * as _ from 'underscore';
+
 /**
  * esportiamo 3 classi:
  * ChartDataRecord      oggetto che contiene tutte le proprietà di un singolo grafico
@@ -11,10 +14,25 @@
  *                    TODO: aggiungere qui altri grafici da richiamare nell'applicazione
  *
  */
-import {ObjectID} from './object-id.enum';
 
 export class ChartData {
-  private data: Array<ChartDataRecord> = [];
+
+  private data: ChartDataRecord[] = [];
+  public leanIndex = 0;
+  public digitalIndex = 0;
+
+  get chartsVisible(): boolean[] {
+    return this._chartsVisible;
+  }
+
+  set chartsVisible(value: boolean[]) {
+    this._chartsVisible = value;
+  }
+
+  private _chartsVisible: boolean[] = [
+    true, false, false,
+    false, true, false,
+    true, true, true];
 
   constructor() {
 
@@ -22,7 +40,7 @@ export class ChartData {
     const grafico1 = ChartDataRecord.createChartRecord(
       'grafico1',
       [
-        {data: [75, 89, 80, 81, 86, 85, 90, 80], label: 'Standard'},
+        this.serieCurrentSTD(),
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
       ChartData.ChartOptions1('Current absorption', true, 25, 17, 17, false,
@@ -33,7 +51,8 @@ export class ChartData {
         LineChartColors.getGreyTheme()
       ],
       true,
-      'line'
+      'line',
+      ObjectID.chart1
       )
     ;
     // fine grafico 1
@@ -42,8 +61,8 @@ export class ChartData {
     const grafico2 = ChartDataRecord.createChartRecord(
       'grafico2',
       [
-        {data: [75, 89, 80, 81, 86, 85, 90, 12], label: 'Standard'},
-        {data: [28, 48, 40, 19, 86, 27, 90, 23], label: 'Lean'}
+        this.serieCurrentSTD(),
+        this.serieCurrentLEAN()
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
       ChartData.ChartOptions1('Current absorption after Lean', true, 25, 17, 17, false,
@@ -55,7 +74,8 @@ export class ChartData {
         LineChartColors.getDarkGreyTheme()
       ],
       true,
-      'line'
+      'line',
+      ObjectID.chart2
       )
     ;
     // fine grafico 2
@@ -65,9 +85,9 @@ export class ChartData {
     const grafico3 = ChartDataRecord.createChartRecord(
       'grafico3',
       [
-        {data: [75, 89, 80, 81, 86, 85, 90, 83], label: 'Standard'},
-        {data: [28, 48, 40, 19, 86, 27, 90, 55], label: 'Lean'},
-        {data: [78, 48, 77, 9, 100, 27, 40, 66], label: 'Digital'}
+        this.serieCurrentSTD(),
+        this.serieCurrentLEAN(),
+        this.serieCurrentDIGITAL()
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
       ChartData.ChartOptions1('Current absorption after Digital', true, 25, 17, 17, false,
@@ -80,7 +100,8 @@ export class ChartData {
         LineChartColors.getBlueTheme()
       ],
       true,
-      'line'
+      'line',
+      ObjectID.chart3
       )
     ;
     // fine grafico 3
@@ -89,18 +110,19 @@ export class ChartData {
     const grafico4 = ChartDataRecord.createChartRecord(
       'grafico4',
       [
-        {data: [75, 89, 40, 40, 86, 85, 90, 70], label: 'Standard'},
+        this.serieWaterSTD(),
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Wastege', true, 25, 17, 17, false,
+      ChartData.ChartOptions1('Water consumption', true, 25, 17, 17, false,
         false, 20, 17, true, null),
-      ChartData.ChartOptions1('Wastege', true, 14, 9, 9, false,
+      ChartData.ChartOptions1('Water consumption', true, 14, 9, 9, false,
         false, 12, 9, false, null),
       [
         LineChartColors.getRedTheme(),
       ],
       true,
-      'bar'
+      'bar',
+      ObjectID.chart4
       )
     ;
     // fine grafico 4
@@ -109,11 +131,11 @@ export class ChartData {
     const grafico5 = ChartDataRecord.createChartRecord(
       'grafico5',
       [
-        {data: [75, 89, 80, 81, 70, 73, 90, 85], label: 'Standard'},
-        {data: [70, 80, 75, 79, 66, 65, 70, 71], label: 'Lean'},
+        this.serieWaterSTD(),
+        this.serieWaterLEAN(),
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Wastege  after Lean', true, 25, 17, 17, false,
+      ChartData.ChartOptions1('Water consumption after Lean', true, 25, 17, 17, false,
         false, 20, 17, true, null),
       ChartData.ChartOptions1('Wastege  after Lean', true, 14, 9, 9, false,
         false, 12, 9, false, null),
@@ -122,7 +144,8 @@ export class ChartData {
         LineChartColors.getGreenTheme(),
       ],
       true,
-      'bar'
+      'bar',
+      ObjectID.chart5
       )
     ;
     // fine grafico 5
@@ -130,14 +153,14 @@ export class ChartData {
     const grafico6 = ChartDataRecord.createChartRecord(
       'grafico6',
       [
-        {data: [75, 89, 80, 81, 70, 73, 90, 85], label: 'Standard'},
-        {data: [70, 80, 75, 79, 66, 65, 70, 71], label: 'Lean'},
-        {data: [68, 72, 68, 69, 65, 64, 64, 65], label: 'Digital'},
+        this.serieWaterSTD(),
+        this.serieWaterLEAN(),
+        this.serieWaterDIGITAL(),
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Wastege after Digital', true, 25, 17, 17, false,
+      ChartData.ChartOptions1('Water consumption after Digital', true, 25, 17, 17, false,
         false, 20, 17, true, null, true),
-      ChartData.ChartOptions1('Wastege after Digital', true, 14, 9, 9, false,
+      ChartData.ChartOptions1('Water consumption after Digital', true, 14, 9, 9, false,
         false, 12, 9, false, null, true),
       [
         LineChartColors.getRedTheme(),
@@ -145,29 +168,15 @@ export class ChartData {
         LineChartColors.getBlueTheme()
       ],
       true,
-      'bar'
+      'bar',
+      ObjectID.chart6
       )
     ;
     // fine grafico 6
-
-    /*// grafico 7
-    const grafico7 = ChartDataRecord.createChartRecord(
-      'grafico7',
-      [
-        {data: [2, 2, 80, 81, 12, 12, 90], label: 'Standard'},
-      ],
-      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      {responsive: true, barThickness: 1},
-      {responsive: true, barThickness: 1},
-      [
-        LineChartColors.getGreyTheme()
-      ],
-      true,
-      'bar'
-      )
-    ;
-    // fine grafico 7*/
-
+    /**
+     * aggiungere qui altre triple di grafici
+     *
+     */
     const productionBarGraph = ChartDataRecord.createChartRecord(
       'productionBarGraph',
       [{data: [2, 4, 5, 8], label: null}],
@@ -178,7 +187,8 @@ export class ChartData {
         9, false, ChartData.Callback1(' pieces/man-hour')),
       [LineChartColors.getGraphBarTheme()],
       false,
-      'bar'
+      'bar',
+      ObjectID.chart7
     );
 
 
@@ -193,7 +203,8 @@ export class ChartData {
 
       [LineChartColors.getGraphBarTheme()],
       false,
-      'bar'
+      'bar',
+      ObjectID.chart8
     );
 
     const workInProgressGraphBar = ChartDataRecord.createChartRecord(
@@ -206,8 +217,10 @@ export class ChartData {
         9, false, ChartData.Callback1(' pieces')),
       [LineChartColors.getGraphBarTheme()],
       false,
-      'bar'
+      'bar',
+      ObjectID.chart9
     );
+
 
     this.data.push(
       grafico1,
@@ -216,20 +229,12 @@ export class ChartData {
       grafico4,
       grafico5,
       grafico6,
-      /*grafico7,*/
+      /* aggiungere qui le ulteriori triple con chartID > chart9*/
       productionBarGraph,
       economicImpactBarGraph,
       workInProgressGraphBar
     );
-    /*this.data[ObjectID.chart1] = grafico1;
-    this.data[ObjectID.chart2] = grafico2;
-    this.data[ObjectID.chart3] = grafico3;
-    this.data[ObjectID.chart4] = grafico4;
-    this.data[ObjectID.chart5] = grafico5;
-    this.data[ObjectID.chart6] = grafico6;
-    this.data[ObjectID.chart7] = productionBarGraph;
-    this.data[ObjectID.chart8] = economicImpactBarGraph;
-    this.data[ObjectID.chart9] = workInProgressGraphBar;*/
+
   } // fine costruttore
 
   public static Callback1(text) {
@@ -254,6 +259,7 @@ export class ChartData {
       }
     };
   }
+
 
   public static ChartOptions1(text, responsive, titleFontSize, scaleFontSizeX, scaleFontSizeY,
                               stackedX, stackedY, tipTitleFontSize, tipFontSize, tipEnable, myCallbacks, legend = false) {
@@ -312,34 +318,82 @@ export class ChartData {
     };
   }
 
-  public static voidChart(): ChartDataRecord {
-    return ChartDataRecord.createChartRecord(
-      'grafico vuoto',
-      [
-        {data: [], label: ''}
-      ],
-      ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      {responsive: true},
-      {responsive: true},
-      [
-        LineChartColors.getDarkGreyTheme()
-      ],
-      false,
-      'line'
-    );
+
+  get visibleCharts(): ChartDataRecord[] {
+
+    // console.log('ChartFilter pattern', this.chartsVisible, this.data);
+    const result = _.filter(this.data, (item) => {
+      // console.log('ChartFilter item', item, this.chartsVisible[item.chartID - ObjectID.chart1]);
+      return (this._chartsVisible[item.chartID - ObjectID.chart1]);
+    });
+    console.log('ChartFilter', result, this.data);
+    return result;
   }
 
-  getCount(): number {
-    return this.data.length;
+  public serieCurrentSTD(): ChartSerie {
+    const data = [75, 89, 80, 81, 70, 73, 90, 85];
+    return {data: data, label: 'Standard'};
   }
 
-  getChart(index: number): ChartDataRecord {
-    console.log('Query chart with index = ' + index);
-
-    return this.data[index]; // .clone();
-
+  public serieCurrentLEAN(): ChartSerie {
+    // il numero delle serie è arbitrario, deve essere aumentato fino al
+    // massimo numero di opzioni attivabili
+    // più è alto l'indice migliore sarà il dato
+    const data = [
+      [28, 48, 40, 19, 86, 27, 90, 55],
+      [28, 48, 40, 19, 86, 27, 90, 55],
+      [28, 48, 40, 19, 86, 27, 90, 55],
+      [28, 48, 40, 19, 86, 27, 90, 55],
+      [28, 48, 40, 19, 86, 27, 90, 55]
+    ];
+    return {data: data[this.leanIndex], label: 'Lean'};
   }
 
+  public serieCurrentDIGITAL(): ChartSerie {
+    // il numero delle serie è arbitrario, deve essere aumentato fino al
+    // massimo numero di opzioni attivabili
+    // più è alto l'indice migliore sarà il dato
+    const data = [
+      [78, 48, 77, 9, 100, 27, 40, 66],
+      [78, 48, 77, 9, 100, 27, 40, 66],
+      [78, 48, 77, 9, 100, 27, 40, 66],
+      [78, 48, 77, 9, 100, 27, 40, 66],
+      [78, 48, 77, 9, 100, 27, 40, 66]
+    ];
+    return {data: data[this.digitalIndex], label: 'Digital'};
+  }
+  public serieWaterSTD(): ChartSerie {
+    const data = [75, 89, 80, 81, 70, 73, 90, 85];
+    return {data: data, label: 'Standard'};
+  }
+
+  public serieWaterLEAN(): ChartSerie {
+    // il numero delle serie è arbitrario, deve essere aumentato fino al
+    // massimo numero di opzioni attivabili
+    // più è alto l'indice migliore sarà il dato
+    const data = [
+      [28, 48, 40, 19, 86, 27, 90, 55],
+      [28, 48, 40, 19, 86, 27, 90, 55],
+      [28, 48, 40, 19, 86, 27, 90, 55],
+      [28, 48, 40, 19, 86, 27, 90, 55],
+      [28, 48, 40, 19, 86, 27, 90, 55]
+    ];
+    return {data: data[this.leanIndex], label: 'Lean'};
+  }
+
+  public serieWaterDIGITAL(): ChartSerie {
+    // il numero delle serie è arbitrario, deve essere aumentato fino al
+    // massimo numero di opzioni attivabili
+    // più è alto l'indice migliore sarà il dato
+    const data = [
+      [78, 48, 77, 9, 100, 27, 40, 66],
+      [78, 48, 77, 9, 100, 27, 40, 66],
+      [78, 48, 77, 9, 100, 27, 40, 66],
+      [78, 48, 77, 9, 100, 27, 40, 66],
+      [78, 48, 77, 9, 100, 27, 40, 66]
+    ];
+    return {data: data[this.digitalIndex], label: 'Digital'};
+  }
 }
 
 export class ChartSerie {
@@ -356,6 +410,7 @@ export class ChartDataRecord {
   public lineChartColors: Array<LineChartColors>;
   public lineChartLegend: boolean;
   public lineChartType: string;
+  public chartID: ObjectID;
   public tag: any;
 
   constructor() {
@@ -370,6 +425,7 @@ export class ChartDataRecord {
                                   lineChartColors: Array<LineChartColors>,
                                   lineChartLegend: boolean,
                                   lineChartType: string,
+                                  chartID: ObjectID,
                                   tag?: any) {
     const cdr = new ChartDataRecord;
     cdr.name = name;
@@ -380,6 +436,7 @@ export class ChartDataRecord {
     cdr.lineChartColors = lineChartColors;
     cdr.lineChartLegend = lineChartLegend;
     cdr.lineChartType = lineChartType;
+    cdr.chartID = chartID;
     cdr.tag = tag;
     return cdr;
   }
@@ -484,6 +541,7 @@ export class LineChartColors {
     );
     return t;
   }
+
   public static getRedTheme(): LineChartColors {
     const t = new LineChartColors(
       ['rgba(200,10,10,1)'],

@@ -12,7 +12,7 @@ export class OptimizeComponent {
 
   data: ObjectOfView = null;
   constructor(public service: ArchitectService) {
-    this.service.dataChange.subscribe(result => {
+    this.service.viewChange.subscribe(result => {
       //   {'index': 3, 'text': 'layout', 'checked': false},
       console.log('Optimize data change', result);
       this.data = result;
@@ -33,11 +33,13 @@ export class OptimizeComponent {
   }
 
   onLean() {
-    this.data.btnLean = !this.data.btnLean;
+    // this.data.btnLean = !this.data.btnLean;
+    this.service.onbtnLean(!this.data.btnLean);
   }
 
   onDigital() {
-    this.data.btnDigital = !this.data.btnDigital;
+    // this.data.btnDigital = !this.data.btnDigital;
+    this.service.onbtnDigital(!this.data.btnDigital);
   }
   get btnLeanState(): boolean {
     return this.data.btnLean;

@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ArchitectService} from '../architect.service';
 import {ObjectID} from '../models/object-id.enum';
 import {ObjectOfView} from '../models/ObjectOfView';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-piantina',
@@ -11,61 +12,51 @@ import {ActivatedRoute, Router} from '@angular/router';
     './styleAngus.scss',
     './styleAngusBackground.scss']
 })
-
-/*
-
-  per intercettare gli eventi di routing
-  https://stackoverflow.com/questions/33571605/angular-2-how-to-navigate-to-another-route-using-this-router-parent-navigate
-
-  https://toddmotto.com/dynamic-page-titles-angular-2-router-events
-
-  leggere i parametri
-  https://stackoverflow.com/questions/40275862/how-to-get-parameter-on-angular2-route-in-angular-way
-
-  compatibilità rxjs
-  https://github.com/shlomiassaf/ngx-modialog/issues/426
-
- */
 export class ObjectViewComponent implements OnInit {
+  private _routeSub: Subscription;
+  private _paramsSub: Subscription;
   ObjectID = ObjectID;
   data: ObjectOfView;
-
-  constructor(private router: Router, private route: ActivatedRoute, public service: ArchitectService) {
-
-    this.service.route.subscribe(result => {
-      console.log('View routed ' + result);
-    });
-    this.service.dataChange.subscribe(result => {
-      //   {'index': 3, 'text': 'layout', 'checked': false},
-      console.log('Optimize data change', result);
-      this.data = result;
-    });
-  }
-
 
   get css(): string {
     return this.data.css;
   }
 
-  register(contextID: number) {
-    this.data = this.service.registerObject(contextID);
+  constructor(private route: ActivatedRoute, public service: ArchitectService) {
+    this.service.viewUnsubscribe.subscribe( () => {
+      if (this.isRouteBusy()) {
+        this._routeSub.unsubscribe();
+      }
+      if (this.isParamBusy()) {
+        this._paramsSub.unsubscribe();
+      }
+    });
 
+    this._routeSub = this.service.route.subscribe(result => {
+      this.data = result;
+      console.log('ObjView routed', result);
+    });
+  }
+
+  isRouteBusy() {
+    return (this._routeSub && !this._routeSub.closed);
+  }
+
+  isParamBusy() {
+    return (this._paramsSub && !this._paramsSub.closed);
   }
 
   ngOnInit() {
-    // console.log('ObjView ' + this.contextID + ' init before register');
     this.route.params.subscribe(params => {
-        // console.log('ObjView ' + this.contextID + ' init: route.subscribe');
-        this.register(params['contextID']);
-        console.log('ObjView ' + this.data.contextID + ' init: route registered');
+        console.log('ObjView activateView', params['contextID']);
+        this.data = this.service.activateView(params['contextID']);
+        console.log('ObjView registered', this.data);
       }
     );
-    // console.log('ObjView  ' + this.contextID + ' init: after registerObject');
   }
 
-
   onObjMouseOver(index) {
-    console.log('ObjectOfView objMouseover ' + index);
+    // console.log('ObjectOfView objMouseover ' + index);
     if (this.data.children.length > 0) {
       return;
     }
@@ -73,12 +64,12 @@ export class ObjectViewComponent implements OnInit {
   }
 
   onDivMouseOver(index) {
-    console.log('ObjectOfView divMouseover ' + index);
+    // console.log('ObjectOfView divMouseover ' + index);
     this.service.onMouseOver({curIndex: index});
   }
 
   onClick(index) {
-    console.log('ObjectOfView click ' + index);
+    // console.log('ObjectOfView click ' + index);
     this.service.onRoute(index);
   }
 

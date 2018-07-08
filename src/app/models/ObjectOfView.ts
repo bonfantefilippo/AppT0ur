@@ -13,7 +13,7 @@ import {ChartData} from './ChartData';
     public objects: ObjectOfView[];
     public leanOptions: OptionOfView = new OptionOfView();
     public digitalOptions: OptionOfView = new OptionOfView();
-    public charts: ChartOfView[];   // pacchetto per la contestualizzazione dei grafici
+    public _charts: ChartOfView[];   // pacchetto per la contestualizzazione dei grafici
     constructor(public name) { }
   }
   export class ChartOfView {
@@ -39,7 +39,7 @@ export class ObjectOfView implements NodeOfView {
   public chartOptions: OptionOfChart = new OptionOfChart();
   private _leanCount = 0;
 
-  chartsVisible: Array<boolean> = [
+  chartsVisible: boolean[] = [
     true, false, false,
     false, true, false,
     true, true, true];
@@ -269,7 +269,7 @@ export class ChildOfView { // obsoleto
 // portare in un file specifico e implementare
 export class OptionOfChart {
   /*
-    serve per contestualizzare i charts, già memorizzati già nell'architect:
+    serve per contestualizzare i _charts, già memorizzati già nell'architect:
     vedi  private _chartData = new ChartData();
    */
   public options: ChartOptionType[] = [];

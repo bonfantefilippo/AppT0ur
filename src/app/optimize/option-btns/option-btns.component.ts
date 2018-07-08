@@ -12,7 +12,7 @@ export class OptionBtnsComponent {
   data: ObjectOfView = null;
 
   constructor(public service: ArchitectService) {
-    this.service.dataChange.subscribe(result => {
+    this.service.viewChange.subscribe(result => {
       //   {'index': 3, 'text': 'layout', 'checked': false},
       console.log('Optionbtns data change', result);
       this.data = result;

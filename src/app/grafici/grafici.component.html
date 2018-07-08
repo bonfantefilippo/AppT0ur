@@ -4,9 +4,10 @@
 
 <div class="container5v1">
 
-  <app-app-chart (click)="chartCounterUp(id)" *ngFor="let id of objectIDs" routerLinkActive="active"
-                 [contextID]="id"
+  <app-app-chart *ngFor="let item of charts"
                  class="graphic backWhite"
-                 (mouseover)="onDivMouseOver(id)">
+                 [data]="item"
+                 (mouseover)="onDivMouseOver(item.chartID)"
+                 (click)="onChartClick(item.chartID)">
   </app-app-chart>
 </div>

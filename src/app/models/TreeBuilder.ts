@@ -86,4 +86,7 @@ export class TreeOfView {
   get root(): NodeOfView {
     return this._tree; // .node;
   }
+  get activeNode(): ObjectOfView {
+    return this._tree.activeNode as ObjectOfView; // .node;
+  }
 }
