@@ -31,7 +31,7 @@ export class GraficiComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.chartsChange.subscribe(() => {
+    this.service.optionsChange.subscribe(() => {
       //   {'index': 3, 'text': 'layout', 'checked': false},
       console.log('Grafici charts change');
       this.charts = this.service.visibleCharts;

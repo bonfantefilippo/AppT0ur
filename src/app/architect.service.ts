@@ -74,9 +74,9 @@ export class ArchitectService {
     */
 
 
-  @Output() viewChange = new EventEmitter();
-  @Output() chartsChange = new EventEmitter();
-  @Output() route = new EventEmitter();
+  @Output() viewChange: EventEmitter<ObjectOfView> = new EventEmitter<ObjectOfView>();
+  @Output() optionsChange: EventEmitter<ObjectOfView> = new EventEmitter<ObjectOfView>();
+  @Output() route: EventEmitter<ObjectOfView> = new EventEmitter<ObjectOfView>();
   @Output() viewUnsubscribe = new EventEmitter();
   @Output() chartUnsubscribe = new EventEmitter();
   @Output() objectMouseOver = new EventEmitter();
@@ -110,7 +110,7 @@ export class ArchitectService {
 
     console.log('View activated', _treeOfView.activeNode);
     this.viewChange.emit(_treeOfView.activeNode);
-    this.chartsChange.emit();
+    this.optionsChange.emit(_treeOfView.activeNode);
     return _treeOfView.activeNode;
   }
 
@@ -127,7 +127,7 @@ export class ArchitectService {
    * per filtrare i grafici passiamo a chartData il vettore chartsVisible
    * che l'oggetto ObjectOfView corrente modifica a seguito dell'aggiornamento
    * delle opzioni;
-   * per distribuire l'inbformazione scateniamo l'evento chartsChange
+   * per distribuire l'inbformazione scateniamo l'evento optionsChange
    *
    * TODO: le serie dei dati devono essere aggiornate quando le opzioni lean
    * e digital vengono modificate, si può per esempio contare le opzioni
@@ -176,7 +176,7 @@ export class ArchitectService {
    * deve essere uguale al numero di elementi di ChartData.data
    *
    * i due indici leanIndex e digitalIndex in CharData vanno aggiornati prima di scatenare
-   *    this.chartsChange.emit()
+   *    this.optionsChange.emit()
    * leanIndex e digitalIndex accumulano i valori corrispondenti al numero delle opzioni
    * lean e digital attivate e quindi bisogna scrivere un metodo che faccia il traversing
    * dell'albero e conti le opzioni attivate o un metodo che sommi o sottragga il numero
@@ -186,26 +186,26 @@ export class ArchitectService {
   onbtnLean(value: boolean) {
     this.curView.btnLean = value;
     _chartData.chartsVisible = _treeOfView.activeNode.chartsVisible;
-    this.chartsChange.emit();
+    this.optionsChange.emit(_treeOfView.activeNode);
   }
 
   onbtnDigital(value: boolean) {
     this.curView.btnDigital = value;
     _chartData.chartsVisible = _treeOfView.activeNode.chartsVisible;
-    this.chartsChange.emit();
+    this.optionsChange.emit(_treeOfView.activeNode);
   }
 
   onLeanOption(btn) {
     console.log('service onBtnClick');
     _treeOfView.activeNode.setBtnLeanOption(btn.contextID);
     _chartData.chartsVisible = _treeOfView.activeNode.chartsVisible;
-    this.chartsChange.emit();
+    this.optionsChange.emit(_treeOfView.activeNode);
   }
 
   onDigitalOption(btn) {
     _treeOfView.activeNode.setBtnDigitalOption(btn.contextID);
     _chartData.chartsVisible = _treeOfView.activeNode.chartsVisible;
-    this.chartsChange.emit();
+    this.optionsChange.emit(_treeOfView.activeNode);
   }
 
   onRoute(contextID: ObjectID) {
@@ -235,10 +235,10 @@ export class ArchitectService {
     this.chartClose(data.chartID);
     // this.route.emit(contextID);
   }
+
   onMouseOver(event) {
     this.objectMouseOver.emit(event);
   }
-
 
 
   getActiveChart() {
