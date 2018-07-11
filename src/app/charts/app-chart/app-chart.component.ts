@@ -1,18 +1,30 @@
-import {Component, Input} from '@angular/core';;
-import {ChartDataRecord} from '../../models/ChartData';
+import {Component, Input} from '@angular/core';
+import {ChartDataRecord} from '../../models/AppChartData';
 import {ArchitectService} from '../../architect.service';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-app-chart',
-  templateUrl: '../charts.html',
+  template:
+    `<div class="gridInNine">
+      <canvas class="center" baseChart width="320" height="255"
+              [datasets]="datasets"
+              [labels]="labels"
+              [options]="options"
+              [colors]="colors"
+              [legend]="legend"
+              [chartType]="chartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>`,
   styleUrls: ['../charts.css']
 })
 export class AppChartComponent {
 
   @Input()
   data: ChartDataRecord;
-  constructor(public service: ArchitectService, public router: Router) {
+
+  constructor(public service: ArchitectService) {
     console.log('Chart constructor');
   }
 

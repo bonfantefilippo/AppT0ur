@@ -1,6 +1,6 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {ObjectID} from './models/object-id.enum';
-import {ChartData, ChartDataRecord} from './models/ChartData';
+import {AppChartData, ChartDataRecord} from './models/AppChartData';
 import {TreeOfView} from './models/TreeBuilder';
 import {Router} from '@angular/router';
 import {NodeOfView, ObjectOfView} from './models/ObjectOfView';
@@ -45,38 +45,25 @@ import {NodeOfView, ObjectOfView} from './models/ObjectOfView';
 const _treeOfView = new TreeOfView();
 
 /**
- * @type {ChartData}
+ * @type {AppChartData}
  * @private
  *
  * @description
- * Nell'oggetto ChartData sono definiti tutti i grafici disponibili.
+ * Nell'oggetto AppChartData sono definiti tutti i grafici disponibili.
  * Quando viene creato il componente graficoX, il service gli passa i dati contenuti
  * nello specifico record di _chartData
  */
-const _chartData = new ChartData();
+const _chartData = new AppChartData();
 
 @Injectable()
 export class ArchitectService {
 
-
-  private rndChartIndex = 0;
-  chartCounter = 0;
   _activeChart: ChartDataRecord = null;
-  /*
-     quando contextID = -1 l'oggetto viene creato da un routing
-
-     Il click su un grafico a sinistra salva la this._activeChart e spara un routing
-
-     Il grafico mostrato nella view chiede al service i suoi dati
-     il service vede contextID = -1 e gli da quelli nella this._activeChart,
-     quindi annulla la this._activeChart per evitare di sparare altri dati ad oggetti
-     che non sono titolati a riceverli
-    */
-
 
   @Output() viewChange: EventEmitter<ObjectOfView> = new EventEmitter<ObjectOfView>();
   @Output() optionsChange: EventEmitter<ObjectOfView> = new EventEmitter<ObjectOfView>();
   @Output() route: EventEmitter<ObjectOfView> = new EventEmitter<ObjectOfView>();
+  @Output() chartRoute = new EventEmitter();
   @Output() viewUnsubscribe = new EventEmitter();
   @Output() chartUnsubscribe = new EventEmitter();
   @Output() objectMouseOver = new EventEmitter();
@@ -85,7 +72,7 @@ export class ArchitectService {
     /**
      * imposta la prima visualizzazione
      */
-    _treeOfView.data[ObjectID.viewPiantinaAngus].setActive();
+    _treeOfView.data[ObjectID.viewHome].setActive();
   }
 
   get curView(): ObjectOfView {
@@ -100,7 +87,15 @@ export class ArchitectService {
     return _chartData.visibleCharts;
   }
 
-
+  /**
+   * @param {number} contextID
+   * @returns {ObjectOfView}
+   *
+   * @description quando il routing si completa, dalla View viene chiamata
+   * activateView passando il parametro ricevuto nella view, in questo modo
+   * settiamo la vista corrente quando viene effettivamente visualizzata
+   * di conseguenza notifichiamo il cambiamento di vista e le opzioni attive
+   */
   activateView(contextID: number): ObjectOfView {
     if (!_treeOfView.data[contextID]) {
       console.log('ContextID not found', contextID);
@@ -156,24 +151,24 @@ export class ArchitectService {
    * L'oggetto ObjectOfView contiene un campo chartsVisible, array di boolean che viene
    * usato per impostare i grafici visibili in base alle opzioni attive
    *
-   * L'oggetto ChartData ha una proprietà
+   * L'oggetto AppChartData ha una proprietà
    *    set chartsVisible(value: boolean[])
    * che permette di impostare i grafici visibili
    *
-   * il codice per passare la ObjectOfView.chartsVisible a ChartData.chartsVisible
+   * il codice per passare la ObjectOfView.chartsVisible a AppChartData.chartsVisible
    * c'è già
    *
    * quello che manca è questo:
    * una grandezza o due in più di cui dare i grafici, abbiamo la corrente servirebbe
    * il consumo di acqua, il numero di scarti...
-   * questi sono grafici che vanno creati in ChartData, cme quelli già esistenti
+   * questi sono grafici che vanno creati in AppChartData, cme quelli già esistenti
    *
-   * Leggere in ChartData i commenti: bisogna sccrivere altri metodi come alla riga 387
+   * Leggere in AppChartData i commenti: bisogna sccrivere altri metodi come alla riga 387
    * e seguenti  e poi completare il costruttore, creando altri grafici e aggiungendoli
    * alla variabile data
    *
-   * Il numero degli elementi di ObjectOfView.chartsVisible e ChartData.chartsVisible
-   * deve essere uguale al numero di elementi di ChartData.data
+   * Il numero degli elementi di ObjectOfView.chartsVisible e AppChartData.chartsVisible
+   * deve essere uguale al numero di elementi di AppChartData.data
    *
    * i due indici leanIndex e digitalIndex in CharData vanno aggiornati prima di scatenare
    *    this.optionsChange.emit()
@@ -229,11 +224,18 @@ export class ArchitectService {
   }
 
   onChartRoute(data: ChartDataRecord) {
+    /**
+     * imposta il grafico attivo
+     * mostra nella view
+     */
     console.log('Routing to chart', data.chartID);
     this.viewUnsubscribe.emit();
     this.setActiveChart(data);
-    this.chartClose(data.chartID);
-    // this.route.emit(contextID);
+
+    console.log('onChartRoute active chart is:', this.getActiveChart().chartID);
+    this.router.navigate([this.getActiveChart().routerLink()]);
+    this.chartRoute.emit(this.getActiveChart());
+    console.log('onChartRoute Routed to ' + this.getActiveChart().chartID);
   }
 
   onMouseOver(event) {
@@ -249,35 +251,6 @@ export class ArchitectService {
   setActiveChart(data: ChartDataRecord) {
     this._activeChart = data;
     console.log('setActiveChart', data, this._activeChart);
-  }
-
-  chartCounterUp() {
-    this.chartCounter++;
-    console.log('chartCounterUp', this.chartCounter);
-  }
-
-  chartCounterZero() {
-    this.chartCounter = 0;
-  }
-
-  async chartClose(id) {
-    console.log('chartClose counter:', this.chartCounter);
-    if (this.chartCounter > 0) {
-      /*window.history.back();
-      await this.sleep(50);*/
-      console.log('chartClose sleep > navigate ', '/chart/' + id);
-      this.router.navigate(['/chart/' + id]);
-      return this.chartCounter;
-    } else {
-      this.chartCounterUp();
-      console.log('chartClose navigate ', '/chart/' + id);
-      this.router.navigate(['/chart/' + id]);
-      return this.chartCounter;
-    }
-  }
-
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }
