@@ -1,5 +1,5 @@
-import { ObjectOfView } from './ObjectOfView';
-import { ObjectID } from './object-id.enum';
+import {ObjectOfView} from './ObjectOfView';
+import {ObjectID} from './object-id.enum';
 
 export class ViewSensorePH {
   public static JSON() {
@@ -7,18 +7,7 @@ export class ViewSensorePH {
     const objs = [];
     data.objects = objs;
 
-    // TODO NON CI DOVREBBERO ESSERE FIGLI
-
-    // TODO --> SISTEMARE CSS
     data.leanOptions.cssDefault = 'an1 bsenph';
-    /*data.leanOptions.addOption(
-      3,
-      'layout',
-      false,
-      ObjectID.btnLeanChild1,
-      false,
-      'an1 bsenphL'
-    );*/
     data.digitalOptions.addOption(
       4,
       'QR',

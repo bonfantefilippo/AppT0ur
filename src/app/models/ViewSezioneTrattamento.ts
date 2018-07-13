@@ -7,26 +7,12 @@ export class ViewSezioneTrattamento {
     const objs = [];
     data.objects = objs;
 
-    objs.push({
-      'routerLink': '/apptour/' + ObjectID.viewVascaPretrattamento,
-      'childId': 'child1',
-      'contextID': ObjectID.viewVascaPretrattamento
-    });
-    objs.push({
-      'routerLink': '/apptour/' + ObjectID.viewVascaPrimer,
-      'childId': 'child2',
-      'contextID': ObjectID.viewVascaPrimer
-    });
-    objs.push({
-      'routerLink': '/apptour/' + ObjectID.viewVascaFinisher,
-      'childId': 'child3',
-      'contextID': ObjectID.viewVascaFinisher
-    });
+    objs.push({'childId': 'child1', 'contextID': ObjectID.viewVascaPretrattamento});
+    objs.push({'childId': 'child2', 'contextID': ObjectID.viewVascaPrimer});
+    objs.push({'childId': 'child3', 'contextID': ObjectID.viewVascaFinisher});
 
     data.leanOptions.cssDefault = 'an3 bsp';
-
     data.leanOptions.addOption(3, 'layout', false, ObjectID.btnLeanChild1, false, 'an3L bspL');
-
     data.digitalOptions.addOption(4, 'QR', false, ObjectID.btnDigitalChild1, false, 'an3L bspD');
     return data;
 

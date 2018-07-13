@@ -1,6 +1,6 @@
 import {ObjectID} from './object-id.enum';
 import {OptionOfView, OptionType} from './OptionBuilder';
-import {ChartData} from './ChartData';
+import {AppChartData} from './AppChartData';
 
 /* todo: rendere ObjectOfView ricorsiva portando dentro i membri di ChildOfView
 *  e trasformando objects in     objects: ObjectOfView[];
@@ -123,7 +123,7 @@ export class ObjectOfView implements NodeOfView {
     console.log('setBtnLeanOption', index);
     this.leanOptions.options.forEach(option => {
       console.log('check option', option);
-      if (option.contextID == index) {
+      if (option.contextID === index) { // TSLint correction == should be ===
         if (option.checked) {
           this._leanCount--;
         } else {
@@ -140,7 +140,7 @@ export class ObjectOfView implements NodeOfView {
 
   setBtnDigitalOption(index: number) {
     this.digitalOptions.options.forEach(option => {
-      if (option.contextID == index) {
+      if (option.contextID === index) { // TSLint correction == should be ===
         option.checked = !option.checked;
         this.updateOptions();
         return;
@@ -270,7 +270,7 @@ export class ChildOfView { // obsoleto
 export class OptionOfChart {
   /*
     serve per contestualizzare i _charts, già memorizzati già nell'architect:
-    vedi  private _chartData = new ChartData();
+    vedi  private _chartData = new AppChartData();
    */
   public options: ChartOptionType[] = [];
 

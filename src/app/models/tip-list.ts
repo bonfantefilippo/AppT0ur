@@ -42,21 +42,20 @@ Per vedere l\'implementazione Digital premi anche il pulsante corrispondente.`,
   `LeanChild2`,
   `Premi sul bottone QR per vedere gli effetti delle implementazioni Digital.`,
   `digitalChild2`,
-  `Questi grafici mostrano i benefici della metodologia Lean e delle implementazioni Digital
-secondo diversi parametri. Premi per vedere nel dettaglio.`,
-  `chart2`,
-  `chart3`,
+  `Questo grafico mostra l'andamento mensile del consumo di energia elettrica.`,
+  `Questo grafico mette a confronto il consumo di energia elettrica dei processi di produzione tradizionali e della metodologia Lean.`,
+  `Questo grafico mostra l'andamento mensile del consumo di energia elettrica a seconda della metodologia utilizzata.`,
   `chart4`,
-  `chart5`,
+  `Questo grafico mette a confronto gli sprechi prima e dopo l'adozione della metodologia Lean. Premi per vedere nel dettaglio.`,
   `chart6`,
-  `chart7`,
-  `chart8`,
-  `chart9`,
+  `Questo grafico mostra l'andamento della produttività a seconda delle metodologie utilizzate.`,
+  `Premi per vedere il margine operativo lordo a seconda delle metodologie utilizzate.`,
+  `Questo grafico mette a confronto il numero di pezzi in lavorazione per metodologia utilizzata.`,
   `chart10`,
   `chart11`,
   `chart12`,
   `chart13`,
-  `questo è l'albero dell\'impianto`
+  `Qua puoi vedere l'albero dell'impianto e selezionare il livello che desideri esplorare.`
 
 ];
 export class TipList {

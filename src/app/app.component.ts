@@ -15,12 +15,12 @@ export class AppComponent {
   }
 
   homeRedirect() {
-    console.log('app homeRedirect')
+    console.log('app homeRedirect');
     this.service.onRoute(ObjectID.viewHome);
   }
 
   counterChartZero() {
-    this.service.chartCounterZero();
+    // this.service.chartCounterZero();
   }
 
 }

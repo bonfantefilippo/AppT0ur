@@ -1,14 +1,14 @@
 .dashboardtitle {
   font-size: 25px;
 }
-.container5v1 {
+.container {
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 30px;
   margin-top: 18px;
 }
 
-.container5v1  .graphic {
+.container  .graphic {
   height: 250px;
   width: 300px;
   border-radius: 5px;
@@ -19,7 +19,7 @@
   transition-duration: 0.7s;
 }
 
-.container5v1  .graphic:hover {
+.container  .graphic:hover {
   cursor: pointer;
   transform: scale3d(1.03,1.03,1.03);
   opacity: 1;

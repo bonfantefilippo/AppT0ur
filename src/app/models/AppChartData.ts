@@ -9,13 +9,13 @@ import * as _ from 'underscore';
  *                      .getGreyTheme()
  *                      .getDarkGreyTheme()
  *                    TODO: aggiungere qui pacchetti tematici per definire le proprietà delle serie
- * ChartData            oggetto che contiene un array di ChartDataRecord
+ * AppChartData            oggetto che contiene un array di ChartDataRecord
  *                      nel costruttore vengono creati tutti i record che verranno utilizzati nell'applicazione
  *                    TODO: aggiungere qui altri grafici da richiamare nell'applicazione
  *
  */
 
-export class ChartData {
+export class AppChartData {
 
   private data: ChartDataRecord[] = [];
   public leanIndex = 0;
@@ -43,9 +43,9 @@ export class ChartData {
         this.serieCurrentSTD(),
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Current absorption', true, 25, 17, 17, false,
+      AppChartData.ChartOptions1('Current absorption', true, 25, 17, 17, false,
         false, 20, 17, true, null),
-      ChartData.ChartOptions1('Current absorption', true, 14, 9, 9, false,
+      AppChartData.ChartOptions1('Current absorption', true, 14, 9, 9, false,
         false, 12, 9, false, null),
       [
         LineChartColors.getGreyTheme()
@@ -65,9 +65,9 @@ export class ChartData {
         this.serieCurrentLEAN()
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Current absorption after Lean', true, 25, 17, 17, false,
+      AppChartData.ChartOptions1('Current absorption after Lean', true, 25, 17, 17, false,
         false, 20, 17, true, null),
-      ChartData.ChartOptions1('Current absorption after Lean', true, 14, 9, 9, false,
+      AppChartData.ChartOptions1('Current absorption after Lean', true, 14, 9, 9, false,
         false, 12, 9, false, null),
       [
         LineChartColors.getGreyTheme(),
@@ -90,9 +90,9 @@ export class ChartData {
         this.serieCurrentDIGITAL()
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Current absorption after Digital', true, 25, 17, 17, false,
+      AppChartData.ChartOptions1('Current absorption after Digital', true, 25, 17, 17, false,
         false, 20, 17, true, null),
-      ChartData.ChartOptions1('Current absorption after Digital', true, 14, 9, 9, false,
+      AppChartData.ChartOptions1('Current absorption after Digital', true, 14, 9, 9, false,
         false, 12, 9, false, null),
       [
         LineChartColors.getGreyTheme(),
@@ -113,9 +113,9 @@ export class ChartData {
         this.serieWaterSTD(),
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Water consumption', true, 25, 17, 17, false,
+      AppChartData.ChartOptions1('Water consumption', true, 25, 17, 17, false,
         false, 20, 17, true, null),
-      ChartData.ChartOptions1('Water consumption', true, 14, 9, 9, false,
+      AppChartData.ChartOptions1('Water consumption', true, 14, 9, 9, false,
         false, 12, 9, false, null),
       [
         LineChartColors.getRedTheme(),
@@ -135,9 +135,9 @@ export class ChartData {
         this.serieWaterLEAN(),
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Water consumption after Lean', true, 25, 17, 17, false,
+      AppChartData.ChartOptions1('Water consumption after Lean', true, 25, 17, 17, false,
         false, 20, 17, true, null),
-      ChartData.ChartOptions1('Wastege  after Lean', true, 14, 9, 9, false,
+      AppChartData.ChartOptions1('Wastege  after Lean', true, 14, 9, 9, false,
         false, 12, 9, false, null),
       [
         LineChartColors.getRedTheme(),
@@ -158,9 +158,9 @@ export class ChartData {
         this.serieWaterDIGITAL(),
       ],
       ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'],
-      ChartData.ChartOptions1('Water consumption after Digital', true, 25, 17, 17, false,
+      AppChartData.ChartOptions1('Water consumption after Digital', true, 25, 17, 17, false,
         false, 20, 17, true, null, true),
-      ChartData.ChartOptions1('Water consumption after Digital', true, 14, 9, 9, false,
+      AppChartData.ChartOptions1('Water consumption after Digital', true, 14, 9, 9, false,
         false, 12, 9, false, null, true),
       [
         LineChartColors.getRedTheme(),
@@ -181,10 +181,10 @@ export class ChartData {
       'productionBarGraph',
       [{data: [2, 4, 5, 8], label: null}],
       ['Before Lean', 'After Lean', 'After Digital 1', 'After Digital 2'],
-      ChartData.ChartOptions1('Productivity', true, 25, 17, 17, true, true, 20,
-        17, true, ChartData.Callback1(' pieces/man-hour')),
-      ChartData.ChartOptions1('Productivity', true, 14, 9, 9, true, true, 12,
-        9, false, ChartData.Callback1(' pieces/man-hour')),
+      AppChartData.ChartOptions1('Productivity', true, 25, 17, 17, true, true, 20,
+        17, true, AppChartData.Callback1(' pieces/man-hour')),
+      AppChartData.ChartOptions1('Productivity', true, 14, 9, 9, true, true, 12,
+        9, false, AppChartData.Callback1(' pieces/man-hour')),
       [LineChartColors.getGraphBarTheme()],
       false,
       'bar',
@@ -196,10 +196,10 @@ export class ChartData {
       'economicImpactBarGraph',
       [{data: [2.4, 5.8, 10.2, 13.4], label: null}],
       ['Before Lean', 'After Lean', 'After Digital 1', 'After Digital 2'],
-      ChartData.ChartOptions1(['Economic Impact', 'EBITDA %'], true, 25, 17, 17, true, true, 20,
-        17, true, ChartData.Callback2('%')),
-      ChartData.ChartOptions1(['Economic Impact', 'EBITDA %'], true, 14, 9, 9, true, true, 12,
-        9, false, ChartData.Callback2('%')),
+      AppChartData.ChartOptions1(['Economic Impact', 'EBITDA %'], true, 25, 17, 17, true, true, 20,
+        17, true, AppChartData.Callback2('%')),
+      AppChartData.ChartOptions1(['Economic Impact', 'EBITDA %'], true, 14, 9, 9, true, true, 12,
+        9, false, AppChartData.Callback2('%')),
 
       [LineChartColors.getGraphBarTheme()],
       false,
@@ -211,10 +211,10 @@ export class ChartData {
       'workInProgressGraphBar',
       [{data: [194, 54, 50, 42], label: null}],
       ['Before Lean', 'After Lean', 'After Digital 1', 'After Digital 2'],
-      ChartData.ChartOptions1('Work In Progress (WIP)', true, 25, 17, 17, true, true, 20,
-        17, true, ChartData.Callback1(' pieces')),
-      ChartData.ChartOptions1('Work In Progress (WIP)', true, 14, 9, 9, true, true, 12,
-        9, false, ChartData.Callback1(' pieces')),
+      AppChartData.ChartOptions1('Work In Progress (WIP)', true, 25, 17, 17, true, true, 20,
+        17, true, AppChartData.Callback1(' pieces')),
+      AppChartData.ChartOptions1('Work In Progress (WIP)', true, 14, 9, 9, true, true, 12,
+        9, false, AppChartData.Callback1(' pieces')),
       [LineChartColors.getGraphBarTheme()],
       false,
       'bar',
@@ -416,7 +416,6 @@ export class ChartDataRecord {
   constructor() {
 
   }
-
   public static createChartRecord(name: string,
                                   lineChartData: Array<ChartSerie>,
                                   lineChartLabels: Array<string>,
@@ -451,6 +450,9 @@ export class ChartDataRecord {
     return new ChartSerie(data, src.label);
   }
 
+  routerLink(): string {
+    return '/chart/' + this.chartID;
+  }
   clone(): ChartDataRecord {
     const cdr = new ChartDataRecord;
     this.copyTo(cdr);

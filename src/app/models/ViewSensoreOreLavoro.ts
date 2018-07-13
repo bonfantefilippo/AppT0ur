@@ -1,5 +1,5 @@
-import { ObjectOfView } from './ObjectOfView';
-import { ObjectID } from './object-id.enum';
+import {ObjectOfView} from './ObjectOfView';
+import {ObjectID} from './object-id.enum';
 
 export class ViewSensoreOreLavoro {
   public static JSON() {
@@ -8,14 +8,6 @@ export class ViewSensoreOreLavoro {
     data.objects = objs;
 
     data.leanOptions.cssDefault = 'an1 bsolav';
-    /*data.leanOptions.addOption(
-      3,
-      'layout',
-      false,
-      ObjectID.btnLeanChild1,
-      false,
-      'an1 bsolavL'
-    );*/
     data.digitalOptions.addOption(
       4,
       'QR',
